@@ -24,3 +24,5 @@ Things you may want to cover:
 * ...
 
 なかじまですよ
+
+中村ですよ
