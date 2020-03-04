@@ -1,0 +1,29 @@
+.header
+  .header__main
+    .header__main__logo
+      = link_to root_path do
+        = image_tag "logo.png", class:"header__main__logo--icon"
+    %form{:action => "/posts", :method => "post", class: "header__main__form"}
+      %input{:name => "content", :type => "text", class: "header__main__form--text_box", placeholder: "キーワードから検索"}
+      %input{:type => "submit",class: "header__main__form--submit hidden"}
+      .header__main__form--submit__btn
+        = image_tag "icon-search 1.png", class:"header__main__form--submit__btn--icon"
+  .header__nav_ber
+    .header__nav_ber__left
+      .header__nav_ber__left__category
+        = link_to root_path do
+          .header__nav_ber__left__brand--text
+            カテゴリ
+      .header__nav_ber__left__brand
+        = link_to root_path do
+          .header__nav_ber__left__brand--text
+            ブランド
+    .header__nav_ber__right
+      .header__nav_ber__right__login
+        = link_to root_path do
+          .header__nav_ber__right__login--text
+            ログイン
+      .header__nav_ber__right__signin
+        = link_to root_path do
+          .header__nav_ber__right__signin--text
+            新規登録
