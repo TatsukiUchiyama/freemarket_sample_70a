@@ -14,9 +14,12 @@
 |birthday_year|integer|null: false|
 |birthday_month|integer|null: false|
 |birthday_day|integer|null: false|
+|adress_id|integer|null: false, foreign_key: true|
 ### Association
+- belongs_to :adress
 - has_many :products
 - has_many :cards
+- has_many :transactions
 
 ## adressesテーブル
 |Column|Type|Options|
@@ -35,7 +38,6 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-
 
 ## cardsテーブル
 |Column|Type|Options|
