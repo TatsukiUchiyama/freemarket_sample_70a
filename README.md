@@ -14,14 +14,14 @@
 |birthday_year|integer|null: false|
 |birthday_month|integer|null: false|
 |birthday_day|integer|null: false|
-|adress_id|integer|null: false, foreign_key: true|
+|address_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :adress
+- has_one :address
 - has_many :products
 - has_many :cards
 - has_many :transactions
 
-## adressesテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name_kanji|string|null: false|
