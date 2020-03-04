@@ -1,0 +1,340 @@
+@import "application.scss";
+
+.Exhibition_btn{
+  position: absolute;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $lightgreen;
+  height: 130px;
+  width: 130px;
+  border-radius: 10px;
+  &__content{
+    &--text{
+      text-align: center;
+      color: $whiteText;
+      font-size: 18px;
+      padding: 20px 0;
+    }
+    &--icon{
+      height: 54px
+      ;width: 54px;
+      text-align: center;
+      margin: auto;
+      display: block;
+    }
+  }
+}
+.hidden{
+  display: none;
+}
+.main_visual{
+  background-image: image-url(bg-mainVisual-pict_pc);
+  background-size: cover;
+  width: 100%;
+  height: 560px;
+  display: flex;
+  &__content{
+    width: 90%;
+    height: 350px;
+    margin: auto;
+    align-items: center;
+    &__subtitle{
+      @include shadow_white();
+      font-size: 60px;
+      margin-top: 100px;
+    }
+    &__text{
+      font-size: 18px;
+      @include shadow_white();
+      margin: 30px 0;
+      p{
+        margin-top: 20px;
+      }
+    }
+
+    &__appbtn{
+      height: 60px;
+      width: 100%;
+      &--apple{
+        width: 180px;
+        height: 55px;
+        margin-bottom: 11px;
+      }
+      &--google{
+        width: 190px;
+        height: 80px;
+      }
+    }
+  }
+}
+
+.top_introduction{
+  width: 100%;
+  height: 660px;
+  padding: 60px 150px;
+  &__subtitle{
+
+    &__text{
+      font-size: 26px;
+      text-align: center;
+      font-weight: bold;
+
+    }
+    &__line{
+      background-color:  $lightgreen;
+      width: 70px;
+      height: 4px;
+      margin: 20px auto 40px;
+    }
+  }
+  &__ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    &__li{
+      width: 30%;
+      position: relative;
+      &__image{
+        width: 100%;
+        height: auto;
+      }
+      &__number{
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 30px;
+        padding: 10px 20px;
+        background-color: $lightgreen;
+        color:$whiteText;
+        border-radius: 2px;
+      }
+      &__text{
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 25px 0;
+        &--blue_font{
+          color: $lightgreen;
+        }
+      }
+      &__description{
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  }
+}
+
+.top_middle_dl{
+  background-image: image-url(bg-topMiddleDl-pict);
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  &__inner{
+    width: 90%;
+    height: 250px;
+    margin: auto;
+    align-items: center;
+    &__subtitle{
+      font-size: 27px;
+      font-weight: bold;
+      @include shadow_white();
+      margin-top: 30px;
+    }
+    &__text{
+      font-size: 18px;
+      padding: 25px 0;
+      @include shadow_white();
+    }
+    &__appbtn{
+      height: 60px;
+      width: 100%;
+      &--apple{
+        width: 180px;
+        height: 55px;
+        margin-bottom: 11px;
+      }
+      &--google{
+        width: 190px;
+        height: 80px;
+      }
+    }
+  }
+}
+.top_feature{
+  width: 100%;
+  height: 700px;
+  padding: 60px 100px;
+  &__title{
+    font-size: 27px;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__line{
+    height: 4px;
+    width: 70px;
+    background-color: $lightgreen;
+    margin: 20px auto 40px;
+  }
+  &__ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    &__li{
+      width: 30%;
+      &__image{
+        height: auto;
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+      }
+      &__text{
+        font-size: 19px;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0;
+      }
+      &__description{
+        font-size: 17px;
+        padding: 0 20px;
+      }
+    }
+  }
+}
+.pic_up_container{
+  padding-top: 130px;
+  height: 100%;
+  background-color: #f8f8f8;
+  &__head{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+  &__title{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: $lightgreen;
+    padding: 20px 0;
+  }
+  &__products{
+    width: 100%;
+    height: 300px;
+    padding: 0 300px;
+    display: flex;
+    justify-content: space-around;
+    &__box{
+      width: 220px;
+      height: 245px;
+      background-color: #fff;
+      &--image{
+        width: 220px;
+        height: 150px;
+      }
+      &__lower{
+        display: flex;
+        justify-content: space-between;
+        &__data{ 
+          padding: 10px;
+          &--name{
+            padding-top: 10px;
+            font-size: 16px;
+          }
+          &--price{
+            padding-top: 10px;
+            font-size: 16px
+          }
+          &--tax{
+            padding-top: 10px;
+            font-size: 10px;
+          }
+        }
+        &--fav{
+          padding-top: 5px;
+          line-height: 95px;
+        }
+      }
+    }
+  }
+}
+
+.footer{
+  width: 100%;
+  height: 720px;
+  &__upper{
+    height: 360px;
+    padding: 100px 40px;
+    background-image: url(bg-appBanner-pict);
+    background-size: cover;
+    &--title{
+      font-size: 24px;
+      @include shadow_white();
+      text-align: center;
+    }
+    &--text{
+      font-size: 35px;
+      @include shadow_white();
+      text-align: center;
+      padding: 20px 0;
+
+    }
+    &__appbtn{
+      height: 60px;
+      width: 100%;
+      text-align: center;
+      &--apple{
+        width: 180px;
+        height: 55px;
+        margin-bottom: 11px;
+      }
+      &--google{
+        width: 190px;
+        height: 80px;
+      }
+    }
+  }
+  &__lower{
+    background-color: #272727;
+    height: 360px;
+    padding: 60px 0;
+
+
+
+    &__contents{
+      display: flex;
+      justify-content: space-around;
+      padding: 0 100px;
+
+      &__content{
+        list-style: none;
+        padding-left: 2%;
+        
+        &__head{
+          color: $whiteText;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        &--text{
+          font-size: 12px;
+          color: $whiteText;
+          padding-top: 20px;
+
+        }
+        
+      }
+    }
+    &__logo{
+      font-size: 14px;
+      color: $whiteText;
+      text-align: center;
+
+      &--icon{
+        margin: 0 auto;
+        display: block;
+        height: 50px;
+      }
+    }
+  }
+}

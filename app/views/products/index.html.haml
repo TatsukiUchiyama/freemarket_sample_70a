@@ -1,0 +1,276 @@
+
+.header
+  .header__main
+    .header__main__logo
+      = link_to root_path do
+        = image_tag "logo.png", class:"header__main__logo--icon"
+    %form{:action => "/posts", :method => "post", class: "header__main__form"}
+      %input{:name => "content", :type => "text", class: "header__main__form--text_box", placeholder: "キーワードから検索"}
+      %input{:type => "submit",class: "header__main__form--submit hidden"}
+      .header__main__form--submit__btn
+        = image_tag "icon-search 1.png", class:"header__main__form--submit__btn--icon"
+  .header__nav_ber
+    .header__nav_ber__left
+      .header__nav_ber__left__category
+        = link_to root_path do
+          .header__nav_ber__left__brand--text
+            カテゴリ
+      .header__nav_ber__left__brand
+        = link_to root_path do
+          .header__nav_ber__left__brand--text
+            ブランド
+    .header__nav_ber__right
+      .header__nav_ber__right__login
+        = link_to root_path do
+          .header__nav_ber__right__login--text
+            ログイン
+      .header__nav_ber__right__signin
+        = link_to root_path do
+          .header__nav_ber__right__signin--text
+            新規登録
+
+
+.Exhibition_btn
+  =link_to "#" do
+    .Exhibition_btn__content
+      .Exhibition_btn__content--text
+        出品する
+      = image_tag "icon_camera.png", class:"Exhibition_btn__content--icon"
+
+      
+
+.main_visual
+  .main_visual__content
+    .main_visual__content__subtitle
+      人生を変えるフリマアプリ
+    .main_visual__content__text
+      %p FURIMAは誰でもかんたんに出品・購入できる
+      %p フリマアプリです
+    .main_visual__content__appbtn
+      =link_to "#" do
+        = image_tag "app-store-badge.svg",class:"main_visual__content__appbtn--apple"
+      =link_to "#" do
+        = image_tag "google-play-badge.png",class:"main_visual__content__appbtn--google"
+.top_introduction
+  .top_introduction__subtitle
+    .top_introduction__subtitle__text
+      FURIMAが選ばれる３つの理由
+    .top_introduction__subtitle__line
+  %ul.top_introduction__ul
+    %li.top_introduction__ul__li
+      = image_tag "pict-reason-01.jpg", class:"top_introduction__ul__li__image"
+      .top_introduction__ul__li__number
+        1
+      .top_introduction__ul__li__text
+        %span.top_introduction__ul__li__text--blue_font
+          3分
+        ですぐに出品
+      .top_introduction__ul__li__description
+        スマホで入力するだけでかんたんに出品できる！
+    %li.top_introduction__ul__li
+      = image_tag "pict-reason-02.jpg", class:"top_introduction__ul__li__image"
+      .top_introduction__ul__li__number
+        2
+      .top_introduction__ul__li__text
+        %span.top_introduction__ul__li__text--blue_font シンプル
+        で使いやすい
+      .top_introduction__ul__li__description
+        めんどくさい入力は必要なく、検索も購入もスムーズ！
+    %li.top_introduction__ul__li
+      = image_tag "pict-reason-03.jpg", class:"top_introduction__ul__li__image"
+      .top_introduction__ul__li__number
+        3
+      .top_introduction__ul__li__text
+        手数料
+        %span.top_introduction__ul__li__text--blue_font
+          業界最安値
+      .top_introduction__ul__li__description
+        最大3％でお得に出品＆購入！
+
+.top_middle_dl
+  .top_middle_dl__inner
+    .top_middle_dl__inner__subtitle
+      会員数日本一位
+    .top_middle_dl__inner__text
+      %p FURIMAは、フリマアプリで最も人気。
+      %p 出品・購入回数も業界最多です！
+      %p 欲しかったあの商品に出会えるかもしれません。
+    .top_middle_dl__inner__appbtn
+      =link_to "#" do
+        = image_tag "app-store-badge.svg",class:"top_middle_dl__inner__appbtn--apple"
+      =link_to "#" do
+        = image_tag "google-play-badge.png",class:"top_middle_dl__inner__appbtn--google"
+
+.top_feature
+  .top_feature__title
+    FURIMAの特徴
+  .top_feature__line
+  %ul.top_feature__ul
+    %li.top_feature__ul__li
+      = image_tag "icon-01.png",class:"top_feature__ul__li__image"
+      .top_feature__ul__li__text
+        簡単に売り買い出来る
+      .top_feature__ul__li__description
+        スマホ一つで、いつでもどこでも簡単に出品・購入が可能！
+    %li.top_feature__ul__li
+      = image_tag "icon-03.png",class:"top_feature__ul__li__image"
+      .top_feature__ul__li__text
+        売上金は即日振り込みに対応
+      .top_feature__ul__li__description
+        午後9時までに振り込みを依頼いただければ、翌日に指定の口座に入金いたします！
+    %li.top_feature__ul__li
+      = image_tag "icon-04.png",class:"top_feature__ul__li__image"
+      .top_feature__ul__li__text
+        様々な支払いに対応
+      .top_feature__ul__li__description
+        お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+.pic_up_container
+  .pic_up_container__head
+    ピックアップカテゴリー
+  .pic_up_container__title
+    新規投稿商品
+  .pic_up_container__products
+    .pic_up_container__products__box
+      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
+      .pic_up_container__products__box__lower
+        .pic_up_container__products__box__lower__data
+          .pic_up_container__products__box__lower__data--name
+            お魚のソーセージ
+          .pic_up_container__products__box__lower__data--price
+            ５００円
+          .pic_up_container__products__box__lower__data--tax
+            （税込み）
+        .pic_up_container__products__box__lower--fav
+          ⭐️１
+
+    .pic_up_container__products__box
+      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
+      .pic_up_container__products__box__lower
+        .pic_up_container__products__box__lower__data
+          .pic_up_container__products__box__lower__data--name
+            お魚のソーセージ
+          .pic_up_container__products__box__lower__data--price
+            ５００円
+          .pic_up_container__products__box__lower__data--tax
+            （税込み）
+        .pic_up_container__products__box__lower--fav
+          ⭐️１
+
+    .pic_up_container__products__box
+      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
+      .pic_up_container__products__box__lower
+        .pic_up_container__products__box__lower__data
+          .pic_up_container__products__box__lower__data--name
+            お魚のソーセージ
+          .pic_up_container__products__box__lower__data--price
+            ５００円
+          .pic_up_container__products__box__lower__data--tax
+            （税込み）
+        .pic_up_container__products__box__lower--fav
+          ⭐️１
+
+.pic_up_container
+  .pic_up_container__head
+    ピックアップブランド
+  .pic_up_container__title
+    アーカイバ
+  .pic_up_container__products
+    .pic_up_container__products__box
+      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
+      .pic_up_container__products__box__lower
+        .pic_up_container__products__box__lower__data
+          .pic_up_container__products__box__lower__data--name
+            お魚のソーセージ
+          .pic_up_container__products__box__lower__data--price
+            ５００円
+          .pic_up_container__products__box__lower__data--tax
+            （税込み）
+        .pic_up_container__products__box__lower--fav
+          ⭐️１
+
+    .pic_up_container__products__box
+      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
+      .pic_up_container__products__box__lower
+        .pic_up_container__products__box__lower__data
+          .pic_up_container__products__box__lower__data--name
+            お魚のソーセージ
+          .pic_up_container__products__box__lower__data--price
+            ５００円
+          .pic_up_container__products__box__lower__data--tax
+            （税込み）
+        .pic_up_container__products__box__lower--fav
+          ⭐️１
+
+    .pic_up_container__products__box
+      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
+      .pic_up_container__products__box__lower
+        .pic_up_container__products__box__lower__data
+          .pic_up_container__products__box__lower__data--name
+            お魚のソーセージ
+          .pic_up_container__products__box__lower__data--price
+            ５００円
+          .pic_up_container__products__box__lower__data--tax
+            （税込み）
+        .pic_up_container__products__box__lower--fav
+          ⭐️１
+
+.footer
+  .footer__upper
+    .footer__upper--title
+      だれでもかんたん、人生を変えるフリマアプリ
+    .footer__upper--text
+      今すぐ無料ダウンロード！
+
+    .footer__upper__appbtn
+      =link_to "#" do
+        = image_tag "app-store-badge.svg",class:"footer__upper__appbtn--apple"
+      =link_to "#" do
+        = image_tag "google-play-badge.png",class:"footer__upper__appbtn--google"
+  .footer__lower
+    %ul.footer__lower__contents
+      %li.footer__lower__contents__content
+        .footer__lower__contents__content__head
+          FURIMAについて
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            会社概要<br>
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            プライバシーポリシー<br>
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            FURIMA利用規約<br>
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            ポイントに関する特約
+
+      %li.footer__lower__contents__content
+        .footer__lower__contents__content__head
+          FURIMAを見る
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            カテゴリー一覧<br>
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            ブランド一覧
+
+      %li.footer__lower__contents__content
+        .footer__lower__contents__content__head
+          FURIMAについて
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            FURIMAガイド
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            FURIMAロゴ利用ガイドライン<br>
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            お知らせ<br>
+        = link_to "#" do
+          .footer__lower__contents__content--text
+            ポイントに関する特約
+    .footer__lower__logo
+      = image_tag "logo-white.png", class:"footer__lower__logo--icon"
+      ©️FURIMA
+
