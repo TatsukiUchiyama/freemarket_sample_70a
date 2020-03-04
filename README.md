@@ -27,6 +27,18 @@
 |phone_number|string||
 ### Association
 - has_many :products
+- has_many :cards
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|number|integer|null: false|
+|expiration_month|integer|null: false|
+|expiration_year|integer|null: false|
+|security code|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
 
 ## productsテーブル
 |Column|Type|Options|
@@ -39,12 +51,22 @@
 |shipping_from_area|string|null: false|
 |shipping_duration|string|null: false|
 |price|integer|null: false|
-|sold_flg|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :images
 - has_many :products_categories
 - has_many :categories,  through: :products_categories
+
+## transactionsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|product_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|card_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :product
+- belongs_to :user
+- belongs_to :card
 
 ## imagesテーブル
 |Column|Type|Options|
