@@ -14,7 +14,6 @@
 |birthday_year|integer|null: false|
 |birthday_month|integer|null: false|
 |birthday_day|integer|null: false|
-|address_id|integer|null: false, foreign_key: true|
 ### Association
 - has_one :address
 - has_many :products
