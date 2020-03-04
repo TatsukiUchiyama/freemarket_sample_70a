@@ -1,0 +1,132 @@
+$border-color : #f8f8f8;
+.new{
+  width: 100%;
+  background-color: #f8f8f8;
+  // 購入内容表示エリア
+  &__detail{
+    width: 700px;
+    padding-bottom: 50px;
+    background-color: #ffffff;
+    margin: 0 auto;
+
+    // タイトルエリア
+    &__title{
+      width: 100%;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      font-size: 23px;
+      border-bottom: 1px solid $border-color;
+      font-weight: bold;
+    }
+    // 商品詳細エリア
+    &__product{
+      display: flex;
+      justify-content: center;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $border-color;
+
+      // 画像・商品名・価格表示エリア
+      &__box{
+        display: flex;
+        // 商品画像
+        &__image{
+          height: 80px;
+          width: 80px;
+          margin-right: 20px;
+
+          line-height: 80px;
+          text-align: center;
+          border: 2px solid #000000;
+        }
+        // 商品情報
+        &__information{
+          padding-top: 5px;
+          // 商品名
+          &__name{
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+    // 支払い金額・支払い方法・配送地域表示エリア
+    &__payment{
+      padding-top: 30px;
+      display: flex;
+      form{
+       margin: 0 auto;
+        // 購入ボタン
+        button{
+          border: none;
+          background-color: #ea352d;
+          height: 50px;
+          width: 340px;
+          color: #ffffff;
+          font-size: 14px;
+        }
+      }
+      // 支払い金額・支払い方法・配送地域表示用のリスト
+      &__lists{
+        margin: 0 auto;
+        list-style: none;
+        margin-bottom: 25px;
+        &__list{
+          padding: 30px 0px;
+          border-bottom: 1px solid $border-color;
+          font-weight: bold;
+          
+          // 「変更する」ボタン
+          &__change--link{
+            text-decoration: none;
+            color: #0099E8;
+            float: right;
+            font-weight: normal;
+            font-size: 14px;
+          }
+
+          // 金額表示用エリア
+          &__price-box{
+            display: flex;
+            &__label{
+              width: 170px;
+              font-size: 20px;
+            }
+            &__price{
+              width: 170px;
+              font-size: 25px;
+              text-align: end;
+            }
+          }
+          // 支払い方法表示エリア
+          &__payment-method{
+            margin-top: 10px;
+            list-style: none;
+            font-size: 15px;
+            
+            // クレジットカード情報
+            li{
+              margin-bottom: 5px;
+              font-weight: normal;
+            }
+            // カード画像
+            &__card-img{
+              height: 40px;
+            }
+          }
+          // 配送先表示エリア
+          &__shipping-address{
+            margin-top: 10px;
+            list-style: none;
+            font-size: 15px;
+            li{
+              margin-bottom: 5px;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+}

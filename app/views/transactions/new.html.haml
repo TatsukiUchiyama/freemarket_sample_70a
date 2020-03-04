@@ -1,0 +1,51 @@
+.new
+  = render partial: '/layouts/header_sub'
+  .new__detail
+    .new__detail__title
+      購入内容の確認
+    .new__detail__product
+      .new__detail__product__box
+        .new__detail__product__box__image
+          画像
+        .new__detail__product__box__information
+          .new__detail__product__box__information__name
+            腕時計
+          .new__detail__product__box__information__price
+            ¥10,000 (税込) 送料込み
+    .new__detail__payment
+      %form{action: "#"}
+        %ul.new__detail__payment__lists
+          %li.new__detail__payment__lists__list
+            .new__detail__payment__lists__list__price-box
+              .new__detail__payment__lists__list__price-box__label
+                支払い金額
+              .new__detail__payment__lists__list__price-box__price
+                ¥10,000
+          %li.new__detail__payment__lists__list
+            支払い方法
+            %a{href: '#', class: 'new__detail__payment__lists__list__change--link'}
+              変更する
+            %ul.new__detail__payment__lists__list__payment-method
+              %li
+                クレジットカード
+              %li
+                ************0000
+              %li
+                有効期限 12 / 30
+              %li
+                = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
+          %li.new__detail__payment__lists__list
+            配送地域
+            %a{href: '#', class: 'new__detail__payment__lists__list__change--link'}
+              変更する
+            %ul.new__detail__payment__lists__list__shipping-address
+              %li
+                〒999-9999
+              %li
+                東京都○○区×× 1-23-4 マンションA 999
+              %li
+                フリマ 太郎
+        = button_tag type: "submit" do
+          購入する
+
+  = render partial: '/layouts/footer_sub'
