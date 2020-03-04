@@ -14,10 +14,17 @@
 |birthday_year|integer|null: false|
 |birthday_month|integer|null: false|
 |birthday_day|integer|null: false|
-|family_name_kanji_destination|string|null: false|
-|first_name_kanji_destination|string|null: false|
-|family_name_kana_destination|string|null: false|
-|first_name_kana_destination|string|null: false|
+### Association
+- has_many :products
+- has_many :cards
+
+## adressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|family_name_kanji|string|null: false|
+|first_name_kanji|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |postal_code|string|null: false|
 |prefectures|string|null: false|
 |municipalities|string|null: false|
@@ -25,9 +32,10 @@
 |building_name|string||
 |room_number|string||
 |phone_number|string||
+|user_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many :products
-- has_many :cards
+- belongs_to :user
+
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -54,8 +62,7 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :images
-- has_many :products_categories
-- has_many :categories,  through: :products_categories
+- belongs_to :category
 
 ## transactionsテーブル
 |Column|Type|Options|
@@ -76,22 +83,10 @@
 ### Association
 - belongs_to :product
 
-## products_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|product_id|integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :product
-- belongs_to :category
-
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|catergory|string|null: false|
-|sub_catergory|string||
-|sub_sub_catergory|string||
+|ancestry|string||
 ### Association
-- has_many :products_categories
-- has_many :products,  through: :products_categories
+- has_many :products
