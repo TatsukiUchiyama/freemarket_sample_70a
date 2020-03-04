@@ -39,8 +39,10 @@
 |shipping_from_area|string|null: false|
 |shipping_duration|string|null: false|
 |price|integer|null: false|
-|user_id|integer|null: false|
+|sold_flg|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
+- has_many :images
 - has_many :products_categories
 - has_many :categories,  through: :products_categories
 
@@ -66,8 +68,8 @@
 |------|----|-------|
 |name|string|null: false|
 |catergory|string|null: false|
-|sub_catergory|string|null: false|
-|sub_sub_catergory|string|null: false|
+|sub_catergory|string||
+|sub_sub_catergory|string||
 ### Association
 - has_many :products_categories
 - has_many :products,  through: :products_categories
