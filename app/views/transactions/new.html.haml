@@ -23,8 +23,7 @@
                 ¥10,000
           %li.new__detail__payment__lists__list
             支払い方法
-            %a{href: '#', class: 'new__detail__payment__lists__list__change--link'}
-              変更する
+            = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
             %ul.new__detail__payment__lists__list__payment-method
               %li
                 クレジットカード
@@ -36,8 +35,7 @@
                 = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
           %li.new__detail__payment__lists__list
             配送先
-            %a{href: '#', class: 'new__detail__payment__lists__list__change--link'}
-              変更する
+            = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
             %ul.new__detail__payment__lists__list__shipping-address
               %li
                 〒999-9999
