@@ -1,0 +1,32 @@
+.sessions
+  .sessions-head
+    = render partial: '/layouts/header_sub'
+
+  .sessions-main
+    .sessions-main-content
+      .content-center-top
+        .content-center-top-create
+          .content-center-top-create-text
+            アカウントをお持ちでない方はこちら
+            = link_to "#" ,class:"new-link" do
+              .content-center-top-create-btn
+                .content-center-top-create-btn__text
+                  新規会員登録
+      .content-bottom
+        .content-bottom-information
+          .content-bottom-information-box
+            .content-bottom-information-box-mail
+              %input{:placeholder => "メールアドレス", :type => "text", class:"information-box-mail"}
+            .content-bottom-information-box-password
+              %input{:placeholder => "パスワード", :type => "text", class:"information-box-password"}
+        .content-bottom-login
+          = link_to "#" ,class:"login-btn" do
+            .content-bottom-login-btn
+              .content-bottom-login-text
+                ログイン
+        .password-forget-text
+          = link_to "#" ,class:"password-forget-link" do
+            パスワードをお忘れの方
+
+  .sessions-bottom
+    = render partial: '/layouts/footer_sub'
