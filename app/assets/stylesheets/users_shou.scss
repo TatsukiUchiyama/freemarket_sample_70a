@@ -1,0 +1,324 @@
+.show_header{
+  border-top: rgb(216, 216, 216) 1px solid;
+  height: 50px;
+  width: 100%;
+  padding: 0 180px;
+    &__pagetitle{
+    display: flex;
+    list-style: none;
+    width: 400px;
+    &__li{
+      line-height: 50px;
+      width: 180px;
+      text-align: center;
+    }
+    &__li.icon{
+      width: 30px;
+
+    }
+  }
+}
+
+.show_main{
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+  &__left{
+    padding: 0 0 0 150px;
+    &__list{
+      // margin-left: 150px;
+      &__area{
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 16px;
+        margin-bottom: 1px;
+        width: 300px;
+        &--text{
+        }
+        &--next_icon{
+        }
+      }
+    }
+    &__setting{
+      margin: 20px 0;
+      font-size: 20px;
+    }
+  }
+
+  &__right{
+    &__upper{
+      width: 500px;
+      height: auto;
+      &__userarea{
+      }
+      &__tab{
+        display: flex;
+        list-style: none;
+        background-color: #fff;
+        .tab{
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: rgb(216, 216, 216);
+        }
+        .tab.is-active{
+          background-color: #fff;
+        }
+      }
+      .panel{
+        display: none;
+      }
+      .panel.is-show{
+        display: block;
+      }
+      &__list{
+        margin-bottom: 1px;
+
+        &__area{
+          display: flex;
+          height: auto;
+          padding: 10px;
+          background-color: #fff;
+          margin-bottom: 1px;
+          &--icon{
+            height: 50px;
+            width: 50px;
+            margin: 10px;
+          }
+          &__contents{
+            padding: 10px;
+            position: relative;
+
+
+
+            &--text{
+              padding-bottom: 30px;
+            }
+            &--time{
+
+              padding-top: 10px;
+              position: absolute;
+              bottom: 10px;
+
+            }
+          }
+          &--next_icon{
+            line-height: 80px;
+            margin: 0 0 0 auto;
+            display: block;
+          }
+          &__index_view{
+            background-color: rgb(206, 206, 206);
+            height: 80px;
+            line-height: 80px;
+            padding: 0 200px;
+            margin: 0 auto;
+            display: block;
+            &--text{
+              text-align: center;
+            }
+          }
+        }
+        &__none{
+          color: rgb(175, 175, 175);
+          padding: 150px 200px;
+          background-color: #fff;
+
+        }
+      }
+    }
+  }
+
+  &__right{
+    &__upper{
+      width: 500px;
+      height: auto;
+      margin-right: 150px;
+      &__userarea{
+        background-image: url(bg-topMiddleDl-pict);
+        background-size: cover;
+        color: rgb(0, 2, 105);
+        padding-top: 30px;
+        height: 100px;
+        text-align: center;
+        &--text{
+          font-size: 20px;
+        }
+        &__data{
+          display: flex;
+          justify-content: space-around;
+          padding: 0 80px;
+          &--in{
+            padding: 20px;
+          }
+          &--out{
+            padding: 20px;
+          }
+        }
+      }
+      &__tab{
+        display: flex;
+        list-style: none;
+        background-color: #fff;
+        .tab_upper{
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: rgb(216, 216, 216);
+        }
+        .tab_upper.active_upper{
+          background-color: #fff;
+        }
+      }
+      .panel_upper{
+        display: none;
+      }
+      .panel_upper.show_upper{
+        display: block;
+      }
+      &__list{
+        margin-bottom: 1px;
+
+        &__area{
+          display: flex;
+          height: auto;
+          padding: 10px;
+          background-color: #fff;
+          margin-bottom: 1px;
+          &--icon{
+            height: 50px;
+            width: 50px;
+            margin: 10px;
+          }
+          &__contents{
+            padding: 10px;
+            position: relative;
+
+
+
+            &--text{
+              padding-bottom: 30px;
+            }
+            &--time{
+
+              padding-top: 10px;
+              position: absolute;
+              bottom: 10px;
+
+            }
+          }
+          &--next_icon{
+            line-height: 80px;
+            margin: 0 0 0 auto;
+            display: block;
+          }
+          &__index_view{
+            background-color: rgb(206, 206, 206);
+            height: 80px;
+            line-height: 80px;
+            padding: 0 200px;
+            margin: 0 auto;
+            display: block;
+            &--text{
+              text-align: center;
+            }
+          }
+        }
+        &__none{
+          color: rgb(175, 175, 175);
+          padding: 150px 200px;
+          background-color: #fff;
+
+        }
+      }
+    }
+ 
+    &__lower{
+      padding-top: 100px;
+      width: 500px;
+      height: auto;
+      &__userarea{
+      }
+      &__tab{
+        display: flex;
+        list-style: none;
+        background-color: #fff;
+        .tab_lower{
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: rgb(216, 216, 216);
+        }
+        .tab_lower.active_lower{
+          background-color: #fff;
+        }
+      }
+      .panel_lower{
+        display: none;
+      }
+      .panel_lower.show_lower{
+        display: block;
+      }
+      &__list{
+        margin-bottom: 1px;
+
+        &__area{
+          display: flex;
+          height: auto;
+          padding: 10px;
+          background-color: #fff;
+          margin-bottom: 1px;
+          &--icon{
+            height: 50px;
+            width: 50px;
+            margin: 10px;
+          }
+          &__contents{
+            padding: 10px;
+            position: relative;
+
+
+
+            &--text{
+              padding-bottom: 30px;
+            }
+            &--time{
+
+              padding-top: 10px;
+              position: absolute;
+              bottom: 10px;
+
+            }
+          }
+          &--next_icon{
+            line-height: 80px;
+            margin: 0 0 0 auto;
+            display: block;
+          }
+          &__index_view{
+            background-color: rgb(206, 206, 206);
+            height: 80px;
+            line-height: 80px;
+            padding: 0 200px;
+            margin: 0 auto;
+            display: block;
+            &--text{
+              text-align: center;
+            }
+          }
+        }
+        &__none{
+          color: rgb(175, 175, 175);
+          padding: 150px 200px;
+          background-color: #fff;
+
+        }
+      }
+    }
+  }
+}

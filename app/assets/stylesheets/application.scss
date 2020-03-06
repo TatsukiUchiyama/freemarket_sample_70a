@@ -120,17 +120,17 @@
     &__left{
       display: flex;
       &__category{
-
         padding-left: 20px;
         &--text{
+          width: 60px;
           color: #000;
           font-size: 14px;
         }
       }
       &__brand{
-        
-        padding-left: 40px;
+        padding: 0 40px;
         &--text{
+          width: 60px;
           color: #000;
           font-size: 14px;
         }
@@ -143,6 +143,7 @@
         
         padding-right: 20px;
         &--text{
+          width: 60px;
           font-size: 14px;
           color: #000;
         }
@@ -151,6 +152,7 @@
         
         padding-right: 20px;
         &--text{
+          width: 60px;
           font-size: 14px;
           color: #000;
         }
