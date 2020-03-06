@@ -29,7 +29,7 @@
                 .mail-top-label__text
                   必須
             .mail-top-bottom
-              %input{placeholder: "PC ・ 携帯どちらでも可", type: "text", class:"mail-form"}
+              %input{placeholder: "PC ・ 携帯どちらでも可", type: "text",class:"mail-form"}
           .information-password
             .password-top
               .password-top-address
@@ -38,7 +38,16 @@
                 .password-top-label__text
                   必須
             .password-top-bottom
-              %input{placeholder: "7文字以上の半角英数字", type: "text", class:"password-form"}
+              %input{placeholder: "7文字以上の半角英数字", type: "password", class:"password-form"}
+            .information-password
+              .password-top
+                .password-top-address
+                  パスワード(確認)
+                .password-top-label
+                  .password-top-label__text
+                    必須
+              .password-top-bottom
+                %input{label: :encrypted_password,placeholder: "7文字以上の半角英数字", type: "password",  class:"password-form"}
           .information-attention
             ※ 英字と数字の両方を含めて設定してください
           .information-password-said
@@ -63,13 +72,13 @@
           .information-kana
             .kana-top
               .kana-top-address
-                お名前
+                お名前(カナ)
               .kana-top-label
                 .kana-top-label__text
                   必須
             .kana-top-bottom
-              %input{placeholder: "例）中村", type: "text", class:"kana-form-left"}
-              %input{placeholder: "例）悠真", type: "text", class:"kana-form-right"}
+              %input{placeholder: "例）ナカムラ", type: "text", class:"kana-form-left"}
+              %input{placeholder: "例）ユウマ", type: "text", class:"kana-form-right"}
           .information-birthday
             .birthday-top
               .birthday-top-name
