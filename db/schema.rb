@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_123644) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
+
     t.string "municipalities", null: false
     t.string "family_name_kanji", null: false
     t.string "first_name_kanji", null: false
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_123644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+
   end
 
   create_table "ages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,7 +85,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_123644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_transactions_on_product_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+
+
   end
 
   create_table "twelves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -113,9 +116,11 @@ ActiveRecord::Schema.define(version: 2020_03_05_123644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "addresses", "users"
   add_foreign_key "images", "products"
   add_foreign_key "products", "users"
   add_foreign_key "transactions", "products"
   add_foreign_key "transactions", "users"
+
 end
