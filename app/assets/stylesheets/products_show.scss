@@ -269,3 +269,26 @@ body {
       }      
     }
   }
+.exhibit-btn{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 120px;
+  width: 120px;
+  background-color: #3ccace;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  &__text {
+    height: 20px;
+    color: white;
+    font-size: 20px;
+    padding-top: 6px;
+  }
+  &__icon {
+    height: 30px;
+    padding-top: 8px;
+    color: white;
+    font-size: 50px;
+  }  
+}
