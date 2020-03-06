@@ -1,0 +1,98 @@
+= render partial: "/layouts/header"
+
+.container
+  .container__box
+    .item-box-container
+      %h1.item-name product
+      .item-box-container__item-main-content
+        .item-box-container__item-main-content-clearfix
+          .item-box-container__item-main-content-clearfix__image 
+            = image_tag 'pict-reason-01.jpg', class: 'item-box-container__item-main-content-clearfix__image__detail'
+
+        .item-box-container__item-main-content-clearfix__image__dot
+          %ul
+            %li
+              = image_tag 'pict-reason-01.jpg', height: '90', width: '140'
+            %li
+              = image_tag 'pict-reason-01.jpg', height: '90', width: '140'
+            %li
+              = image_tag 'pict-reason-01.jpg', height: '90', width: '140'
+         
+                
+        .item-price-box
+          %span.item-price-box__bold ¥2000           
+        .item-tax-box  
+          %span.item-price-box__tax-shipping-fee (税込)送料込み
+        .item-name-box
+          %span.item-name-box__left product
+        .item-box-container__item-main-content-clearfix__table
+          %table{border: "1", style: "border-collapse: collapse"}
+            %tr
+              %th 出品者
+              %td.item-box-container__item-main-content-clearfix__table__td hoge                                               
+            %tr
+              %th カテゴリー
+              %td.item-box-container__item-main-content-clearfix__table__td 
+                = link_to 'ベビー、キッズ', '#'             
+            %tr
+              %th ブランド 
+              %td.item-box-container__item-main-content-clearfix__table__td  
+            %tr
+              %th 商品のサイズ 
+              %td.item-box-container__item-main-content-clearfix__table__td              
+            %tr
+              %th 商品の状態 
+              %td.item-box-container__item-main-content-clearfix__table__td               
+            %tr
+              %th 配送料の負担
+              %td.item-box-container__item-main-content-clearfix__table__td             
+            %tr
+              %th 配送の方法
+              %td.item-box-container__item-main-content-clearfix__table__td              
+            %tr
+              %th 発送元地域 
+              %td.item-box-container__item-main-content-clearfix__table__td 
+                = link_to '岩手', '#'
+            %tr
+              %th 発送日の目安
+              %td.item-box-container__item-main-content-clearfix__table__td
+          
+      .item-description                  
+        .item-description__btn-left
+          .item-description__btn-left__star-icon
+            = icon('fa','star', class: 'item-description__btn-left__star-icon')
+          .item-description__btn-left__button-like
+            %span お気に入り 0                       
+        .item-description__btn-right
+          .item-description__btn-right__flag-icon
+            = icon('fa', 'flag', class: 'item-description__btn-right__flag-icon')
+          .item-description__btn-right__button-flag
+            = link_to '不適切な商品の通報'
+                  
+  
+    .item-detail-message
+      .item-detail-message__container    
+        %textarea.inputs        
+      .item-detail-message__content
+        %p 
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .item-detail-message__btn  
+          .item-detail-message__btn__icon         
+            = icon('fas', 'comment', class: 'item-detail-message__btn__icon')
+          .item-detail-message__btn__text
+            
+            コメントする
+    .container__media
+      .container__media__text
+        .container__media__text__right-box
+          = link_to '< 前の商品'
+        .container__media__text__left-box
+          = link_to '後ろの商品 >'
+      .container__media__box
+        = link_to "ベビー・キッズをもっと見る", "#"
+
+= render partial: "/layouts/footer"
+                   
+  
