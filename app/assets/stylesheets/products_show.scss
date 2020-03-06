@@ -19,7 +19,7 @@ body {
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic",
     "メイリオ", "Meiryo", sans-serif;
   .item-box-container {
-    height: 77em;
+    height: 89em;
     padding: 24px 40px 20px;
     margin-bottom: 20px;
     background: #fff;
@@ -117,6 +117,13 @@ body {
         margin: 0 auto;
         font-size: 50px;
       }
+    }
+    .item-text-box {
+      margin: 30px 0;
+      font-weight: 350;
+      overflow: hidden;
+      height: 6em;
+      font-size: 20px;
     }
     .item-tax-box {
       text-align: center;
@@ -262,4 +269,3 @@ body {
       }      
     }
   }
-  
