@@ -24,7 +24,8 @@
         .item-tax-box  
           %span.item-price-box__tax-shipping-fee (税込)送料込み
         .item-text-box
-          %span.item-text-box__content この商品はああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああeeeeeeeeeee                                      
+          %span.item-text-box__content
+            この商品はああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああeeeeeeeeeee                                      
         .item-name-box
           %span.item-name-box__left product
         .item-box-container__item-main-content-clearfix__table
@@ -83,8 +84,7 @@
         .item-detail-message__btn  
           .item-detail-message__btn__icon         
             = icon('fas', 'comment', class: 'item-detail-message__btn__icon')
-          .item-detail-message__btn__text
-            
+          .item-detail-message__btn__text            
             コメントする
     .container__media
       .container__media__text
@@ -102,6 +102,7 @@
     %p 出品する
   .exhibit-btn__icon
     = icon('fa', 'camera', class: 'icon')
+    = link_to '', '#', class: 'icon'
 
 = render partial: "/layouts/footer"
 
