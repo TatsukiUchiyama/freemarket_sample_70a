@@ -3,7 +3,8 @@
 .container
   .container__box
     .item-box-container
-      %h1.item-name product
+      %h1.item-name 
+        product
       .item-box-container__item-main-content
         .item-box-container__item-main-content-clearfix
           .item-box-container__item-main-content-clearfix__image 
@@ -20,14 +21,17 @@
          
                 
         .item-price-box
-          %span.item-price-box__bold ¥2000           
+          %span.item-price-box__bold 
+            ¥2000           
         .item-tax-box  
-          %span.item-price-box__tax-shipping-fee (税込)送料込み
+          %span.item-price-box__tax-shipping-fee 
+            (税込)送料込み
         .item-text-box
           %span.item-text-box__content
             この商品はああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああeeeeeeeeeee                                      
         .item-name-box
-          %span.item-name-box__left product
+          %span.item-name-box__left 
+            product
         .item-box-container__item-main-content-clearfix__table
           %table{border: "1", style: "border-collapse: collapse"}
             %tr
@@ -36,7 +40,8 @@
             %tr
               %th カテゴリー
               %td.item-box-container__item-main-content-clearfix__table__td 
-                = link_to 'ベビー、キッズ', '#'             
+                = link_to "#" do
+                  ベビー、キッズ           
             %tr
               %th ブランド 
               %td.item-box-container__item-main-content-clearfix__table__td  
@@ -55,7 +60,8 @@
             %tr
               %th 発送元地域 
               %td.item-box-container__item-main-content-clearfix__table__td 
-                = link_to '岩手', '#'
+                = link_to "#" do
+                  岩手
             %tr
               %th 発送日の目安
               %td.item-box-container__item-main-content-clearfix__table__td
@@ -67,10 +73,11 @@
           .item-description__btn-left__button-like
             %span お気に入り 0                       
         .item-description__btn-right
-          .item-description__btn-right__flag-icon
-            = icon('fa', 'flag', class: 'item-description__btn-right__flag-icon')
-          .item-description__btn-right__button-flag
-            = link_to '不適切な商品の通報'
+          = link_to "#" do
+            .item-description__btn-right__flag-icon
+              = icon('fa', 'flag', class: 'item-description__btn-right__flag-icon')
+            .item-description__btn-right__button-flag
+              不適切な商品の通報
                   
   
     .item-detail-message
@@ -89,21 +96,24 @@
     .container__media
       .container__media__text
         .container__media__text__right-box
-          = link_to '< 前の商品'
+          = link_to "#" do
+            < 前の商品
         .container__media__text__left-box
-          = link_to '後ろの商品 >'
+          = link_to "#" do
+            後ろの商品 >
       .container__media__box
-        = link_to "ベビー・キッズをもっと見る", "#"
+        = link_to "#" do
+          ベビー・キッズをもっと見る
 
 
-
-.exhibit-btn 
-  .exhibit-btn__text
-    %p 出品する
-  .exhibit-btn__icon
-    = icon('fa', 'camera', class: 'icon')
-    = link_to '', '#', class: 'icon'
-
+.exhibit-box
+  = link_to '#' do
+    .exhibit-btn   
+      .exhibit-btn__text
+        出品する
+      .exhibit-btn__icon
+        = icon('fa', 'camera', class: 'icon')
+    
 = render partial: "/layouts/footer"
 
   
