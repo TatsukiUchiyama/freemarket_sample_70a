@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:family_name_kanji,:first_name_kanji,
-                                                       :family_name_kana,:first_name_kana,:birthday_year,
-                                                       :birthday_month])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password,:password_confirmation,:family_name_kanji,:first_name_kanji,
+                                                       :family_name_kana,:first_name_kana,:year_id,:month_id, :day_id,
+                                                       :municipalities,:family_name_kanji,:first_name_kanji,:family_name_kana,:first_name_kana,
+                                                       :postal_code,:block_number,:building_name,:room_number,:phone_number])
   end
 
   private

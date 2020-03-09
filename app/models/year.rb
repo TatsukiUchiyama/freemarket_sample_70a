@@ -1,4 +1,4 @@
-class Ad  < ActiveHash::Base
+class Year  < ActiveHash::Base
   self.data = [ {id: 0, year: '-'},
     {id: 1, year: '1950'}, {id: 2, year: '1951'}, {id: 3, year: '1952'},
     {id: 4, year: '1953'}, {id: 5, year:'1954'}, {id: 6, year: '1955'},
