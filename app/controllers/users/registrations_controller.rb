@@ -22,17 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         render  new_user_registration_path
       end
     end
-    
-
-
-  #   @user = User.new(user_params)
-  #   binding.pry
-  #   if @user.save
-  #     session[:user_id] = @user.user_id
-  #     redirect_to  root_path
-  #   else
-  #     redirect_to  new_user_registration_path
-  #   end
   end
 
   def address_params
