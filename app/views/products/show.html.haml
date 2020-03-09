@@ -26,6 +26,20 @@
         .item-tax-box  
           %span.item-price-box__tax-shipping-fee 
             (税込)送料込み
+        .item-buy-button
+          = link_to new_transaction_path do         
+            %span.item-buy-button__buy
+              購入画面に進む 
+        .item-edit-button
+          = link_to edit_product_path do
+            %span.item-edit-button__edit 
+              この商品を編集
+        .choice-text
+          %span or
+        .item-delete-button
+          = link_to product_path method: :delete do
+            %span.item-delete-button__delete 
+              この商品を削除
         .item-text-box
           %span.item-text-box__content
             この商品はああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああeeeeeeeeeee                                      
@@ -107,7 +121,10 @@
 
 
 .exhibit-box
-  = link_to '#' do
+  -# - if user_signed_in?
+  -# = link_to new_products_path do
+  -# - else
+  = link_to new_user_session_path do
     .exhibit-btn   
       .exhibit-btn__text
         出品する

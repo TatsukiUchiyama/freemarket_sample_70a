@@ -19,7 +19,6 @@ body {
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic",
     "メイリオ", "Meiryo", sans-serif;
   .item-box-container {
-    height: 89em;
     padding: 24px 40px 20px;
     margin-bottom: 20px;
     background: #fff;
@@ -47,7 +46,7 @@ body {
         }
  
         &__dot {
-          width: 600px;
+          width: 620px;
           height: 120px;
           padding: 10px;
             ul{ 
@@ -112,11 +111,60 @@ body {
     }
     .item-price-box {
       text-align: center;
+      vertical-align: auto;
       &__bold {
         font-weight: 600;
         margin: 0 auto;
         font-size: 50px;
       }
+    }
+    .item-buy-button {      
+      &__buy {
+      height: 60px;
+      width: 620px;
+      display: block;
+      text-align: center;
+      line-height: 60px;
+      background-color: #3ccace;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-size: 25px;
+      color: white; 
+      }   
+    }
+    .item-edit-button {
+      &__edit {
+      height: 50px;
+      width: 620px;
+      display: block;
+      text-align: center;
+      line-height: 50px;
+      background-color: #3ccace;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: white; 
+      }
+    }
+    .item-delete-button {
+      &__delete {
+      height: 50px;
+      width: 620px;
+      display: block;
+      text-align: center;
+      line-height: 50px;
+      background-color: #d3d3d3;
+      border-radius: 10px;
+      font-size: 15px;
+      color: white;  
+      }
+    }
+    .choice-text {
+      height: 50px;
+      width: 620px;
+      text-align: center;
+      line-height: 50px;    
+      font-size: 15px;    
     }
     .item-text-box {
       margin: 30px 0;
@@ -137,7 +185,7 @@ body {
     }
   }
   .item-description {    
-      height: 40px;
+      height: 100px;
       width: 620px;
       padding-top: 30px;
       padding-left: 20px;
@@ -276,7 +324,7 @@ body {
     bottom: 30px;
     right: 30px;
     background-color: #3ccace;
-    border: thin solid;
+    border: thin solid #3ccace;
     border-radius: 10px;
     text-align: center;
   } 
