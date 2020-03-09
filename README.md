@@ -61,8 +61,10 @@
 |shipping_duration|string|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :images
+- belongs_to :user
 - belongs_to :category
 
 ## transactionsテーブル
@@ -71,6 +73,7 @@
 |product_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 |card_id|integer|null: false, foreign_key: true|
+|status|integer|null: false|
 ### Association
 - belongs_to :product
 - belongs_to :user
