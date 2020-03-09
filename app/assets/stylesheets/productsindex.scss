@@ -335,6 +335,9 @@
         display: block;
         height: 50px;
       }
+      &--text{
+        color: $whiteText;
+      }
     }
   }
 }
