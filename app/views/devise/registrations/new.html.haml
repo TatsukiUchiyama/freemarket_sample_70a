@@ -89,7 +89,7 @@
                   必須
             .birthday-top-bottom
               .birthday-top-bottom-year
-                = form.collection_select :year_id, Year.all, :id, :year,  class: "year-box"
+                = form.collection_select :year_id, Year.all, :id, :year, class: "year-box"
               .birthday-top-bottom-year-text
                 年
               .birthday-top-bottom-month
@@ -170,7 +170,16 @@
                   .building-top-label__text
                     任意
               .building-top-bottom
-                = f.text_field :building_name, placeholder: "例）渋谷ビル109", class:"building-form"
+                = f.text_field :building_name, placeholder: "例）渋谷ビル", class:"building-form"
+            .information-building-number
+              .building-number-top
+                .building-number-top-address
+                  部屋番号
+                .building-number-top-label
+                  .building-number-top-label__text
+                    任意
+              .building-number-top-bottom
+                = f.text_field :room_number, placeholder: "例）109", class:"building-number-form"
             .information-phone
               .phone-top
                 .phone-top-address
