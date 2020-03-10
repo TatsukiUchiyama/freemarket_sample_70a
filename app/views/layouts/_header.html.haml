@@ -19,11 +19,18 @@
           .header__nav_ber__left__brand--text
             ブランド
     .header__nav_ber__right
-      .header__nav_ber__right__login
-        = link_to new_user_session_path do
+      - if user_signed_in?
+        = link_to destroy_user_session_path, method: :delete do
           .header__nav_ber__right__login--text
-            ログイン
-      .header__nav_ber__right__signin
-        = link_to new_user_registration_path do
-          .header__nav_ber__right__signin--text
-            新規登録
+            ログアウト
+        
+
+      - else 
+        .header__nav_ber__right__login
+          = link_to new_user_session_path do
+            .header__nav_ber__right__login--text
+              ログイン
+        .header__nav_ber__right__signin
+          = link_to new_user_registration_path do
+            .header__nav_ber__right__signin--text
+              新規登録
