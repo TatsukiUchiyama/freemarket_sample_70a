@@ -4,7 +4,7 @@
   .container__box
     .item-box-container
       %h1.item-name 
-        product
+        = @product.name
       .item-box-container__item-main-content
         .item-box-container__item-main-content-clearfix
           .item-box-container__item-main-content-clearfix__image 
@@ -42,7 +42,7 @@
               この商品を削除
         .item-text-box
           %span.item-text-box__content
-            この商品はああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああeeeeeeeeeee                                      
+            = @product.description
         .item-name-box
           %span.item-name-box__left 
             product
@@ -64,7 +64,8 @@
               %td.item-box-container__item-main-content-clearfix__table__td              
             %tr
               %th 商品の状態 
-              %td.item-box-container__item-main-content-clearfix__table__td               
+              %td.item-box-container__item-main-content-clearfix__table__td
+                = @product.condition               
             %tr
               %th 配送料の負担
               %td.item-box-container__item-main-content-clearfix__table__td             
@@ -121,15 +122,20 @@
 
 
 .exhibit-box
-  -# - if user_signed_in?
-  -# = link_to new_products_path do
-  -# - else
-  = link_to new_user_session_path do
-    .exhibit-btn   
-      .exhibit-btn__text
-        出品する
-      .exhibit-btn__icon
-        = icon('fa', 'camera', class: 'icon')
+  - if user_signed_in?
+    = link_to new_product_path do
+      .exhibit-btn   
+        .exhibit-btn__text
+          出品する
+        .exhibit-btn__icon
+          = icon('fa', 'camera', class: 'icon') 
+  - else
+    = link_to new_user_session_path do
+      .exhibit-btn   
+        .exhibit-btn__text
+          出品する
+        .exhibit-btn__icon
+          = icon('fa', 'camera', class: 'icon')
     
 = render partial: "/layouts/footer"
 
