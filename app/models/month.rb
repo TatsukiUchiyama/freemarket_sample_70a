@@ -1,4 +1,4 @@
-class Season  < ActiveHash::Base
+class Month  < ActiveHash::Base
   self.data = [ 
     {id: 0, month: '-'},
     {id: 1, month: '1'}, {id: 2, month: '2'}, {id: 3, month: '3'},

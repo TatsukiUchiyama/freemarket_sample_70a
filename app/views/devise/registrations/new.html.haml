@@ -1,6 +1,12 @@
 .registrations
   .registrations-header
     = render partial: '/layouts/header_sub'
+    = devise_error_messages!
+    - if @address
+      = @address.each do |error|
+        error
+
+    
 
   .registrations-information
     .infomation-content
@@ -9,18 +15,18 @@
           .top-text__input
             新規会員登録
       .center-information
-        %form
+        = form_for @user do |form|
           .infomation-user
             ユーザー情報
-          .information-nickname
-            .nickname-top
-              .nickname-top-name
-                ニックネーム
-              .nickname-top-label
-                .nickname-top-label__text
-                  必須
-            .nickname-top-bottom
-              %input{placeholder:  "例）フリマ太郎", type: "text", class:"text-form"}
+            .information-nickname
+              .nickname-top
+                .nickname-top-name
+                  ニックネーム
+                .nickname-top-label
+                  .nickname-top-label__text
+                    必須
+              .nickname-top-bottom
+                = form.text_field :nickname, placeholder:  "例）フリマ太郎", class:"text-form"
           .information-mail
             .mail-top
               .mail-top-address
@@ -29,7 +35,7 @@
                 .mail-top-label__text
                   必須
             .mail-top-bottom
-              %input{placeholder: "PC ・ 携帯どちらでも可", type: "text", class:"mail-form"}
+              = form.text_field :email, placeholder: "PC ・ 携帯どちらでも可", class:"mail-form"
           .information-password
             .password-top
               .password-top-address
@@ -38,14 +44,18 @@
                 .password-top-label__text
                   必須
             .password-top-bottom
-              %input{placeholder: "7文字以上の半角英数字", type: "text", class:"password-form"}
+              = form.password_field :password, placeholder: "7文字以上の半角英数字",  class:"password-form"
+            .information-password
+              .password-top
+                .password-top-address
+                  パスワード(確認)
+                .password-top-label
+                  .password-top-label__text
+                    必須
+              .password-top-bottom
+                = form.password_field :password_confirmation, label: :password_confirmation, placeholder: "7文字以上の半角英数字", class:"password-form"
           .information-attention
             ※ 英字と数字の両方を含めて設定してください
-          .information-password-said
-            .information-password-said-check
-              %input{name: "q1", type: "checkbox", value: "パスワードを表示する",class:"check-box"}
-            .information-password-said-check__text
-              パスワードを表示する
           .information-idintity-verification
             本人確認
           .information-idintity-verification-text
@@ -58,18 +68,18 @@
                 .name-top-label__text
                   必須
             .name-top-bottom
-              %input{placeholder: "例）中村", type: "text", class:"name-form-left"}
-              %input{placeholder: "例）悠真", type: "text", class:"name-form-right"}
+              = form.text_field :family_name_kanji, placeholder: "例）中村", class:"name-form-left"
+              = form.text_field :first_name_kanji, placeholder: "例）悠真", class:"name-form-right"
           .information-kana
             .kana-top
               .kana-top-address
-                お名前
+                お名前(カナ)
               .kana-top-label
                 .kana-top-label__text
                   必須
             .kana-top-bottom
-              %input{placeholder: "例）中村", type: "text", class:"kana-form-left"}
-              %input{placeholder: "例）悠真", type: "text", class:"kana-form-right"}
+              = form.text_field :family_name_kana, placeholder: "例）ナカムラ", class:"kana-form-left"
+              = form.text_field :first_name_kana, placeholder: "例）ユウマ", class:"kana-form-right"
           .information-birthday
             .birthday-top
               .birthday-top-name
@@ -79,122 +89,121 @@
                   必須
             .birthday-top-bottom
               .birthday-top-bottom-year
-                = select_tag "ad", options_from_collection_for_select(Ad.all, :id, :year, 0 ), class: "year-box"
+                = form.collection_select :year_id, Year.all, :id, :year,  class: "year-box"
               .birthday-top-bottom-year-text
                 年
               .birthday-top-bottom-month
-                = select_tag "season", options_from_collection_for_select(Season.all, :id, :month, 0 ), class: "month-box"
+                = form.collection_select :month_id, Month.all, :id, :month,  class: "month-box" 
               .birthday-top-bottom-month-text
                 月
               .birthday-top-bottom-day
-                = select_tag "now", options_from_collection_for_select(Now.all, :id, :day, 0 ), class: "day-box"
+                = form.collection_select :day_id, Day.all, :id, :day,  class: "day-box"
               .birthday-top-bottom-day-text
                 日
           .information-birthday-attention
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .information-address
             商品送付先住所情報
-          .information-send-name
-            .send-name-top
-              .send-name-top-hull
-                お名前
-              .send-name-top-label
-                .send-name-top-label__text
-                  必須
-            .send-name-top-bottom
-              %input{placeholder:  "例）中村", type: "text", class:"send-name-form-left"}
-              %input{placeholder: "例）悠真", type: "text", class:"send-name-form-right"}
-          .information-send-kana
-            .send-kana-top
-              .send-kana-top-hull
-                お名前カナ
-              .send-kana-top-label
-                .send-kana-top-label__text
-                  必須
-            .send-kana-top-bottom
-              %input{placeholder: "例）ナカムラ", type: "text", class:"send-kana-form-left"}
-              %input{placeholder: "例）ユウマ", type: "text", class:"send-kana-form-right"}
-          .information-zip-code
-            .zip-code-top
-              .zip-code-top-address
-                郵便番号
-              .zip-code-top-label
-                .zip-code-top-label__text
-                  必須
-            .zip-code-top-bottom
-              %input{placeholder: "例）123-4567", type: "text", class:"zip-code-form"}
-          .information-state
-            .state-top
-              .state-top-address
-                都道府県
-              .state-top-label
-                .state-top-label__text
-                  必須
-            .state-top-bottom
-              = select_tag "pref", options_from_collection_for_select(Prefecture.all, :id, :name, 0),  class: "state-box"
-          .information-municipalities
-            .municipalities-top
-              .municipalities-top-address
-                市町村区
-              .municipalities-top-label
-                .municipalities-top-label__text
-                  必須
-            .municipalities-top-bottom
-              %input{placeholder: "例）渋谷区西原", type: "text", class:"municipalities-form"}
-          .information-street-number
-            .street-number-top
-              .street-number-top-address
-                番地
-              .street-number-top-label
-                .street-number-top-label__text
-                  必須
-            .street-number-top-bottom
-              %input{placeholder: "例）西原1-19-10", type: "text", class:"street-number-form"}
-          .information-building
-            .building-top
-              .building-top-address
-                建物名
-              .building-top-label
-                .building-top-label__text
-                  任意
-            .building-top-bottom
-              %input{placeholder: "例）渋谷ビル109", type: "text", class:"building-form"}
-          .information-phone
-            .phone-top
-              .phone-top-address
-                電話
-              .phone-top-label
-                .phone-top-label__text
-                  任意
-            .phone-top-bottom
-              %input{placeholder: "例）090-1234-5678", type: "text", class:"phone-form"}
-          .infomation-agree-text
-            「次へ進む」のボタンを押すことにより、
-            = link_to "#"  , class: "terms-and-conditions" do
-              利用規約
-            に
-          .infomation-agree-text-center
-            同意したものとみなします。
-          .information-next
-            .information-next-box
-              .information-next-box-text
-                次へ進む
-          .information-registration
-            = link_to "#" ,class:"registration-description" do
-              本人情報の登録について＞
-          .information-prybacy-attention
-            .information-prybacy-attention-background
-              .information-prybacy-attention-text
-                .information-prybacy-attention-text-top
-                  This site is protected by reCAPTCHA and the Google 
-                  = link_to "#" ,class:"privacy-policy-link" do
-                    Privacy Policy
-                  and
-                  = link_to "#" ,class:"terms-of-service-link" do
-                    Terms of Service 
-                  apply.
+          = form.fields_for :address do |f|
+      
+            .information-send-name
+              .send-name-top
+                .send-name-top-hull
+                  お名前
+                .send-name-top-label
+                  .send-name-top-label__text
+                    必須
+              .send-name-top-bottom
+                = f.text_field :family_name_kanji, placeholder:  "例）中村",  class:"send-name-form-left"
+                = f.text_field :first_name_kanji, placeholder: "例）悠真",  class:"send-name-form-right"
+            .information-send-kana
+              .send-kana-top
+                .send-kana-top-hull
+                  お名前カナ
+                .send-kana-top-label
+                  .send-kana-top-label__text
+                    必須
+              .send-kana-top-bottom
+                = f.text_field :family_name_kana, placeholder: "例）ナカムラ", class:"send-kana-form-left"
+                = f.text_field :first_name_kana, placeholder: "例）ユウマ",  class:"send-kana-form-right"
+            .information-zip-code
+              .zip-code-top
+                .zip-code-top-address
+                  郵便番号
+                .zip-code-top-label
+                  .zip-code-top-label__text
+                    必須
+              .zip-code-top-bottom
+                = f.text_field :postal_code, placeholder: "例）123-4567", class:"zip-code-form"
+            .information-state
+              .state-top
+                .state-top-address
+                  都道府県
+                .state-top-label
+                  .state-top-label__text
+                    必須
+              .state-top-bottom
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name,  class: "state-box"
+            .information-municipalities
+              .municipalities-top
+                .municipalities-top-address
+                  市町村区
+                .municipalities-top-label
+                  .municipalities-top-label__text
+                    必須
+              .municipalities-top-bottom
+                = f.text_field :municipalities, placeholder: "例）渋谷区西原", class:"municipalities-form"
+            .information-street-number
+              .street-number-top
+                .street-number-top-address
+                  番地
+                .street-number-top-label
+                  .street-number-top-label__text
+                    必須
+              .street-number-top-bottom
+                = f.text_field :block_number, placeholder: "例）西原1-19-10", class:"street-number-form"
+            .information-building
+              .building-top
+                .building-top-address
+                  建物名
+                .building-top-label
+                  .building-top-label__text
+                    任意
+              .building-top-bottom
+                = f.text_field :building_name, placeholder: "例）渋谷ビル109", class:"building-form"
+            .information-phone
+              .phone-top
+                .phone-top-address
+                  電話
+                .phone-top-label
+                  .phone-top-label__text
+                    任意
+              .phone-top-bottom
+                = f.text_field :phone_number, placeholder: "例）090-1234-5678", class:"phone-form"
+            .infomation-agree-text
+              「登録する」のボタンを押すことにより、
+              = link_to "#"  , class: "terms-and-conditions" do
+                利用規約
+              に
+            .infomation-agree-text-center
+              同意したものとみなします。
+            .information-next
+              .information-next-box
+                = f.submit value: "登録する", class:"submit-form"
+            .information-registration
+              = link_to "#" ,class:"registration-description" do
+                本人情報の登録について＞
+            .information-prybacy-attention
+              .information-prybacy-attention-background
+                .information-prybacy-attention-text
+                  .information-prybacy-attention-text-top
+                    This site is protected by reCAPTCHA and the Google 
+                    = link_to "#" ,class:"privacy-policy-link" do
+                      Privacy Policy
+                    and
+                    = link_to "#" ,class:"terms-of-service-link" do
+                      Terms of Service 
+                    apply.
 
   .registrations-bottom
     = render partial: '/layouts/footer_sub'
-
-  

@@ -11,8 +11,8 @@ class Address < ApplicationRecord
   validates :first_name_kanji,    presence: true
   validates :family_name_kana,    presence: true
   validates :first_name_kana,     presence: true
-  validates :postal_code,         presence: true, format: { with: POST_NUMBER }
+  validates :postal_code,         presence: true
   validates :municipalities,      presence: true
   validates :block_number,        presence: true
-  validates :phone_number,        presence: true, uniqueness: true, format: { with: POSTAL_CODE }
+  validates :phone_number,        presence: true, uniqueness: true
 end

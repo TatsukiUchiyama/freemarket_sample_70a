@@ -6,9 +6,9 @@
       今すぐ無料ダウンロード！
 
     .footer__upper__appbtn
-      =link_to "#" do
+      =link_to "https://www.apple.com/jp/ios/app-store/" do
         = image_tag "app-store-badge.svg",class:"footer__upper__appbtn--apple"
-      =link_to "#" do
+      =link_to "https://play.google.com/store?hl=ja" do
         = image_tag "google-play-badge.png",class:"footer__upper__appbtn--google"
   .footer__lower
     %ul.footer__lower__contents
@@ -54,6 +54,8 @@
           .footer__lower__contents__content--text
             ポイントに関する特約
     .footer__lower__logo
-      = image_tag "logo-white.png", class:"footer__lower__logo--icon"
-      ©️FURIMA
+      = link_to root_path do
+        = image_tag "logo-white.png", class:"footer__lower__logo--icon"
+        .footer__lower__logo--text
+          ©️FURIMA
 
