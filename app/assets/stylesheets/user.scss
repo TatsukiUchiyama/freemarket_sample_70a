@@ -10,7 +10,7 @@
     background-color: #EEEEEE;
 
     .infomation-content{
-      height: 2450px;
+      height: 2500px;
       width: 700px;
       background-color: white;
       margin: auto;
@@ -348,11 +348,10 @@
 
             .birthday-top-bottom-year{
 
-              .year-box{
+              select{
                 height: 50px;
                 width: 80px;
                 background-color: white;
-
               }
             }
 
@@ -362,7 +361,7 @@
 
             .birthday-top-bottom-month{
 
-              .month-box{
+              select{
                 height: 50px;
                 width: 80px;
                 background-color: white;
@@ -375,7 +374,7 @@
 
             .birthday-top-bottom-day{
 
-              .day-box{
+              select{
                 height: 50px;
                 width: 80px;
                 background-color: white;
@@ -589,11 +588,10 @@
           .state-top-bottom{
             margin-top: 5px;
 
-            .state-box{
+            select{
             height: 50px;
             width: 350px;
             background-color: white;
-            color: gray;
             font-size: 15px;
            }
           }
@@ -679,6 +677,51 @@
             display: flex;
 
             .street-number-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-building-number{
+
+          .building-number-top{
+            margin-top: 30px;
+            display: flex;
+
+            .building-number-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .building-number-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: gray;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .building-number-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .building-number-form{
               height: 50px;
               width: 350px;
               border-radius: 4px;
@@ -965,9 +1008,17 @@
             text-align: center;
 
             .content-bottom-login-text{
-              color: white;
-              padding-top: 18px;
-              font-size: 13px;
+              padding-top: 16px;
+              
+
+              .submit-form{
+                width: 350px;
+                background-color: #ea352d;
+                border-color: #ea352d;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+              }
             }
           }
 
