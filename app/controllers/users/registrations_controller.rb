@@ -14,11 +14,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user
       @address = Address.new(address_params)
       if @address.save
-        binding.pry
         redirect_to  root_path
         return
       else
-        binding.pry
         render  new_user_registration_path
       end
     end
