@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   def index
   end
 
-  def show   
+  def show
+       
   end
 
   def edit
@@ -14,5 +15,4 @@ class ProductsController < ApplicationController
   def destroy
   end
 
-  
 end
