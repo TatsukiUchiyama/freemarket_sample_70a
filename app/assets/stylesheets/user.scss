@@ -795,13 +795,15 @@
         }
 
         .information-next{
-          .information-next-box{
+          .submit-form{
             color: white;
             height: 50px;
             width: 350px;
             background-color: #ea352d;
+            font-size: 15px;
             margin-top: 50px;
             text-align: center;
+            cursor: pointer;
 
             .information-next-box-text{
               color: white;
