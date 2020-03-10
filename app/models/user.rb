@@ -12,6 +12,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :year
   belongs_to_active_hash :month
   belongs_to_active_hash :day
+  # has_secure_password validations: true
 
   validates :nickname,:year_id,:month_id,:day_id, presence: true
          
