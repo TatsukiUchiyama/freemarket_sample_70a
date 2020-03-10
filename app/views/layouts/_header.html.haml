@@ -21,9 +21,11 @@
     .header__nav_ber__right
       - if user_signed_in?
         = link_to destroy_user_session_path, method: :delete do
+
           .header__nav_ber__right__login--text
             ログアウト
         
+
 
       - else 
         .header__nav_ber__right__login

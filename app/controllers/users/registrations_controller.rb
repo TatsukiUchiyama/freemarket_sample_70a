@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   after_action :create_address, only: :create
-
+  
   def new
     @user = User.new
     @user.build_address
