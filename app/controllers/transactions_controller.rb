@@ -37,15 +37,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def purchase
-    Payjp.api_key = "sk_test_a2dd327111d09e322058d1c2"
-    Payjp::Charge.create(
-      amount: 809, # 決済する値段
-      card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
-      currency: 'jpy'
-    )
-  end
-
   private
   # セッションに商品IDを設定する
   def set_product_to_session
