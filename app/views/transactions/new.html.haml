@@ -45,6 +45,6 @@
                 フリマ 太郎
         = f.submit "購入する"
 
-        = link_to 'カード登録', new_card_path, class: 'new__detail__payment__lists__list__change--link'
+        = link_to 'カード登録', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__change--link'
 
   = render partial: '/layouts/footer_sub'
