@@ -3,16 +3,14 @@ class CardsController < ApplicationController
 
   before_action :set_card
 
-  def new # カードの登録画面。送信ボタンを押すとcreateアクションへ。
-    card = Card.where(user_id: current_user.id).first
-    redirect_to controller: 'products', action: 'index' if card.present?
+  def new 
+    
   end
 
  # indexアクションはここでは省略
 
   def create #PayjpとCardのデータベースを作成
     Payjp.api_key = 'sk_test_a2dd327111d09e322058d1c2'
-    binding.pry
 
     if params['payjp-token'].blank?
       redirect_to action: "new"
@@ -24,10 +22,8 @@ class CardsController < ApplicationController
         card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
         # metadata: {user_id: current_user.id} # 無くてもOK。
       )
-      binding.pry
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        binding.pry
         redirect_to controller: 'products', action: 'index'
       else
         redirect_to action: "new"
