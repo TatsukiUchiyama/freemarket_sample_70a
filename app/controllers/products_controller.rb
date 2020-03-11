@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @user = @product.user
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def edit

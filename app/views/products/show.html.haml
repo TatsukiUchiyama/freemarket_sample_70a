@@ -1,6 +1,10 @@
 = render partial: "/layouts/header"
 
 .container
+  .container__category
+    .container__category__box
+      - @parents.each do |parent|
+        = parent.name
   .container__box
     .item-box-container
       %h1.item-name 
