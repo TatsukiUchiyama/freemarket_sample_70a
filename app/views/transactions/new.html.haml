@@ -37,20 +37,19 @@
                     = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
             - else
               = link_to '＋カードを登録する', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__new--link'
-
-
           %li.new__detail__payment__lists__list
             配送先
-            = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
             %ul.new__detail__payment__lists__list__shipping-address
+              - address = current_user.address
               %li
-                〒999-9999
+                = "〒#{address.postal_code}"
               %li
-                東京都○○区×× 1-23-4 マンションA 999
+                = Prefecture.find(address.prefecture_id).name
+                = address.municipalities
+                = address.block_number
+                = address.building_name
+                = address.room_number
               %li
-                フリマ 太郎
+                = address.family_name_kanji + address.first_name_kanji
         = f.submit "購入する"
-
-        
-
   = render partial: '/layouts/footer_sub'
