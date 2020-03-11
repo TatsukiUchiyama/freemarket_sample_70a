@@ -1,7 +1,7 @@
 = render partial: "/layouts/header"
 
 .Exhibition_btn
-  =link_to "#" do
+  =link_to new_product_path do
     .Exhibition_btn__content
       .Exhibition_btn__content--text
         出品する
@@ -17,9 +17,9 @@
       %p FURIMAは誰でもかんたんに出品・購入できる
       %p フリマアプリです
     .main_visual__content__appbtn
-      =link_to "#" do
+      =link_to "https://www.apple.com/jp/ios/app-store/" do
         = image_tag "app-store-badge.svg",class:"main_visual__content__appbtn--apple"
-      =link_to "#" do
+      =link_to "https://play.google.com/store?hl=ja" do
         = image_tag "google-play-badge.png",class:"main_visual__content__appbtn--google"
 .top_introduction
   .top_introduction__subtitle
@@ -66,9 +66,9 @@
       %p 出品・購入回数も業界最多です！
       %p 欲しかったあの商品に出会えるかもしれません。
     .top_middle_dl__inner__appbtn
-      =link_to "#" do
+      =link_to "https://www.apple.com/jp/ios/app-store/" do
         = image_tag "app-store-badge.svg",class:"top_middle_dl__inner__appbtn--apple"
-      =link_to "#" do
+      =link_to "https://play.google.com/store?hl=ja" do
         = image_tag "google-play-badge.png",class:"top_middle_dl__inner__appbtn--google"
 
 .top_feature
@@ -99,90 +99,49 @@
   .pic_up_container__head
     ピックアップカテゴリー
   .pic_up_container__title
-    新規投稿商品
+    新着ソーセージ
   .pic_up_container__products
-    .pic_up_container__products__box
-      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
-      .pic_up_container__products__box__lower
-        .pic_up_container__products__box__lower__data
-          .pic_up_container__products__box__lower__data--name
-            お魚のソーセージ
-          .pic_up_container__products__box__lower__data--price
-            ５００円
-          .pic_up_container__products__box__lower__data--tax
-            （税込み）
-        .pic_up_container__products__box__lower--fav
-          ⭐️１
+    - @products.first(3).each do |product|
+      = link_to product_path(1) do
+        .pic_up_container__products__box
+          - ft_image = product.images.first
+          = image_tag ft_image.image,class:"pic_up_container__products__box--image"
+          .pic_up_container__products__box__lower
+            .pic_up_container__products__box__lower__data
+              .pic_up_container__products__box__lower__data--name
+                = product.name
+              .pic_up_container__products__box__lower__data--price
+                = product.price
+                円
+              .pic_up_container__products__box__lower__data--tax
+                （税込み）
+            .pic_up_container__products__box__lower--fav
+              ⭐️１
 
-    .pic_up_container__products__box
-      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
-      .pic_up_container__products__box__lower
-        .pic_up_container__products__box__lower__data
-          .pic_up_container__products__box__lower__data--name
-            お魚のソーセージ
-          .pic_up_container__products__box__lower__data--price
-            ５００円
-          .pic_up_container__products__box__lower__data--tax
-            （税込み）
-        .pic_up_container__products__box__lower--fav
-          ⭐️１
-
-    .pic_up_container__products__box
-      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
-      .pic_up_container__products__box__lower
-        .pic_up_container__products__box__lower__data
-          .pic_up_container__products__box__lower__data--name
-            お魚のソーセージ
-          .pic_up_container__products__box__lower__data--price
-            ５００円
-          .pic_up_container__products__box__lower__data--tax
-            （税込み）
-        .pic_up_container__products__box__lower--fav
-          ⭐️１
 
 .pic_up_container
   .pic_up_container__head
     ピックアップブランド
   .pic_up_container__title
-    アーカイバ
+    伊藤ハム
   .pic_up_container__products
-    .pic_up_container__products__box
-      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
-      .pic_up_container__products__box__lower
-        .pic_up_container__products__box__lower__data
-          .pic_up_container__products__box__lower__data--name
-            お魚のソーセージ
-          .pic_up_container__products__box__lower__data--price
-            ５００円
-          .pic_up_container__products__box__lower__data--tax
-            （税込み）
-        .pic_up_container__products__box__lower--fav
-          ⭐️１
+    - @ham.each do |product|
+      = link_to product_path(1) do
+        .pic_up_container__products__box
+          - ft_image = product.images.first
+          = image_tag ft_image.image,class:"pic_up_container__products__box--image"
+          .pic_up_container__products__box__lower
+            .pic_up_container__products__box__lower__data
+              .pic_up_container__products__box__lower__data--name
+                = product.name
+              .pic_up_container__products__box__lower__data--price
+                = product.price
+                円
+              .pic_up_container__products__box__lower__data--tax
+                （税込み）
+            .pic_up_container__products__box__lower--fav
+              ⭐️１
 
-    .pic_up_container__products__box
-      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
-      .pic_up_container__products__box__lower
-        .pic_up_container__products__box__lower__data
-          .pic_up_container__products__box__lower__data--name
-            お魚のソーセージ
-          .pic_up_container__products__box__lower__data--price
-            ５００円
-          .pic_up_container__products__box__lower__data--tax
-            （税込み）
-        .pic_up_container__products__box__lower--fav
-          ⭐️１
 
-    .pic_up_container__products__box
-      = image_tag "app-store-badge.svg",class:"pic_up_container__products__box--image"
-      .pic_up_container__products__box__lower
-        .pic_up_container__products__box__lower__data
-          .pic_up_container__products__box__lower__data--name
-            お魚のソーセージ
-          .pic_up_container__products__box__lower__data--price
-            ５００円
-          .pic_up_container__products__box__lower__data--tax
-            （税込み）
-        .pic_up_container__products__box__lower--fav
-          ⭐️１
 
 = render partial: "/layouts/footer"

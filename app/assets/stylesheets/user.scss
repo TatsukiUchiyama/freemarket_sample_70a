@@ -1,0 +1,1043 @@
+/* 新規登録画面のCSS*/
+
+.registrations{
+  height: 100vh;
+  width: 100vw;
+  background-color: #EEEEEE;
+}
+
+  .registrations-information{
+    background-color: #EEEEEE;
+
+    .infomation-content{
+      height: 2500px;
+      width: 700px;
+      background-color: white;
+      margin: auto;
+
+      .center-top{
+        height: 100px;
+        border-bottom: 2px solid #EEEEEE;
+
+        .top-text{
+          text-align: center;
+
+          &__input{
+            line-height: 100px;
+            font-weight: bold;
+            font-size: 22px;
+
+          }
+        }
+      }
+
+      .center-information{
+        width: 350px;
+        margin: auto;
+
+        .infomation-user{
+          font-weight: bold;
+          font-size: 18px;
+          margin-top: 50px;
+        }
+
+        .information-nickname{
+
+          .nickname-top{
+            margin-top: 30px;
+            display: flex;
+
+            .nickname-top-name{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .nickname-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+
+          .nickname-top-bottom{
+            margin-top: 5px;
+
+            .text-form{
+              height: 50px;
+              width: 340px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin: auto;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-mail{
+
+          .mail-top{
+            margin-top: 30px;
+            display: flex;
+
+            .mail-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .mail-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .mail-top-bottom{
+            margin-top: 5px;
+
+            .mail-form{
+              height: 50px;
+              width: 340px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin: auto;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }  
+
+        .information-password{
+
+          .password-top{
+            margin-top: 30px;
+            display: flex;
+
+            .password-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .password-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .password-top-bottom{
+            margin-top: 5px;
+
+            .password-form{
+              height: 50px;
+              width: 340px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin: auto;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-attention{
+          color: gray;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+
+        .information-password-said{
+          margin-top: 10px;
+          display: flex;
+
+          .information-password-said-check__text{
+            margin-top: 3px;
+          }
+        }
+
+        .information-idintity-verification{
+          font-weight: bold;
+          font-size: 18px;
+          margin-top: 40px;
+        }
+
+        .information-idintity-verification-text{
+          font-size: 15px;
+          margin-top: 5px;
+        }
+
+        .information-name{
+
+          .name-top{
+            margin-top: 30px;
+            display: flex;
+
+            .name-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .name-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .name-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .name-form-left{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+
+            .name-form-right{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin-left: 10px;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-kana{
+
+          .kana-top{
+            margin-top: 30px;
+            display: flex;
+
+            .kana-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .kana-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .kana-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .kana-form-left{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+
+            .kana-form-right{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin-left: 10px;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-birthday{
+
+          .birthday-top{
+            margin-top: 30px;
+            display: flex;
+
+            .birthday-top-name{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .birthday-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .birthday-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .birthday-top-bottom-year{
+
+              select{
+                height: 50px;
+                width: 80px;
+                background-color: white;
+              }
+            }
+
+            .birthday-top-bottom-year-text{
+              margin-top: 18px;
+            }
+
+            .birthday-top-bottom-month{
+
+              select{
+                height: 50px;
+                width: 80px;
+                background-color: white;
+              }
+            }
+
+            .birthday-top-bottom-month-text{
+              margin-top: 18px;
+            }
+
+            .birthday-top-bottom-day{
+
+              select{
+                height: 50px;
+                width: 80px;
+                background-color: white;
+
+              }
+            }
+
+            .birthday-top-bottom-day-text{
+              margin-top: 18px;
+            }
+          }
+        }
+
+        .information-birthday-attention{
+          color:gray;
+          font-size: 14px;
+          margin-top: 20px;
+        }
+
+        .information-address{
+          font-weight: bold;
+          font-size: 18px;
+          margin-top: 50px;
+        }
+
+        .information-send-name{
+
+          .send-name-top{
+            margin-top: 30px;
+            display: flex;
+
+            .send-name-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .send-name-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .send-name-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .send-name-form-left{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+
+            .send-name-form-right{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin-left: 10px;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-send-kana{
+
+          .send-kana-top{
+            margin-top: 30px;
+            display: flex;
+
+            .send-kana-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .send-kana-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .send-kana-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .send-kana-form-left{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+
+            .send-kana-form-right{
+              height: 50px;
+              width: 160px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              margin-left: 10px;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-zip-code{
+
+          .zip-code-top{
+            margin-top: 30px;
+            display: flex;
+
+            .zip-code-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .zip-code-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .zip-code-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .zip-code-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-state{
+
+          .state-top{
+            margin-top: 30px;
+            display: flex;
+
+            .state-top-name{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .state-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+
+          .state-top-bottom{
+            margin-top: 5px;
+
+            select{
+            height: 50px;
+            width: 350px;
+            background-color: white;
+            font-size: 15px;
+           }
+          }
+        }
+
+        .information-municipalities{
+
+          .municipalities-top{
+            margin-top: 30px;
+            display: flex;
+
+            .municipalities-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .municipalities-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .municipalities-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .municipalities-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-street-number{
+
+          .street-number-top{
+            margin-top: 30px;
+            display: flex;
+
+            .street-number-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .street-number-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .street-number-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .street-number-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-building-number{
+
+          .building-number-top{
+            margin-top: 30px;
+            display: flex;
+
+            .building-number-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .building-number-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: gray;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .building-number-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .building-number-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-building{
+
+          .building-top{
+            margin-top: 30px;
+            display: flex;
+
+            .building-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .building-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: gray;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .building-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .building-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .information-phone{
+
+          .phone-top{
+            margin-top: 30px;
+            display: flex;
+
+            .phone-top-address{
+              font-weight: bold;
+              font-size: 13px;
+              margin-top: 4px;
+            }
+
+            .phone-top-label{
+              height: 20px;
+              width: 30px;
+              background-color: gray;
+              border-radius: 2px;
+              margin-left: 10px;
+              text-align: center;
+
+              &__text{
+                color: white;
+                font-size: 12px;
+                padding-top: 3px;
+                padding-right: 1px;
+
+              }
+            }
+          }
+  
+          .phone-top-bottom{
+            margin-top: 5px;
+            display: flex;
+
+            .phone-form{
+              height: 50px;
+              width: 350px;
+              border-radius: 4px;
+              border: 1px solid #CCCCCC;
+              padding-left: 10px;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .infomation-agree-text{
+          margin-top: 30px;
+          font-size: 14px;
+
+          .terms-and-conditions{
+            color: #5D99FF;
+          }
+        }
+
+        .infomation-agree-text-center{
+          font-size: 14px;
+          margin-top: 5px;
+          margin-left: 82px;
+        }
+
+        .information-next{
+          .submit-form{
+            color: white;
+            height: 50px;
+            width: 350px;
+            background-color: #ea352d;
+            font-size: 15px;
+            margin-top: 50px;
+            text-align: center;
+            cursor: pointer;
+
+            .information-next-box-text{
+              color: white;
+              font-size: 15px;
+              padding-top: 18px;
+
+            }
+          }
+        }
+
+        .information-registration{
+          margin-top: 50px;
+          text-align: right;
+
+          .registration-description{
+            color: #5D99FF;
+          }
+        }
+
+        .information-prybacy-attention{
+
+          .information-prybacy-attention-background{
+            height: 50px;
+            width: 350px;
+            background-color: #EEEEEE;
+            margin-top: 50px;
+
+            .information-prybacy-attention-text{
+              font-size: 9px;
+              color: #555555;
+
+              .information-prybacy-attention-text-top{
+                padding-top: 15px;
+                padding-left: 5px;
+
+                .privacy-policy-link{
+                  color: #5D99FF;
+
+                }
+
+                .terms-of-service-link{
+                  color: #5D99FF;
+
+                }
+
+              }
+            }
+          }
+        }
+            
+
+
+
+
+
+      }
+    }
+  }
+
+  .registrations-bottom{
+    background-color: #EEEEEE;
+  }
+
+
+
+
+
+/* ログイン画面のCSS*/
+
+.sessions{
+  height: 100vh;
+  width: 100vw;
+  background-color: #EEEEEE;
+}
+
+  .sessions-main{
+    background-color: #EEEEEE;
+
+    .sessions-main-content{
+      width: 500px;
+      background-color: white;
+      margin: auto;
+
+      .content-center-top{
+        height: 150px;
+        border-bottom: 2px solid #EEEEEE;
+
+        .content-center-top-create{
+          margin: auto;
+          text-align: center;
+
+          .content-center-top-create-text{
+            padding-top: 40px;
+            font-size: 13px;
+
+            .content-center-top-create-btn{
+              height: 50px;
+              width: 350px;
+              background-color: #0099e8;
+              margin: auto;
+              margin-top: 10px;
+
+              .content-center-top-create-btn__text{
+                color: white;
+                padding-top: 18px;
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+
+      .content-bottom{
+        height: 310px;
+
+        .content-bottom-information{
+
+          .content-bottom-information-box{
+
+            .content-bottom-information-box-mail{
+              margin-top: 70px;
+              
+         
+              .information-box-mail{
+                height: 50px;
+                width: 340px;
+                border-radius: 4px;
+                border: 1px solid #CCCCCC;
+                margin-left: 75px;
+                padding-left: 10px;
+                font-size: 15px;
+              }
+            }
+
+            .content-bottom-information-box-password{
+              margin-top: 20px;
+
+              .information-box-password{
+                height: 50px;
+                width: 340px;
+                border-radius: 4px;
+                border: 1px solid #CCCCCC;
+                margin-left: 75px;
+                padding-left: 10px;
+                font-size: 15px;
+              }
+            }
+          }
+        }
+
+        .content-bottom-login{
+
+          .content-bottom-login-btn{
+            height: 50px;
+            width: 350px;
+            background-color: #ea352d;
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+
+            .content-bottom-login-text{
+              padding-top: 16px;
+              
+
+              .submit-form{
+                width: 350px;
+                background-color: #ea352d;
+                border-color: #ea352d;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+              }
+            }
+          }
+
+        }
+
+        .password-forget-text{
+          width: 350px;
+          margin: auto;
+          margin-top: 20px;
+          text-align: right;
+          
+          .password-forget-link{
+            color: #5D99FF;
+          }
+        }
+      }
+    }
+  }
+
+  .sessions-bottom{
+    background-color: #EEEEEE;
+  }

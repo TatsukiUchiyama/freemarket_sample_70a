@@ -1,0 +1,2 @@
+class Twelve < ApplicationRecord
+end

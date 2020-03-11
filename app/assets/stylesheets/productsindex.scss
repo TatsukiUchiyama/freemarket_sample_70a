@@ -3,6 +3,7 @@
 .Exhibition_btn{
   position: absolute;
   position: fixed;
+  z-index: 1;
   bottom: 20px;
   right: 20px;
   background-color: $lightgreen;
@@ -204,7 +205,7 @@
   }
 }
 .pic_up_container{
-  padding-top: 130px;
+  padding-top: 30px;
   height: 100%;
   background-color: #f8f8f8;
   &__head{
@@ -310,6 +311,7 @@
       &__content{
         list-style: none;
         padding-left: 2%;
+        width: 150px;
         
         &__head{
           color: $whiteText;
@@ -320,9 +322,7 @@
           font-size: 12px;
           color: $whiteText;
           padding-top: 20px;
-
         }
-        
       }
     }
     &__logo{
@@ -334,6 +334,9 @@
         margin: 0 auto;
         display: block;
         height: 50px;
+      }
+      &--text{
+        color: $whiteText;
       }
     }
   }

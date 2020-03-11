@@ -19,11 +19,25 @@
           .header__nav_ber__left__brand--text
             ブランド
     .header__nav_ber__right
-      .header__nav_ber__right__login
-        = link_to root_path do
-          .header__nav_ber__right__login--text
-            ログイン
-      .header__nav_ber__right__signin
-        = link_to root_path do
-          .header__nav_ber__right__signin--text
-            新規登録
+      - if user_signed_in?
+        .header__nav_ber__right__info
+          = link_to "#" do
+            .header__nav_ber__right__info--text
+              お知らせ
+        .header__nav_ber__right__fav
+          = link_to "#" do
+            .header__nav_ber__right__fav--text
+              お気に入り一覧
+        .header__nav_ber__right__mypage
+          = link_to user_path(current_user.id) do
+            .header__nav_ber__right__mypage--text
+              マイページ
+      - else 
+        .header__nav_ber__right__login
+          = link_to new_user_session_path do
+            .header__nav_ber__right__login--text
+              ログイン
+        .header__nav_ber__right__signin
+          = link_to new_user_registration_path do
+            .header__nav_ber__right__signin--text
+              新規登録

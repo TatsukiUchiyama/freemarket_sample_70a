@@ -1,7 +1,6 @@
 .sell
-  %header.sell__head
-    = link_to "" do
-      = image_tag "logo.png", class: "sell__head__img"
+  %header.header--sub
+    = render partial: '/layouts/header_sub'
   .sell__main
     .sell__main__content
       %h2.sell__main__content__head
@@ -133,18 +132,5 @@
           出品する
         %a.sell__main__content__button__gray
           もどる
-  %header.sell__footer
-    %ul
-      %li
-        = link_to "", target: "_blank" do
-          プライバシーポリシー
-      %li
-        = link_to "", target: "_blank" do
-          メルカリ利用規約
-      %li
-        = link_to "", target: "_blank" do
-          特定商取引に関する表記
-    = link_to "" do
-      .sell__footer__logo
-        = image_tag "logo.png",  class: "sell__footer__logo"
-        @FURIMA
+  %header.footer--sub
+    = render partial: '/layouts/footer_sub'
