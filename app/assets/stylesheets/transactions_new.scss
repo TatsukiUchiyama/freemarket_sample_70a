@@ -77,8 +77,8 @@ $border-color : #f8f8f8;
           border-bottom: 1px solid $border-color;
           font-weight: bold;
           
-          // 「変更する」ボタン
-          &__change--link, &__new--link {
+          // 「カード追加」ボタン
+          &__new--link {
             text-decoration: none;
             color: #0099E8;
             float: right;

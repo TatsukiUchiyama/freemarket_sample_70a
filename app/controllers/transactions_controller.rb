@@ -29,6 +29,10 @@ class TransactionsController < ApplicationController
                                   product_id: params[:product_id],
                                   status: 0)
     if transaction.save
+      
+      # セッションの商品IDを削除する
+      session.delete(:product_id)
+
       # 登録成功の場合、トップページへ遷移する
       redirect_to controller: 'products', action: 'index'
     else

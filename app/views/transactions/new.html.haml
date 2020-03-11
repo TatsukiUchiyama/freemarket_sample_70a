@@ -24,7 +24,6 @@
           %li.new__detail__payment__lists__list
             支払い方法
             - if @card_payjp
-              = link_to '変更する', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__change--link'
               %ul.new__detail__payment__lists__list__payment-method
                 %li
                   クレジットカード
