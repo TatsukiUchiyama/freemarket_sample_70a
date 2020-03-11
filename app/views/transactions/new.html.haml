@@ -51,5 +51,5 @@
                 = address.room_number
               %li
                 = address.family_name_kanji + address.first_name_kanji
-        = f.submit "購入する"
+        = f.submit "購入する", class: "transaction-new-submit"
   = render partial: '/layouts/footer_sub'
