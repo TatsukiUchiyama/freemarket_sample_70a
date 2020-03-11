@@ -11,7 +11,7 @@
           .new__detail__product__box__information__name
             腕時計
           .new__detail__product__box__information__price
-            ¥10,000 (税込) 送料込み
+            = "¥#{@product.price.to_s(:delimited)} (税込) 送料込み"
     .new__detail__payment
       = form_with model: @transaction, url: product_transactions_path, local: true do |f|
         %ul.new__detail__payment__lists
@@ -20,7 +20,7 @@
               .new__detail__payment__lists__list__price-box__label
                 支払い金額
               .new__detail__payment__lists__list__price-box__price
-                ¥10,000
+                = "¥#{@product.price.to_s(:delimited)}"
           %li.new__detail__payment__lists__list
             支払い方法
             - if @card_payjp

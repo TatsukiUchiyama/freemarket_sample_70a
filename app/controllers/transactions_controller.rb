@@ -5,6 +5,10 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+
+    # 対象の商品を取得
+    @product = Product.find(params[:product_id])
+    
     # 現在のユーザーがカードを登録済みの場合、カードの情報（payjp）を取得する
     if @card
       # 秘密鍵を設定
