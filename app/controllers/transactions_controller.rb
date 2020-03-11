@@ -24,7 +24,6 @@ class TransactionsController < ApplicationController
                                   card_id: @card.id,
                                   product_id: params[:product_id],
                                   status: 0)
-    binding.pry
     if transaction.save
       # 登録成功の場合、トップページへ遷移する
       redirect_to controller: 'products', action: 'index'
@@ -52,6 +51,5 @@ class TransactionsController < ApplicationController
   # 現在のユーザーのカードを取得する
   def set_card
     @card = current_user.card
-    binding.pry
   end
 end
