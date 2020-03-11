@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   require "payjp"
+  before_action :set_product_to_session, only: :new
 
   def new
     @transaction = Transaction.new
@@ -33,5 +34,10 @@ class TransactionsController < ApplicationController
       card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
       currency: 'jpy'
     )
+  end
+
+  # セッションに商品IDを設定する
+  def set_product_to_session
+    session[:product_id] = params[:product_id]
   end
 end
