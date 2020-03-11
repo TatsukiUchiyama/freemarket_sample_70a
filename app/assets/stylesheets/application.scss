@@ -157,6 +157,33 @@
           color: #000;
         }
       }
+      &__info{
+        
+        padding-right: 20px;
+        &--text{
+          width: 80px;
+          font-size: 14px;
+          color: #000;
+        }
+      }
+      &__fav{
+        
+        padding-right: 20px;
+        &--text{
+          width: 110px;
+          font-size: 14px;
+          color: #000;
+        }
+      }
+      &__mypage{
+        
+        padding-right: 20px;
+        &--text{
+          width: 80px;
+          font-size: 14px;
+          color: #000;
+        }
+      }
     }
   }
 }

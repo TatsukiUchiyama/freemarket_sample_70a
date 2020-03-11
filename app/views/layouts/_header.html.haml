@@ -20,8 +20,18 @@
             ブランド
     .header__nav_ber__right
       - if user_signed_in?
-        = link_to destroy_user_session_path, method: :delete do
-          ログアウト
+        .header__nav_ber__right__info
+          = link_to "#" do
+            .header__nav_ber__right__info--text
+              お知らせ
+        .header__nav_ber__right__fav
+          = link_to "#" do
+            .header__nav_ber__right__fav--text
+              お気に入り一覧
+        .header__nav_ber__right__mypage
+          = link_to user_path(current_user.id) do
+            .header__nav_ber__right__mypage--text
+              マイページ
       - else 
         .header__nav_ber__right__login
           = link_to new_user_session_path do
