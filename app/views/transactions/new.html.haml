@@ -35,6 +35,10 @@
                 %li
                   - if @card_payjp.brand == "Visa"
                     = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
+            - else
+              = link_to '＋カードを登録する', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__new--link'
+
+
           %li.new__detail__payment__lists__list
             配送先
             = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
@@ -47,6 +51,6 @@
                 フリマ 太郎
         = f.submit "購入する"
 
-        = link_to 'カード登録', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__change--link'
+        
 
   = render partial: '/layouts/footer_sub'
