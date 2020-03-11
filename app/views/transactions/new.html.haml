@@ -23,16 +23,18 @@
                 ¥10,000
           %li.new__detail__payment__lists__list
             支払い方法
-            = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
-            %ul.new__detail__payment__lists__list__payment-method
-              %li
-                クレジットカード
-              %li
-                ************0000
-              %li
-                有効期限 12 / 30
-              %li
-                = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
+            - if @card_payjp
+              = link_to '変更する', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__change--link'
+              %ul.new__detail__payment__lists__list__payment-method
+                %li
+                  クレジットカード
+                %li
+                  = "**** **** **** " + @card_payjp.last4
+                %li
+                  = "有効期限 #{@card_payjp.exp_month.to_s} / #{@card_payjp.exp_year.to_s.slice(2,3)}"
+                %li
+                  - if @card_payjp.brand == "Visa"
+                    = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
           %li.new__detail__payment__lists__list
             配送先
             = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'

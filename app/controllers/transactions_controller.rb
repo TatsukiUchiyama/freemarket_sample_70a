@@ -3,6 +3,18 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+
+    # 最初のカードを取得
+    card = Card.where(user_id: current_user.id).first
+
+    # 秘密鍵を設定
+    Payjp.api_key = 'sk_test_a2dd327111d09e322058d1c2'
+
+    # 所有者を取得
+    customer = Payjp::Customer.retrieve(card.customer_id)
+
+    # 所有者に紐づくカードから、idを指定してカードを取得する
+    @card_payjp = customer.cards.retrieve(card.card_id)
   end
 
   def create
