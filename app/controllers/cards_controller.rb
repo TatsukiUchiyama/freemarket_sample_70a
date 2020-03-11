@@ -4,32 +4,41 @@ class CardsController < ApplicationController
   before_action :set_card
 
   def new 
-    
+
   end
 
- # indexアクションはここでは省略
+  def create
 
-  def create #PayjpとCardのデータベースを作成
+    # 秘密鍵の設定
     Payjp.api_key = 'sk_test_a2dd327111d09e322058d1c2'
 
+    # トークンが取得できなかった場合、登録画面へ戻る
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
+      # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録する。
       customer = Payjp::Customer.create(
-        description: 'test', # 無くてもOK。PAY.JPの顧客情報に表示する概要です。
-        # email: current_user.email,
-        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
-        # metadata: {user_id: current_user.id} # 無くてもOK。
+        # トークンを設定
+        card: params['payjp-token']
       )
+      
+      # カード情報をnewする
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      
+      # 登録が成功した場合、購入確認画面へ遷移する
       if @card.save
-        redirect_to controller: 'products', action: 'index'
+        # セッションから購入手続き中の商品IDを取得する
+        product_id = session[:product_id]
+        
+        # 購入確認画面へ遷移する
+        redirect_to new_product_transaction_path(product_id)
       else
         redirect_to action: "new"
       end
     end
   end
+
+  def
 
   private
 
