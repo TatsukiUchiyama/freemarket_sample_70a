@@ -2,9 +2,17 @@
 
 .container
   .container__category
-    .container__category__box
-      - @parents.each do |parent|
-        = parent.name
+    .container__category__root-box
+      ＞
+      = @category.root.name
+    .container__category__root-box__parent
+      ＞
+      = @category.parent.name
+    .container__category__root-box__parent__self
+      ＞
+      = @category.name
+        
+      
   .container__box
     .item-box-container
       %h1.item-name 
@@ -16,12 +24,10 @@
 
         .item-box-container__item-main-content-clearfix__image__dot
           %ul
+          - @product.images.each do |image|
             %li
-              = image_tag @product.images.first.image, height: '90', width: '140'
-            %li
-              = image_tag @product.images.second.image, height: '90', width: '140'
-            %li
-              = image_tag @product.images.third.image, height: '90', width: '140'
+              = image_tag image.image, height: '90', width: '140'
+
          
                 
         .item-price-box
