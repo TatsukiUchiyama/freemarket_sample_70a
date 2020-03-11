@@ -5,7 +5,6 @@
     - if @address
       = @address.each do |error|
         error
-
     
 
   .registrations-information
@@ -15,7 +14,7 @@
           .top-text__input
             新規会員登録
       .center-information
-        = form_for @user do |form|
+        = form_with model: @user, url: user_registration_path, local: true  do |form|
           .infomation-user
             ユーザー情報
             .information-nickname
@@ -104,8 +103,7 @@
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .information-address
             商品送付先住所情報
-          = form.fields_for :address do |f|
-      
+          = form.fields_for :address, Address.new  do |f|
             .information-send-name
               .send-name-top
                 .send-name-top-hull
@@ -198,7 +196,7 @@
               同意したものとみなします。
             .information-next
               .information-next-box
-                = f.submit value: "登録する", class:"submit-form"
+                = form.submit value: "登録する", class:"submit-form"
             .information-registration
               = link_to "#" ,class:"registration-description" do
                 本人情報の登録について＞

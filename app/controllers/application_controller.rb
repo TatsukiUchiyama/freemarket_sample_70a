@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # ベーシック認証を実行（本番環境のみ）
@@ -10,8 +9,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password,:password_confirmation,:family_name_kanji,:first_name_kanji,
                                                        :family_name_kana,:first_name_kana,:year_id,:month_id, :day_id,
-                                                       :municipalities,:family_name_kanji,:first_name_kanji,:family_name_kana,:first_name_kana,
-                                                       :postal_code,:block_number,:building_name,:room_number,:phone_number])
+                                                       address_attributes:[:prefecture_id,:municipalities,:family_name_kanji,:first_name_kanji,:family_name_kana,:first_name_kana,
+                                                       :postal_code,:block_number,:building_name,:room_number,:phone_number]])
   end
 
   private

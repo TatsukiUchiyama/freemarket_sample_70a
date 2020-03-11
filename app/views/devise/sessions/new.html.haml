@@ -13,7 +13,7 @@
                 .content-center-top-create-btn__text
                   新規会員登録
       .content-bottom
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
+        = form_with model: @user, url: user_session_path, local: true  do |form|
           .content-bottom-information
             .content-bottom-information-box
               .content-bottom-information-box-mail

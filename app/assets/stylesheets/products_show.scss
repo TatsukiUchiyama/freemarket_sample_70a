@@ -19,7 +19,6 @@ body {
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic",
     "メイリオ", "Meiryo", sans-serif;
   .item-box-container {
-    height: 77em;
     padding: 24px 40px 20px;
     margin-bottom: 20px;
     background: #fff;
@@ -34,20 +33,16 @@ body {
       position: relative;
       margin: 0 auto;
       margin: 16px 0 0;
-      padding-bottom: 20px;
-         
       &__image {
         width: 620px;
-        height: 375px;
-        
+        height: 375px;        
         &__detail {
           display: inline-block;
           width: 620px;
           height: 375px;
-        }
- 
+        } 
         &__dot {
-          width: 600px;
+          width: 620px;
           height: 120px;
           padding: 10px;
             ul{ 
@@ -64,18 +59,18 @@ body {
         }
       }
       &__table {
+        width: 620px;
+        height: 463px;
         &__td {
           flex-direction: column;
         }
         table {
           border-color: #fafafa;
-          float: right;
-          width: 600px;
-          height: 420px;
+          float: right;         
           margin: 0 auto;
-          vertical-align: inherit;
           tr {
             background-repeat: no-repeat;
+            line-height: 3;
             margin: 0;
             padding: 0;
             th {
@@ -93,7 +88,6 @@ body {
             }
             td {
               display: table-cell;
-              vertical-align: inherit;
               font-size: 15px;
               width: 39%;
               text-align: left;
@@ -112,11 +106,73 @@ body {
     }
     .item-price-box {
       text-align: center;
+      vertical-align: auto;
       &__bold {
         font-weight: 600;
         margin: 0 auto;
         font-size: 50px;
       }
+    }
+    .item-tax-box {
+      width: 620px;
+      display: flex;
+      justify-content: center;
+      margin-left: 50px;      
+    }
+    .item-buy-button {      
+      &__buy {
+      height: 60px;
+      width: 620px;
+      display: block;
+      text-align: center;
+      line-height: 60px;
+      background-color: #3ccace;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-size: 25px;
+      color: white; 
+      }   
+    }
+    .item-edit-button {
+      &__edit {
+      height: 50px;
+      width: 620px;
+      display: block;
+      text-align: center;
+      line-height: 50px;
+      background-color: #3ccace;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      color: white; 
+      }
+    }
+    .item-delete-button {
+      &__delete {
+      height: 50px;
+      width: 620px;
+      display: block;
+      text-align: center;
+      line-height: 50px;
+      background-color: #d3d3d3;
+      border-radius: 10px;
+      font-size: 15px;
+      color: white;  
+      }
+    }
+    .choice-text {
+      height: 50px;
+      width: 620px;
+      text-align: center;
+      line-height: 50px;    
+      font-size: 15px;    
+    }
+    .item-text-box {
+      margin: 30px 0;
+      font-weight: 350;
+      overflow: hidden;
+      height: 6em;
+      font-size: 20px;
     }
     .item-tax-box {
       text-align: center;
@@ -130,63 +186,62 @@ body {
     }
   }
   .item-description {    
-      height: 40px;
+      height: 100px;
       width: 620px;
-      padding-top: 20px;
-      padding-left: 20px;
+      padding-top: 30px;
       display: flex;
-      justify-content: space-between;    
+      justify-content: space-between; 
+      .item-description__btn-left:hover{
+        opacity: 0.5;
+      }    
       &__btn-left {
         border: 1px solid #ffb340;       
         border-radius: 20px;
         height: 40px;
-        width: 120px;        
+        width: 140px;        
         display: flex;
         line-height: 40px;
         &__star-icon {
-          text-align: center;
+          padding-left: 5px;
           height: 40px;
-          width: 25px;
+          width: 30px;
           color: #0099e8;
         }           
-        &__button-like {
-        display: inline-block;            
-        font-size: 80%;
-        padding-right: 5px;
+        &__button-like {        
+        font-size: 100%;
         color: #0099e8;         
       } 
-    }  
-      &__btn-right {       
-        border: thin solid;
-        border-radius: 5px;
-        height: 40px;
-        display: flex;
-        line-height: 40px;        
+    } 
+      &__btn-right {               
+        height: 35px;
+        width: 160px;
+        display: flex;        
+        line-height: 2.8;             
+        a {         
+          text-decoration: none;
+          color: #333;
+          font-size: 80%;           
+          display: flex;
+          border: thin solid;
+          border-radius: 5px;          
+          width: 100%;
+        }
+        a:hover {
+          opacity: 0.4;
+        }               
         &__flag-icon {
           text-align: center;
-          height: 40px;
-          width: 25px;
+          width: 32px;
           color: #333;                
         } 
-        &__button-flag {
-          display: inline-block; 
-          a {
-            text-decoration: none;
-            color: #333;
-            font-size: 80%;
-            margin-right: 5px;
-          }        
-        }
       }
     }
-
+    
   .item-detail-message {
     width: 700px;
-    padding-top: 15px;
-    background-repeat: no-repeat;
+    padding-top: 15px;   
     background-color: #fff;
     border-width: 0;
-
     &__container{
       textarea {
         margin: 0 auto;
@@ -262,3 +317,35 @@ body {
       }      
     }
   }
+.exhibit-box{ 
+  a {
+    display: inline-block;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3ccace;
+    border: thin solid #3ccace;
+    border-radius: 10px;
+    text-align: center;
+  } 
+  a:hover {
+    opacity: 0.5;
+  } 
+  .exhibit-btn{
+    padding: 15px;
+    height: 120px;
+    width: 120px;
+    &__text {
+      height: 20px;
+      color: white;
+      font-size: 20px;
+      padding-top: 6px;
+    }
+    &__icon {
+      height: 30px;
+      padding-top: 14px;
+      color: white;
+      font-size: 50px;   
+    }  
+  }  
+}
