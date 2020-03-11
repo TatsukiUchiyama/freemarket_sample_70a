@@ -9,7 +9,6 @@ $(function(){
 
     // 購入ボタンを非活性化
     $('.transaction-new-submit').prop("disabled", true);
-
   }
 
 })
