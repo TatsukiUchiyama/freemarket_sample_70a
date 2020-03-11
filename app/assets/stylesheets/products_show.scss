@@ -33,18 +33,14 @@ body {
       position: relative;
       margin: 0 auto;
       margin: 16px 0 0;
-      padding-bottom: 20px;
-         
       &__image {
         width: 620px;
-        height: 375px;
-        
+        height: 375px;        
         &__detail {
           display: inline-block;
           width: 620px;
           height: 375px;
-        }
- 
+        } 
         &__dot {
           width: 620px;
           height: 120px;
@@ -63,18 +59,18 @@ body {
         }
       }
       &__table {
+        width: 620px;
+        height: 463px;
         &__td {
           flex-direction: column;
         }
         table {
           border-color: #fafafa;
-          float: right;
-          width: 600px;
-          height: 420px;
+          float: right;         
           margin: 0 auto;
-          vertical-align: inherit;
           tr {
             background-repeat: no-repeat;
+            line-height: 3;
             margin: 0;
             padding: 0;
             th {
@@ -92,7 +88,6 @@ body {
             }
             td {
               display: table-cell;
-              vertical-align: inherit;
               font-size: 15px;
               width: 39%;
               text-align: left;
@@ -117,6 +112,12 @@ body {
         margin: 0 auto;
         font-size: 50px;
       }
+    }
+    .item-tax-box {
+      width: 620px;
+      display: flex;
+      justify-content: center;
+      margin-left: 50px;      
     }
     .item-buy-button {      
       &__buy {
@@ -188,7 +189,6 @@ body {
       height: 100px;
       width: 620px;
       padding-top: 30px;
-      padding-left: 20px;
       display: flex;
       justify-content: space-between; 
       .item-description__btn-left:hover{

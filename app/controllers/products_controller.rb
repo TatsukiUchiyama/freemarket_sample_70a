@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @user = User.find(@product.user_id)
   end
 
   def edit
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:products).permit(:name, :description, :condition)
+    params.require(:products).permit(:name, :description, :condition, :brand, :shipping_payer, :shipping_from_area, :shipping_duration, :price,)
   end
 
 end

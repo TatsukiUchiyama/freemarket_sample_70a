@@ -8,28 +8,41 @@
       .item-box-container__item-main-content
         .item-box-container__item-main-content-clearfix
           .item-box-container__item-main-content-clearfix__image 
-            = image_tag 'pict-reason-01.jpg', class: 'item-box-container__item-main-content-clearfix__image__detail'
+            = image_tag @product.images.first.image, height: '375', width: '620'
 
         .item-box-container__item-main-content-clearfix__image__dot
           %ul
             %li
-              = image_tag 'pict-reason-01.jpg', height: '90', width: '140'
+              = image_tag @product.images.first.image, height: '90', width: '140'
             %li
-              = image_tag 'pict-reason-01.jpg', height: '90', width: '140'
+              = image_tag @product.images.second.image, height: '90', width: '140'
             %li
-              = image_tag 'pict-reason-01.jpg', height: '90', width: '140'
+              = image_tag @product.images.third.image, height: '90', width: '140'
          
                 
         .item-price-box
-          %span.item-price-box__bold 
-            ¥2000           
+          .item-price-box__bold 
+            ¥
+            = @product.price           
         .item-tax-box  
-          %span.item-price-box__tax-shipping-fee 
-            (税込)送料込み
+          .item-price-box__tax-shipping-fee 
+            (税込)
+          .item-price-box__tax-shipping-payer
+            = @product.shipping_payer
+
+      - if user_signed_in? && @product.user_id != current_user.id
         .item-buy-button
           = link_to new_transaction_path do         
             %span.item-buy-button__buy
-              購入画面に進む 
+              購入画面に進む
+      -elsif user_signed_in? && @product.user_id == current_user.id       
+      -else
+        .item-buy-button
+          = link_to new_user_session_path do
+            %span.item-buy-button__buy
+              購入画面に進む
+
+      - if user_signed_in? && @product.user_id == current_user.id 
         .item-edit-button
           = link_to edit_product_path do
             %span.item-edit-button__edit 
@@ -40,17 +53,20 @@
           = link_to product_path method: :delete do
             %span.item-delete-button__delete 
               この商品を削除
+      - else
+
         .item-text-box
           %span.item-text-box__content
-            = @product.description
+            = simple_format @product.description
         .item-name-box
           %span.item-name-box__left 
-            product
+            = @product.name
         .item-box-container__item-main-content-clearfix__table
           %table{border: "1", style: "border-collapse: collapse"}
             %tr
               %th 出品者
-              %td.item-box-container__item-main-content-clearfix__table__td hoge                                               
+              %td.item-box-container__item-main-content-clearfix__table__td 
+                = @user.nickname                                               
             %tr
               %th カテゴリー
               %td.item-box-container__item-main-content-clearfix__table__td 
@@ -58,7 +74,8 @@
                   ベビー、キッズ           
             %tr
               %th ブランド 
-              %td.item-box-container__item-main-content-clearfix__table__td  
+              %td.item-box-container__item-main-content-clearfix__table__td 
+                = @product.brand 
             %tr
               %th 商品のサイズ 
               %td.item-box-container__item-main-content-clearfix__table__td              
@@ -68,32 +85,45 @@
                 = @product.condition               
             %tr
               %th 配送料の負担
-              %td.item-box-container__item-main-content-clearfix__table__td             
+              %td.item-box-container__item-main-content-clearfix__table__td
+                = @product.shipping_payer                          
             %tr
-              %th 配送の方法
-              %td.item-box-container__item-main-content-clearfix__table__td              
-            %tr
-              %th 発送元地域 
-              %td.item-box-container__item-main-content-clearfix__table__td 
+              %th 発送元の地域 
+              %td.item-box-container__item-main-content-clearfix__table__td               
                 = link_to "#" do
-                  岩手
+                  = @product.shipping_from_area                
             %tr
               %th 発送日の目安
               %td.item-box-container__item-main-content-clearfix__table__td
+                = @product.shipping_duration
           
-      .item-description                  
-        .item-description__btn-left
-          .item-description__btn-left__star-icon
-            = icon('fa','star', class: 'item-description__btn-left__star-icon')
-          .item-description__btn-left__button-like
-            %span お気に入り 0                       
-        .item-description__btn-right
-          = link_to "#" do
-            .item-description__btn-right__flag-icon
-              = icon('fa', 'flag', class: 'item-description__btn-right__flag-icon')
-            .item-description__btn-right__button-flag
-              不適切な商品の通報
-                  
+      - if user_signed_in? && @product.user_id != current_user.id 
+        .item-description                  
+          .item-description__btn-left
+            .item-description__btn-left__star-icon
+              = icon('fa','star', class: 'item-description__btn-left__star-icon')
+            .item-description__btn-left__button-like
+              %span お気に入り 0                       
+          .item-description__btn-right
+            = link_to "#" do
+              .item-description__btn-right__flag-icon
+                = icon('fa', 'flag', class: 'item-description__btn-right__flag-icon')
+              .item-description__btn-right__button-flag
+                不適切な商品の通報
+      - elsif current_user == nil
+        .item-description                  
+          .item-description__btn-left
+            .item-description__btn-left__star-icon
+              = icon('fa','star', class: 'item-description__btn-left__star-icon')
+            .item-description__btn-left__button-like
+              %span お気に入り 0                       
+          .item-description__btn-right
+            = link_to "#" do
+              .item-description__btn-right__flag-icon
+                = icon('fa', 'flag', class: 'item-description__btn-right__flag-icon')
+              .item-description__btn-right__button-flag
+                不適切な商品の通報 
+      - else
   
     .item-detail-message
       .item-detail-message__container    
