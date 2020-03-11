@@ -58,7 +58,7 @@ $border-color : #f8f8f8;
       form{
        margin: 0 auto;
         // 購入ボタン
-        button{
+        input[type='submit']{
           border: none;
           background-color: #ea352d;
           height: 50px;
