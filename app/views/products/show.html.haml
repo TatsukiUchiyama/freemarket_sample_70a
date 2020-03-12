@@ -1,6 +1,37 @@
 = render partial: "/layouts/header"
 
 .container
+  .container__category
+    %ul
+      %li
+        = link_to root_path do        
+          FURIMA
+      %li
+        %i
+          = icon('fa', 'angle-right')     
+      %li
+        = link_to "#" do
+          = @category.root.name
+      %li
+        %i
+          = icon('fa', 'angle-right')     
+      %li
+        = link_to "#" do
+          = @category.parent.name
+      %li
+        %i
+          = icon('fa', 'angle-right') 
+      %li
+        = link_to "do" do
+          = @category.name
+      %li
+        %i
+          = icon('fa', 'angle-right') 
+      %li
+        %p 
+          = @product.name
+        
+      
   .container__box
     .item-box-container
       %h1.item-name 
@@ -12,9 +43,9 @@
 
         .item-box-container__item-main-content-clearfix__image__dot
           %ul
-            - @product.images.each do |image|
-              %li
-                = image_tag image.image, height: '90', width: '140'
+          - @product.images.first(3).each do |image|
+            %li
+              = image_tag image.image, height: '90', width: '140'
          
                 
         .item-price-box
@@ -66,13 +97,21 @@
                 = @user.nickname                                               
             %tr
               %th カテゴリー
-              %td.item-box-container__item-main-content-clearfix__table__td 
+              %td.item-box-container__item-main-content-clearfix__table__td               
+                = link_to "#" do 
+                  = @category.root.name 
+                %br
+                = link_to "#" do  
+                  = @category.parent.name
+                %br
                 = link_to "#" do
-                  ベビー、キッズ           
+                  = @category.name 
+                           
             %tr
               %th ブランド 
               %td.item-box-container__item-main-content-clearfix__table__td 
-                = @product.brand 
+                = link_to "#" do
+                  = @product.brand                  
             %tr
               %th 商品のサイズ 
               %td.item-box-container__item-main-content-clearfix__table__td              
