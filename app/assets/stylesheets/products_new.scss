@@ -66,8 +66,8 @@
               -webkit-box-shadow ease-out 0.3s;
             cursor: pointer;
             &__inner {
+              padding: 5px;
               text-align: center;
-              margin-top: 80px;
               font-size: 14px;
               line-height: 1.5;
               -webkit-transform: translate(0, -50%);
@@ -154,7 +154,7 @@
           &__group {
             &__select {
               margin: 8px 0 0;
-              &__form {
+              select {
                 width: 400px;
                 height: 48px;
                 padding: 0 16px;
