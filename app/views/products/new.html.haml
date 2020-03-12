@@ -17,8 +17,12 @@
                 最大10枚までアップロードできます。画像をアップロードしてください。
           %label.label
             .sell__main__content__file__up__box
-              = form.fields_for :images do |f|
-                = f.file_field :image, class: "hidden" 
+              #image-box
+                = form.fields_for :images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image, class: "js-file" 
+                  -#  %br/
+                  -#  %span.js-remove 削除
         .sell__main__content__form
           %label
             商品
@@ -67,7 +71,7 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = form.collection_select :shipping_from_area_id, Prefecture.all, :id, :name
+                = form.collection_select :shipping_from_area_id, ShippingFromArea.all, :id, :name
               %label
                 発送までの日数
                 %span.form-require
