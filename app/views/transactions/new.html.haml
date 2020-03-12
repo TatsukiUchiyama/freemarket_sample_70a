@@ -11,39 +11,44 @@
           .new__detail__product__box__information__name
             腕時計
           .new__detail__product__box__information__price
-            ¥10,000 (税込) 送料込み
+            = "¥#{@product.price.to_s(:delimited)} (税込) 送料込み"
     .new__detail__payment
-      %form{action: "#"}
+      = form_with model: @transaction, url: product_transactions_path, local: true do |f|
         %ul.new__detail__payment__lists
           %li.new__detail__payment__lists__list
             .new__detail__payment__lists__list__price-box
               .new__detail__payment__lists__list__price-box__label
                 支払い金額
               .new__detail__payment__lists__list__price-box__price
-                ¥10,000
+                = "¥#{@product.price.to_s(:delimited)}"
           %li.new__detail__payment__lists__list
             支払い方法
-            = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
-            %ul.new__detail__payment__lists__list__payment-method
-              %li
-                クレジットカード
-              %li
-                ************0000
-              %li
-                有効期限 12 / 30
-              %li
-                = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
+            - if @card_payjp
+              %ul.new__detail__payment__lists__list__payment-method
+                %li
+                  クレジットカード
+                %li
+                  = "**** **** **** " + @card_payjp.last4
+                %li
+                  = "有効期限 #{@card_payjp.exp_month.to_s} / #{@card_payjp.exp_year.to_s.slice(2,3)}"
+                %li
+                  - if @card_payjp.brand == "Visa"
+                    = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: 'new__detail__payment__lists__list__payment-method__card-img'
+            - else
+              = link_to '＋カードを登録する', new_user_card_path(current_user.id), class: 'new__detail__payment__lists__list__new--link'
           %li.new__detail__payment__lists__list
             配送先
-            = link_to '変更する', '#', class: 'new__detail__payment__lists__list__change--link'
             %ul.new__detail__payment__lists__list__shipping-address
+              - address = current_user.address
               %li
-                〒999-9999
+                = "〒#{address.postal_code}"
               %li
-                東京都○○区×× 1-23-4 マンションA 999
+                = Prefecture.find(address.prefecture_id).name
+                = address.municipalities
+                = address.block_number
+                = address.building_name
+                = address.room_number
               %li
-                フリマ 太郎
-        = button_tag type: "submit" do
-          購入する
-
+                = address.family_name_kanji + address.first_name_kanji
+        = f.submit "購入する", class: "transaction-new-submit"
   = render partial: '/layouts/footer_sub'

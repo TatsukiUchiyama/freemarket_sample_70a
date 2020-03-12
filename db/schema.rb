@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_110846) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
   add_foreign_key "products", "users"
   add_foreign_key "transactions", "products"

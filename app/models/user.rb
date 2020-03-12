@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :address
   accepts_nested_attributes_for :address
   has_many :products
-  has_many :cards
+  has_one :card
   has_many :transactions
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :year
