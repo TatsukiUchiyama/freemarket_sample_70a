@@ -10,7 +10,9 @@ class CardsController < ApplicationController
   def create
 
     # 秘密鍵の設定
-    Payjp.api_key = 'sk_test_a2dd327111d09e322058d1c2'
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+
+    binding.pry
 
     # トークンが取得できなかった場合、登録画面へ戻る
     if params['payjp-token'].blank?

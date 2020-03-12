@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
     # 現在のユーザーがカードを登録済みの場合、カードの情報（payjp）を取得する
     if @card
       # 秘密鍵を設定
-      Payjp.api_key = 'sk_test_a2dd327111d09e322058d1c2'
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
 
       # 所有者を取得
       customer = Payjp::Customer.retrieve(@card.customer_id)
