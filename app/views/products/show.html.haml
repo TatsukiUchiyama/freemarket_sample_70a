@@ -2,15 +2,34 @@
 
 .container
   .container__category
-    .container__category__root-box
-      ＞
-      = @category.root.name
-    .container__category__root-box__parent
-      ＞
-      = @category.parent.name
-    .container__category__root-box__parent__self
-      ＞
-      = @category.name
+    %ul
+      %li
+        = link_to root_path do        
+          FURIMA
+      %li
+        %i
+          = icon('fa', 'angle-right')     
+      %li
+        = link_to "#" do
+          = @category.root.name
+      %li
+        %i
+          = icon('fa', 'angle-right')     
+      %li
+        = link_to "#" do
+          = @category.parent.name
+      %li
+        %i
+          = icon('fa', 'angle-right') 
+      %li
+        = link_to "do" do
+          = @category.name
+      %li
+        %i
+          = icon('fa', 'angle-right') 
+      %li
+        %p 
+          = @product.name
         
       
   .container__box
@@ -24,7 +43,7 @@
 
         .item-box-container__item-main-content-clearfix__image__dot
           %ul
-          - @product.images.each do |image|
+          - @product.images.first(3).each do |image|
             %li
               = image_tag image.image, height: '90', width: '140'
 
