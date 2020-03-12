@@ -32,6 +32,7 @@ class TransactionsController < ApplicationController
 
       # 決済処理
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      
       # 支払い情報を設定
       Payjp::Charge.create(
         # 金額
