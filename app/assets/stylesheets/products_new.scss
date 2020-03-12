@@ -1,3 +1,5 @@
+@import "application.scss";
+
 .sell {
   background: #f5f5f5;
   color: #333;
@@ -9,7 +11,7 @@
     margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
-    color: #fff;
+    color:  $whiteText;
     font-size: 12px;
     vertical-align: top;
     font-weight: 600;
@@ -135,7 +137,7 @@
             height: 14px;
             border-radius: 50%;
             background: #0099e8;
-            color: #fff;
+            color: $whiteText;
             line-height: 14px;
             font-size: 12px;
             text-align: center;
@@ -256,7 +258,7 @@
           margin: 24px auto 0;
           background: #ea352d;
           border: 1px solid #ea352d;
-          color: #fff;
+          color: $whiteText;
           display: block;
           width: 60%;
           line-height: 48px;
