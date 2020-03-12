@@ -1,2 +1,0 @@
-class Twelve < ApplicationRecord
-end
