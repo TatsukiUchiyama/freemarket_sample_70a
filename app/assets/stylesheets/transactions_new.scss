@@ -1,3 +1,4 @@
+@import "application.scss";
 $border-color : #f8f8f8;
 .new{
   width: 100%;
@@ -63,7 +64,7 @@ $border-color : #f8f8f8;
           background-color: #ea352d;
           height: 50px;
           width: 340px;
-          color: #ffffff;
+          color: $whiteText;
           font-size: 14px;
         }
       }

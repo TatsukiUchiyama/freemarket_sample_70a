@@ -1,6 +1,5 @@
 .sell
-  %header.header--sub
-    = render partial: '/layouts/header_sub'
+  = render partial: '/layouts/header_sub'
 
   = form_with(model: @product, local: true) do |form|
     .sell__main
@@ -11,6 +10,7 @@
           .sell__main__content__file__up
             %h3.sell__main__content__file__up__head
               出品画像
+
               %span.form-require
                 必須
               %p.sell__main__content__file__up__head__text
@@ -119,5 +119,5 @@
           = form.submit "出品する", class: "sell__main__content__button__red"
           = form.submit "もどる", class: "sell__main__content__button__gray"
 
-  %header.footer--sub
-    = render partial: '/layouts/footer_sub'
+  = render partial: '/layouts/footer_sub'
+
