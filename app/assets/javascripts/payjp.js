@@ -42,11 +42,8 @@ document.addEventListener(
 
             // サブミット処理を実行する
             document.inputForm.submit();
-
-            // 成功アラート
-            alert("登録が完了しました"); 
-          } else {
             
+          } else {
             // トークン作成が失敗した場合
             alert("カード情報が正しくありません。"); 
           }
