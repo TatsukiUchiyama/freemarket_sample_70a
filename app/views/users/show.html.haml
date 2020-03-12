@@ -36,7 +36,7 @@
             いいね！一覧
           .show_main__left__list__area--next_icon
             ＞
-      = link_to "#" do
+      = link_to new_product_path do
         .show_main__left__list__area
           .show_main__left__list__area--text
             出品する
@@ -144,7 +144,8 @@
     .show_main__right__upper
       .show_main__right__upper__userarea
         .show_main__right__upper__userarea--text
-          ゲストさんのマイページ
+          = @user.family_name_kanji
+          さんのマイページ
         .show_main__right__upper__userarea__data
           .show_main__right__upper__userarea__data--in
             出品数

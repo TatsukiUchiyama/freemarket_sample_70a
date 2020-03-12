@@ -7,15 +7,20 @@ class User < ApplicationRecord
   has_one :address
   accepts_nested_attributes_for :address
   has_many :products
-  has_many :cards
+  has_one :card
   has_many :transactions
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :year
   belongs_to_active_hash :month
   belongs_to_active_hash :day
 
-  validates :nickname,:year_id,:month_id,:day_id, presence: true
-         
+  validates :nickname, presence: true
+  
+  validates :year_id,:month_id,:day_id, format: { with: /\A[1-9][0-9]*\z/}
+
+
+
+
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   
    validates :family_name_kanji, presence: true,
