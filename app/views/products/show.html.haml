@@ -12,12 +12,9 @@
 
         .item-box-container__item-main-content-clearfix__image__dot
           %ul
-            %li
-              = image_tag @product.images.first.image, height: '90', width: '140'
-            %li
-              = image_tag @product.images.second.image, height: '90', width: '140'
-            %li
-              = image_tag @product.images.third.image, height: '90', width: '140'
+            - @product.images.each do |image|
+              %li
+                = image_tag image.image, height: '90', width: '140'
          
                 
         .item-price-box
