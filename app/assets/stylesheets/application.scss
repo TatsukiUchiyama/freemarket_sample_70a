@@ -16,6 +16,12 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
+ $lightgreen: #3CCACE;
+ $whiteText:  #ffffff;
+ @mixin shadow_white() {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+   }
 
  // ヘッダー
  .header--sub{
@@ -69,14 +75,7 @@
   }
 }
 
- $lightgreen: #3CCACE;
- $whiteText: #ffffff;
 
- @mixin shadow_white() {
-    color: #ffffff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.4);
-   }
- 
 .header{
   width: 100%;
   height: 100px;
@@ -157,8 +156,14 @@
           color: #000;
         }
       }
+
+      &__mypage{
+        padding-right: 20px;
+        &--text{
+          width: 70px;
+        }
+      }
       &__info{
-        
         padding-right: 20px;
         &--text{
           width: 80px;
@@ -167,7 +172,6 @@
         }
       }
       &__fav{
-        
         padding-right: 20px;
         &--text{
           width: 110px;
@@ -176,10 +180,10 @@
         }
       }
       &__mypage{
-        
         padding-right: 20px;
         &--text{
           width: 80px;
+
           font-size: 14px;
           color: #000;
         }

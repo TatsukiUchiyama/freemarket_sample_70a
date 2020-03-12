@@ -17,7 +17,7 @@
 ### Association
 - has_one :address
 - has_many :products
-- has_many :cards
+- has_one :card
 - has_many :transactions
 
 ## addressesテーブル
@@ -41,10 +41,8 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|integer|null: false|
-|expiration_month|integer|null: false|
-|expiration_year|integer|null: false|
-|security code|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
