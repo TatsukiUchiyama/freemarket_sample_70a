@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @user = @product.user
+    @category = @product.category
   end
 
   def edit
