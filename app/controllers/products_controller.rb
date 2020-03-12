@@ -2,6 +2,11 @@ class ProductsController < ApplicationController
   def index
     @products = Product.includes(:images, :category, :user)
     @ham = Product.where(brand: '伊藤ハム')
+    @categories = Category.all.limit(3)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
