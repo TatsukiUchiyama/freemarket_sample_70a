@@ -98,13 +98,21 @@
                 = @user.nickname                                               
             %tr
               %th カテゴリー
-              %td.item-box-container__item-main-content-clearfix__table__td 
+              %td.item-box-container__item-main-content-clearfix__table__td               
+                = link_to "#" do 
+                  = @category.root.name 
+                %br
+                = link_to "#" do  
+                  = @category.parent.name
+                %br
                 = link_to "#" do
-                  ベビー、キッズ           
+                  = @category.name 
+                           
             %tr
               %th ブランド 
               %td.item-box-container__item-main-content-clearfix__table__td 
-                = @product.brand 
+                = link_to "#" do
+                  = @product.brand                  
             %tr
               %th 商品のサイズ 
               %td.item-box-container__item-main-content-clearfix__table__td              
