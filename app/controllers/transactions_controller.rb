@@ -29,6 +29,18 @@ class TransactionsController < ApplicationController
                                   product_id: params[:product_id],
                                   status: 0)
     if transaction.save
+
+      # 決済処理
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      # 支払い情報を設定
+      Payjp::Charge.create(
+        # 金額
+        amount: Product.find(params[:product_id]).price,
+        # payjpが管理する顧客ID
+        :customer => @card.customer_id,
+        # 日本円
+        currency: 'jpy'
+      )
       
       # セッションの商品IDを削除する
       session.delete(:product_id)
