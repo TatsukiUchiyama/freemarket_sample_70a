@@ -78,7 +78,7 @@
         .choice-text
           %span or
         .item-delete-button
-          = link_to product_path method: :delete do
+          = link_to product_path(@product.id), method: :delete do
             %span.item-delete-button__delete 
               この商品を削除
       - else
