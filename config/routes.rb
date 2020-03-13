@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'category_children' 
       get 'category_grandchildren'
     end
-    resources :transactions, only: [:new, :create, :update]
+    resources :transactions, only: [:new, :create, :update, :destroy]
   end
   resources :users, only: :show do
     resources :cards, only: [:new, :create]
