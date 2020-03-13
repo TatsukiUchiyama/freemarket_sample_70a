@@ -60,7 +60,7 @@
 
       - if user_signed_in? && @product.user_id != current_user.id
         .item-buy-button
-          = link_to new_transaction_path do         
+          = link_to new_product_transaction_path(@product.id) do         
             %span.item-buy-button__buy
               購入画面に進む
       -elsif user_signed_in? && @product.user_id == current_user.id       
@@ -118,7 +118,7 @@
             %tr
               %th 商品の状態 
               %td.item-box-container__item-main-content-clearfix__table__td
-                = @product.condition               
+                -# = @product.condition               
             %tr
               %th 配送料の負担
               %td.item-box-container__item-main-content-clearfix__table__td
@@ -131,7 +131,7 @@
             %tr
               %th 発送日の目安
               %td.item-box-container__item-main-content-clearfix__table__td
-                = @product.shipping_duration
+                -# = @product.shipping_duration
           
       - if user_signed_in? && @product.user_id != current_user.id 
         .item-description                  
