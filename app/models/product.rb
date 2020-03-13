@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :shipping_duration
   belongs_to_active_hash :shipping_payer
   belongs_to_active_hash :condition
+  belongs_to_active_hash :shipping_from_area
   has_many   :images
   belongs_to :user
   belongs_to :category
