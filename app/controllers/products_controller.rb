@@ -2,7 +2,27 @@ class ProductsController < ApplicationController
   def index
     @products = Product.includes(:images, :category, :user).order('created_at DESC')
     @ham = Product.where(brand: '伊藤ハム')
+    @categories = Category.where(ancestry: nil)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
+
+  def category_children
+    @category_children = Category.find(params[:id]).children
+    respond_to do |format|
+      format.json
+    end
+  end
+
+  def category_grandchildren
+    @category_grandchildren = Category.find(params[:id]).children
+    respond_to do |format|
+      format.json
+    end
+  end
+
 
   def new
     @product = Product.new
