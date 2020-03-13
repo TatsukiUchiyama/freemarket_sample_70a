@@ -71,8 +71,7 @@ body {
           height: 375px;
         } 
         &__dot {
-          width: 620px;
-          height: 120px;
+          flex-wrap: wrap;        
           padding: 10px;
           display: flex;
           list-style: none;
