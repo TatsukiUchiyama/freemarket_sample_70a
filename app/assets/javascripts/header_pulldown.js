@@ -77,7 +77,6 @@ $(function(){
   // 追加表示されたカテゴリの各リンクにマウスポインタが乗った時の処理
   $(document).on("mouseover", ".pulldown_category", function() {
     const categoryId = $(this).attr("data-category-id")
-    console.log(categoryId);
     $.ajax({
       url: '/products/category_children',
       type: 'GET',
@@ -86,7 +85,6 @@ $(function(){
     })
     // 子カテゴリ一覧を表示する
     .done(function(category_children){ 
-      console.log(category_children)
       $(".header__nav_ber__left__category_children_append").empty();
       $(".header__nav_ber__left__category_grandchildren_append").empty();
       category_children.forEach(function(category_child){
@@ -97,7 +95,6 @@ $(function(){
   // 子カテゴリの要素にマウスポインタが乗った時の処理
   $(document).on("mouseover", ".pulldown_category_children", function() {
     const categoryId = $(this).attr("data-category_children-id")
-    console.log(categoryId);
     $.ajax({
       url: '/products/category_grandchildren',
       type: 'GET',
@@ -106,7 +103,6 @@ $(function(){
     })
     // 孫カテゴリ一覧を表示する
     .done(function(category_grandchildren){ 
-      console.log(category_grandchildren)
       $(".header__nav_ber__left__category_grandchildren_append").empty();
       category_grandchildren.forEach(function(category_grandchild){
         pulldown_category_grandchildren(category_grandchild);
