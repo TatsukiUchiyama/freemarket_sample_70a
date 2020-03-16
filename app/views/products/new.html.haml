@@ -1,7 +1,7 @@
 .sell
   = render partial: '/layouts/header_sub'
 
-  = form_with(model: @product, local: true) do |form|
+  = form_with(model: @product, local: true) do |f|
     .sell__main
       .sell__main__content
         %h2.sell__main__content__head
@@ -18,7 +18,7 @@
           %label.label
             .sell__main__content__file__up__box
               #image-box
-                = form.fields_for :images do |image|
+                = f.fields_for :images do |image|
                   .js-file_group{"data-index" => "#{image.index}"}
                     = image.file_field :image, class: "js-file" 
                   -#  %br/
@@ -28,33 +28,29 @@
             商品
             %span.form-require
               必須
-            = form.text_field :name, class: "sell__main__content__form__input", placeholder: "商品名（必須 40文字まで)", maxlength: "40"
+            = f.text_field :name, class: "sell__main__content__form__input", placeholder: "商品名（必須 40文字まで)", maxlength: "40"
           %label
             商品の説明
             %span.form-require
               必須
-          = form.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength: "1000"
+          = f.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength: "1000"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             商品の詳細
-          .sell__main__content__form__box
-            .sell__main__content__form__box__group
-              %label
-                カテゴリ
-                %span.form-require
-                  必須
+          .sell__main__content__form__box.listing-form-box
+            .sell__main__content__form__box__group.listing-product-detail__category
+              = f.label 'カテゴリー', class: 'listing-default__label'
+              %span.form-require 必須
+              .sell__main__content__form__box__group
+                .sell__main__content__form__box__group__select
+                  = f.collection_select :category_parent_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'sell__main__content__form__box__group__select'}
+                  %i.fas.fa-chevron-down.sell__main__content__form__box__group__select--arrow-down
+            %label
+              商品の状態
+              %span.form-require
+                必須
               .sell__main__content__form__box__group__select
-                %select{name: "category_id", class: "sell__main__content__form__box__group__select__form"}
-                  %option{value: ""} 選択してください
-                  %option{value: "メンズ"} メンズ
-                  %option{value: "レディース"} レディース
-                  %option{value: "キッズ"} キッズ
-              %label
-                商品の状態
-                %span.form-require
-                  必須
-              .sell__main__content__form__box__group__select
-                = form.collection_select :condition_id, Condition.all, :id, :condition
+                = f.collection_select :condition_id, Condition.all, :id, :condition
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             配送について
@@ -65,19 +61,19 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = form.collection_select :shipping_payer_id, ShippingPayer.all, :id, :cost
+                = f.collection_select :shipping_payer_id, ShippingPayer.all, :id, :cost
               %label
                 発送元の地域
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = form.collection_select :shipping_from_area_id, ShippingFromArea.all, :id, :name
+                = f.collection_select :shipping_from_area_id, ShippingFromArea.all, :id, :name
               %label
                 発送までの日数
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = form.collection_select :shipping_duration_id, ShippingDuration.all, :id, :duration
+                = f.collection_select :shipping_duration_id, ShippingDuration.all, :id, :duration
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             販売価格(300〜9,999,999)
@@ -90,7 +86,7 @@
                     必須
                 .sell__main__content__form__box__price__top__right
                   ¥
-                  = form.number_field :price, class: "sell__main__content__form__box__price__top__right__input", placeholder: "例）300"
+                  = f.number_field :price, class: "sell__main__content__form__box__price__top__right__input", placeholder: "例）300"
               %li.sell__main__content__form__box__price__fee
                 .sell__main__content__form__box__price__fee__left
                   販売手数料 (10%)
@@ -120,8 +116,8 @@
               = link_to "", target: "_blank" do
                 加盟店規約
               に同意したことになります。
-          = form.submit "出品する", class: "sell__main__content__button__red"
-          = form.submit "もどる", class: "sell__main__content__button__gray"
+          = f.submit "出品する", class: "sell__main__content__button__red"
+          = f.submit "もどる", class: "sell__main__content__button__gray"
 
   = render partial: '/layouts/footer_sub'
 
