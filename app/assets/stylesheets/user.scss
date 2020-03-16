@@ -1,6 +1,8 @@
 @import "application.scss";
 /* 新規登録画面のCSS*/
 
+
+
 .registrations{
   height: 100vh;
   width: 100vw;
@@ -11,10 +13,10 @@
     background-color: #EEEEEE;
 
     .infomation-content{
-      height: 2500px;
       width: 700px;
       background-color: white;
       margin: auto;
+      padding-bottom: 50px;
 
       .center-top{
         height: 100px;
@@ -84,6 +86,14 @@
               padding-left: 10px;
               font-size: 15px;
             }
+
+            .text-errors{
+              color: red;
+              font-size: 15px;
+              padding-top: 15px;
+              padding-left: 15px;
+              font-weight: normal;
+            }
           }
         }
 
@@ -129,6 +139,13 @@
               padding-left: 10px;
               font-size: 15px;
             }
+
+            .email-errors{
+              color: red;
+              font-size: 15px;
+              padding-top: 15px;
+              padding-left: 15px;
+            }
           }
         }  
 
@@ -173,6 +190,13 @@
               margin: auto;
               padding-left: 10px;
               font-size: 15px;
+            }
+
+            .password-errors{
+              color: red;
+              font-size: 15px;
+              padding-top: 15px;
+              padding-left: 15px;
             }
           }
         }
@@ -236,6 +260,7 @@
           .name-top-bottom{
             margin-top: 5px;
             display: flex;
+            position: relative;
 
             .name-form-left{
               height: 50px;
@@ -256,6 +281,21 @@
               font-size: 15px;
             }
           }
+          
+          .family_name_kanji-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
+          .first_name_kanji-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+          
         }
 
         .information-kana{
@@ -311,6 +351,21 @@
               font-size: 15px;
             }
           }
+        
+          .family_name_kana-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
+          .first_name_kana-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+          
         }
 
         .information-birthday{
@@ -386,6 +441,48 @@
             .birthday-top-bottom-day-text{
               margin-top: 18px;
             }
+
+            .year-errors{
+              color: red;
+              font-size: 15px;
+              padding-top: 15px;
+              padding-left: 15px;
+            }
+
+            .month-errors{
+              color: red;
+              font-size: 15px;
+              padding-top: 15px;
+              padding-left: 15px;
+            }
+
+            .day-errors{
+              color: red;
+              font-size: 15px;
+              padding-top: 15px;
+              padding-left: 15px;
+            }
+          }
+
+          .year-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
+          .month-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
+          .day-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
           }
         }
 
@@ -454,6 +551,20 @@
               font-size: 15px;
             }
           }
+
+          .family_name_kanji-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
+          .first_name_kanji-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
         }
 
         .information-send-kana{
@@ -509,6 +620,20 @@
               font-size: 15px;
             }
           }
+
+          .family_name_kana-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
+          .first_name_kana-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
         }
 
         .information-zip-code{
@@ -554,6 +679,14 @@
               font-size: 15px;
             }
           }
+
+          .postal_code-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+          
         }
 
         .information-state{
@@ -590,12 +723,20 @@
             margin-top: 5px;
 
             select{
-            height: 50px;
-            width: 350px;
-            background-color: white;
-            font-size: 15px;
-           }
+              height: 50px;
+              width: 350px;
+              background-color: white;
+              font-size: 15px;
+            }
           }
+
+          .prefecture-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
+
         }
 
         .information-municipalities{
@@ -641,6 +782,13 @@
               font-size: 15px;
             }
           }
+
+          .municipalities-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+          }
         }
 
         .information-street-number{
@@ -685,6 +833,13 @@
               padding-left: 10px;
               font-size: 15px;
             }
+          }
+
+          .block_number-errors{
+            color: red;
+            font-size: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
           }
         }
 

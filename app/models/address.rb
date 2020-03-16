@@ -21,5 +21,4 @@ class Address < ApplicationRecord
   validates :postal_code,         presence: true
   validates :municipalities,      presence: true
   validates :block_number,        presence: true
-  validates :phone_number,      uniqueness: true
 end
