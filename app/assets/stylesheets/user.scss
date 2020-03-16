@@ -1,7 +1,12 @@
 @import "application.scss";
 /* 新規登録画面のCSS*/
 
-
+@mixin errors{
+  color: red;
+  font-size: 15px;
+  padding: 15px 0 0 15px;
+  font-weight: normal;
+}
 
 .registrations{
   height: 100vh;
@@ -88,11 +93,7 @@
             }
 
             .text-errors{
-              color: red;
-              font-size: 15px;
-              padding-top: 15px;
-              padding-left: 15px;
-              font-weight: normal;
+              @include errors;
             }
           }
         }
@@ -141,10 +142,7 @@
             }
 
             .email-errors{
-              color: red;
-              font-size: 15px;
-              padding-top: 15px;
-              padding-left: 15px;
+              @include errors;
             }
           }
         }  
@@ -193,10 +191,7 @@
             }
 
             .password-errors{
-              color: red;
-              font-size: 15px;
-              padding-top: 15px;
-              padding-left: 15px;
+              @include errors;
             }
           }
         }
@@ -283,17 +278,11 @@
           }
           
           .family_name_kanji-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
           .first_name_kanji-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
           
         }
@@ -353,17 +342,11 @@
           }
         
           .family_name_kana-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
           .first_name_kana-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
           
         }
@@ -441,48 +424,17 @@
             .birthday-top-bottom-day-text{
               margin-top: 18px;
             }
-
-            .year-errors{
-              color: red;
-              font-size: 15px;
-              padding-top: 15px;
-              padding-left: 15px;
-            }
-
-            .month-errors{
-              color: red;
-              font-size: 15px;
-              padding-top: 15px;
-              padding-left: 15px;
-            }
-
-            .day-errors{
-              color: red;
-              font-size: 15px;
-              padding-top: 15px;
-              padding-left: 15px;
-            }
           }
-
           .year-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
           .month-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
           .day-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
         }
 
@@ -553,17 +505,11 @@
           }
 
           .family_name_kanji-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
           .first_name_kanji-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
         }
 
@@ -622,17 +568,11 @@
           }
 
           .family_name_kana-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
           .first_name_kana-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
         }
 
@@ -681,10 +621,7 @@
           }
 
           .postal_code-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
           
         }
@@ -731,10 +668,7 @@
           }
 
           .prefecture-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
 
         }
@@ -784,10 +718,7 @@
           }
 
           .municipalities-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
         }
 
@@ -836,10 +767,7 @@
           }
 
           .block_number-errors{
-            color: red;
-            font-size: 15px;
-            padding-top: 15px;
-            padding-left: 15px;
+            @include errors;
           }
         }
 
