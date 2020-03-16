@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        nickname: ニックネーム
+        family_name_kanji: 名字
+        first_name_kanji : 名前
+        family_name_kana : 名字カナ
+        first_name_kana  : 名前カナ
+        year_id   : 西暦
+        month_id : 誕生月
+        day_id : 誕生日
+      address:
+        family_name_kanji: 名字
+        first_name_kanji : 名前
+        family_name_kana : 名字カナ
+        first_name_kana  : 名前カナ
+        postal_code : 郵便番号
+        municipalities: 市町村区
+        block_number: 番地
+        prefecture_id: 都道府県
