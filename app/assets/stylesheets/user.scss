@@ -1,6 +1,13 @@
 @import "application.scss";
 /* 新規登録画面のCSS*/
 
+@mixin errors{
+  color: red;
+  font-size: 15px;
+  padding: 15px 0 0 15px;
+  font-weight: normal;
+}
+
 .registrations{
   height: 100vh;
   width: 100vw;
@@ -11,10 +18,10 @@
     background-color: #EEEEEE;
 
     .infomation-content{
-      height: 2500px;
       width: 700px;
       background-color: white;
       margin: auto;
+      padding-bottom: 50px;
 
       .center-top{
         height: 100px;
@@ -84,6 +91,10 @@
               padding-left: 10px;
               font-size: 15px;
             }
+
+            .text-errors{
+              @include errors;
+            }
           }
         }
 
@@ -129,6 +140,10 @@
               padding-left: 10px;
               font-size: 15px;
             }
+
+            .email-errors{
+              @include errors;
+            }
           }
         }  
 
@@ -173,6 +188,10 @@
               margin: auto;
               padding-left: 10px;
               font-size: 15px;
+            }
+
+            .password-errors{
+              @include errors;
             }
           }
         }
@@ -236,6 +255,7 @@
           .name-top-bottom{
             margin-top: 5px;
             display: flex;
+            position: relative;
 
             .name-form-left{
               height: 50px;
@@ -256,6 +276,15 @@
               font-size: 15px;
             }
           }
+          
+          .family_name_kanji-errors{
+            @include errors;
+          }
+
+          .first_name_kanji-errors{
+            @include errors;
+          }
+          
         }
 
         .information-kana{
@@ -311,6 +340,15 @@
               font-size: 15px;
             }
           }
+        
+          .family_name_kana-errors{
+            @include errors;
+          }
+
+          .first_name_kana-errors{
+            @include errors;
+          }
+          
         }
 
         .information-birthday{
@@ -387,6 +425,17 @@
               margin-top: 18px;
             }
           }
+          .year-errors{
+            @include errors;
+          }
+
+          .month-errors{
+            @include errors;
+          }
+
+          .day-errors{
+            @include errors;
+          }
         }
 
         .information-birthday-attention{
@@ -454,6 +503,14 @@
               font-size: 15px;
             }
           }
+
+          .family_name_kanji-errors{
+            @include errors;
+          }
+
+          .first_name_kanji-errors{
+            @include errors;
+          }
         }
 
         .information-send-kana{
@@ -509,6 +566,14 @@
               font-size: 15px;
             }
           }
+
+          .family_name_kana-errors{
+            @include errors;
+          }
+
+          .first_name_kana-errors{
+            @include errors;
+          }
         }
 
         .information-zip-code{
@@ -554,6 +619,11 @@
               font-size: 15px;
             }
           }
+
+          .postal_code-errors{
+            @include errors;
+          }
+          
         }
 
         .information-state{
@@ -590,12 +660,17 @@
             margin-top: 5px;
 
             select{
-            height: 50px;
-            width: 350px;
-            background-color: white;
-            font-size: 15px;
-           }
+              height: 50px;
+              width: 350px;
+              background-color: white;
+              font-size: 15px;
+            }
           }
+
+          .prefecture-errors{
+            @include errors;
+          }
+
         }
 
         .information-municipalities{
@@ -641,6 +716,10 @@
               font-size: 15px;
             }
           }
+
+          .municipalities-errors{
+            @include errors;
+          }
         }
 
         .information-street-number{
@@ -685,6 +764,10 @@
               padding-left: 10px;
               font-size: 15px;
             }
+          }
+
+          .block_number-errors{
+            @include errors;
           }
         }
 

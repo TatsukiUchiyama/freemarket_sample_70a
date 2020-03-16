@@ -6,9 +6,13 @@ class ProductsController < ApplicationController
 
 
     @ham = Product.where(brand: '伊藤ハム')
+
+  end
+
+
+  def category
     @categories = Category.where(ancestry: nil)
     respond_to do |format|
-      format.html
       format.json
     end
   end
