@@ -139,6 +139,19 @@ body {
       justify-content: center;
       margin-left: 50px;      
     }
+    .item-sold-banner{
+      &__sold{
+        height: 50px;
+        width: 620px;
+        display: block;
+        text-align: center;
+        line-height: 50px;
+        background-color: #d3d3d3;
+        border-radius: 10px;
+        font-size: 15px;
+        color: $whiteText;
+      }
+    }
     .item-buy-button {      
       &__buy {
       height: 60px;
