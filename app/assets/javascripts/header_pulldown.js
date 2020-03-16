@@ -2,7 +2,7 @@ $(function(){
   // 親カテゴリをアペンドするメソッド
   function pulldown_category(category){
     let html = `<div class="pulldown_category" data-category-id="${category.id}">
-                  <a href = "#">
+                  <a href = "/categories/${category.id}">
                     <div class="pulldown_category__text" data-category-id="${category.id}">${category.name}</div>
                   </a>
                 </div>`;
@@ -11,7 +11,7 @@ $(function(){
   // 子カテゴリをアペンドするメソッド
   function pulldown_category_children(category){
     let html = `<div class="pulldown_category_children" data-category_children-id="${category.id}">
-                  <a href = "#">
+                  <a href = "/categories/${category.id}">
                     <div class="pulldown_category_children__text" data-category_children-id="${category.id}">${category.name}</div>
                   </a>
                 </div>`;
@@ -20,7 +20,7 @@ $(function(){
   // 孫カテゴリをアペンドするメソッド
   function pulldown_category_grandchildren(category){
     let html = `<div class="pulldown_category_grandchildren">
-                  <a href = "#">
+                  <a href = "/categories/${category.id}">
                     <div class="pulldown_category_grandchildren__text">${category.name}</div>
                   </a>
                 </div>`;

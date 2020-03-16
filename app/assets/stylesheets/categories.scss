@@ -1,0 +1,51 @@
+@import "application.scss";
+.category_container{
+  padding: 30px 0;
+  height: auto;
+  background-color: #f8f8f8;
+  &__head{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  &__products{
+    width: 100%;
+    margin: 0 8vw;
+    display: flex;
+    flex-wrap: wrap;
+    &__box{
+      width: 220px;
+      height: 245px;
+      background-color: #fff;
+      margin: 20px 10px;
+      &--image{
+        width: 220px;
+        height: 150px;
+      }
+      &__lower{
+        display: flex;
+        justify-content: space-between;
+        &__data{ 
+          padding: 10px;
+          &--name{
+            padding-top: 10px;
+            font-size: 16px;
+          }
+          &--price{
+            padding-top: 10px;
+            font-size: 16px
+          }
+          &--tax{
+            padding-top: 10px;
+            font-size: 10px;
+          }
+        }
+        &--fav{
+          padding-top: 5px;
+          line-height: 95px;
+        }
+      }
+    }
+  }
+}
