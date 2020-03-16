@@ -6,10 +6,10 @@
     .new__detail__product
       .new__detail__product__box
         .new__detail__product__box__image
-          画像
+          =image_tag @product.images.first.image , height: '76', width: '76'
         .new__detail__product__box__information
           .new__detail__product__box__information__name
-            腕時計
+            = @product.name
           .new__detail__product__box__information__price
             = "¥#{@product.price.to_s(:delimited)} (税込) 送料込み"
     .new__detail__payment

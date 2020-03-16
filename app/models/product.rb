@@ -5,8 +5,9 @@ class Product < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_from_area
   has_many   :images, dependent: :destroy
+
   belongs_to :user
   belongs_to :category
   accepts_nested_attributes_for :images, allow_destroy: true
-  # validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
 end

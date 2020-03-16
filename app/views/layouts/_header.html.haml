@@ -10,14 +10,22 @@
         = image_tag "icon-search 1.png", class:"header__main__form--submit__btn--icon"
   .header__nav_ber
     .header__nav_ber__left
-      .header__nav_ber__left__category
+      .header__nav_ber__left__category#category
         = link_to root_path do
-          .header__nav_ber__left__brand--text
+          .header__nav_ber__left__category--text
             カテゴリ
-      .header__nav_ber__left__brand
+        .ancestry
+          .header__nav_ber__left__category_append
+          .header__nav_ber__left__category_children_append
+          .header__nav_ber__left__category_grandchildren_append
+      .header__nav_ber__left__brand#brand
         = link_to root_path do
           .header__nav_ber__left__brand--text
             ブランド
+        .ancestry
+          .header__nav_ber__left__brand_append
+          .header__nav_ber__left__brand_children_append
+          .header__nav_ber__left__brand_grandchildren_append
     .header__nav_ber__right
       - if user_signed_in?
         .header__nav_ber__right__info
