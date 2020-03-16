@@ -293,3 +293,87 @@
     }
   }
 }
+
+.footer{
+  width: 100%;
+  height: 720px;
+  content: "";
+  clear: both;
+  display: block;
+  &__upper{
+    height: 360px;
+    padding: 100px 40px;
+    background-image: image-url(bg-appBanner-pict);
+    background-size: cover;
+    &--title{
+      font-size: 24px;
+      @include shadow_white();
+      text-align: center;
+    }
+    &--text{
+      font-size: 35px;
+      @include shadow_white();
+      text-align: center;
+      padding: 20px 0;
+
+    }
+    &__appbtn{
+      height: 60px;
+      width: 100%;
+      text-align: center;
+      &--apple{
+        width: 180px;
+        height: 55px;
+        margin-bottom: 11px;
+      }
+      &--google{
+        width: 190px;
+        height: 80px;
+      }
+    }
+  }
+  &__lower{
+    background-color: #272727;
+    height: 360px;
+    padding: 60px 0;
+
+
+
+    &__contents{
+      display: flex;
+      justify-content: space-around;
+      padding: 0 100px;
+
+      &__content{
+        list-style: none;
+        padding-left: 2%;
+        width: 150px;
+        
+        &__head{
+          color: $whiteText;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        &--text{
+          font-size: 12px;
+          color: $whiteText;
+          padding-top: 20px;
+        }
+      }
+    }
+    &__logo{
+      font-size: 14px;
+      color: $whiteText;
+      text-align: center;
+
+      &--icon{
+        margin: 0 auto;
+        display: block;
+        height: 50px;
+      }
+      &--text{
+        color: $whiteText;
+      }
+    }
+  }
+}
