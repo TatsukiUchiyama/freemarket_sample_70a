@@ -20,4 +20,5 @@ class ShippingFromArea < ActiveHash::Base
   ]
 
   
+
 end
