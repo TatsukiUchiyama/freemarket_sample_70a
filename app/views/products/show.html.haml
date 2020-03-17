@@ -37,7 +37,16 @@
       %h1.item-name 
         = @product.name
       .item-box-container__item-main-content
-        .item-box-container__item-main-content-clearfix
+      
+      - sold = Transaction.find_by(product_id: params[:id])   
+      - if sold != nil
+        .item-box-container__item-main-content__sold
+          .item-box-container__item-main-content__sold__text
+            %p 
+              SOLD
+            .item-box-container__item-main-content__sold__back
+
+        .item-box-container__item-main-content-clearfix       
           .item-box-container__item-main-content-clearfix__image 
             = image_tag @product.images.first.image, class: :main_image, height: '375', width: '620'
 
