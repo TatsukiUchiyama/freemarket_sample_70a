@@ -6,7 +6,7 @@
     .new__detail__product
       .new__detail__product__box
         .new__detail__product__box__image
-          =image_tag @product.images.first.image , height: '76', width: '76'
+          =image_tag "#{@product.images.first.image}" , height: '76', width: '76'
         .new__detail__product__box__information
           .new__detail__product__box__information__name
             = @product.name
