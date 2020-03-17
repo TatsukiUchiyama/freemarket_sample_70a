@@ -130,62 +130,79 @@
         }
       }
 
+
       .ancestry{
         display: flex;
         .header__nav_ber__left__category_append{
           height: 10px;
           width: 10px;
-          .pulldown_category{
-            &__text{
-              width: 250px;
-              height: 30px;
-              padding-left: 10px;
-              line-height: 30px;
-              background-color: #fff;
-              border-bottom: 1px solid rgb(211, 211, 211);
-            }
-            &__text:hover{
-              background-color: red;
-              color: $whiteText;
+          &__area{
+            width: 250px;
+            height: 500px;
+            background-color: #fff;
+            .pulldown_category{
+              &__text{
+                width: 250px;
+                height: 30px;
+                padding-left: 10px;
+                line-height: 30px;
+                background-color: #fff;
+                border-bottom: 1px solid rgb(211, 211, 211);
+              }
+              &__text:hover{
+                background-color: red;
+                color: $whiteText;
+              }
             }
           }
         }
         .header__nav_ber__left__category_children_append{
           height: 10px;
           width: 10px;
-          .pulldown_category_children{
-            &__text{
-              margin-left: 240px;
-              width: 250px;
-              height: 30px;
-              padding-left: 10px;
-              line-height: 30px;
-              background-color: #fff;
-              border-bottom: 1px solid rgb(211, 211, 211);
-            }
-            &__text:hover{
-              background-color: red;
-              color: $whiteText;
+          &__area{
+            width: 250px;
+            height: 500px;
+            background-color: #fff;
+            margin-left: 240px;
+            .pulldown_category_children{
+              &__text{
+                
+                width: 250px;
+                height: 30px;
+                padding-left: 10px;
+                line-height: 30px;
+                background-color: #fff;
+                border-bottom: 1px solid rgb(211, 211, 211);
+              }
+              &__text:hover{
+                background-color: red;
+                color: $whiteText;
+              }
             }
           }
-
         }
         .header__nav_ber__left__category_grandchildren_append{
           height: 10px;
           width: 10px;
-          .pulldown_category_grandchildren{
-            &__text{
-              margin-left: 480px;
-              width: 270px;
-              height: 30px;
-              padding-left: 10px;
-              line-height: 30px;
-              background-color: #fff;
-              border-bottom: 1px solid rgb(211, 211, 211);
-            }
-            &__text:hover{
-              background-color: red;
-              color: $whiteText;
+          &__area{
+            width: 270px;
+            height: 500px;
+            background-color: #fff;
+            margin-left: 480px;
+            .pulldown_category_grandchildren{
+              &__text{
+                
+                width: 270px;
+                height: 30px;
+                padding-left: 10px;
+                line-height: 30px;
+                background-color: #fff;
+                border-bottom: 1px solid rgb(211, 211, 211);
+              }
+              &__text:hover{
+                background-color: red;
+                color: $whiteText;
+              }
             }
           }
         }
@@ -206,9 +223,9 @@
         .pulldown_brand{
           &__text{
             width: 150px;
-            height: 50px;
+            height: 30px;
             padding-left: 10px;
-            line-height: 50px;
+            line-height: 30px;
             background-color: #fff;
             border-bottom: 1px solid rgb(211, 211, 211);
           }
@@ -218,6 +235,7 @@
           }
         }
       }
+      
     }
     &__right{
       display: flex;
@@ -271,6 +289,90 @@
           font-size: 14px;
           color: #000;
         }
+      }
+    }
+  }
+}
+
+.footer{
+  width: 100%;
+  height: 720px;
+  content: "";
+  clear: both;
+  display: block;
+  &__upper{
+    height: 360px;
+    padding: 100px 40px;
+    background-image: image-url(bg-appBanner-pict);
+    background-size: cover;
+    &--title{
+      font-size: 24px;
+      @include shadow_white();
+      text-align: center;
+    }
+    &--text{
+      font-size: 35px;
+      @include shadow_white();
+      text-align: center;
+      padding: 20px 0;
+
+    }
+    &__appbtn{
+      height: 60px;
+      width: 100%;
+      text-align: center;
+      &--apple{
+        width: 180px;
+        height: 55px;
+        margin-bottom: 11px;
+      }
+      &--google{
+        width: 190px;
+        height: 80px;
+      }
+    }
+  }
+  &__lower{
+    background-color: #272727;
+    height: 360px;
+    padding: 60px 0;
+
+
+
+    &__contents{
+      display: flex;
+      justify-content: space-around;
+      padding: 0 100px;
+
+      &__content{
+        list-style: none;
+        padding-left: 2%;
+        width: 150px;
+        
+        &__head{
+          color: $whiteText;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        &--text{
+          font-size: 12px;
+          color: $whiteText;
+          padding-top: 20px;
+        }
+      }
+    }
+    &__logo{
+      font-size: 14px;
+      color: $whiteText;
+      text-align: center;
+
+      &--icon{
+        margin: 0 auto;
+        display: block;
+        height: 50px;
+      }
+      &--text{
+        color: $whiteText;
       }
     }
   }
