@@ -10,17 +10,17 @@
           .sell__main__content__file__up
             %h3.sell__main__content__file__up__head
               出品画像
-
               %span.form-require
                 必須
               %p.sell__main__content__file__up__head__text
-                最大10枚までアップロードできます。画像をアップロードしてください。
+                最大5枚までアップロードできます
           %label.label
             .sell__main__content__file__up__box
               #image-box
                 = f.fields_for :images do |image|
                   .js-file_group{"data-index" => "#{image.index}"}
                     = image.file_field :image, class: "js-file" 
+                  //削除ボタン実装時に使用
                   -#  %br/
                   -#  %span.js-remove 削除
         .sell__main__content__form
