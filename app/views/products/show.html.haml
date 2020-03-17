@@ -39,13 +39,13 @@
       .item-box-container__item-main-content
         .item-box-container__item-main-content-clearfix
           .item-box-container__item-main-content-clearfix__image 
-            = image_tag @product.images.first.image, class: :main_image, height: '375', width: '620'
+            = image_tag "#{@product.images.first.image}", class: :main_image, height: '375', width: '620'
 
         .item-box-container__item-main-content-clearfix__image__dot
           %ul
           - @product.images.each do |image|
             %li
-              = image_tag image.image, class: :sub_image, height: '90', width: '120'
+              = image_tag "#{image.image}", class: :sub_image, height: '90', width: '120'
          
         .item-price-box
           .item-price-box__bold 

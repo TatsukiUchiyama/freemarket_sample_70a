@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_122658) do
+ActiveRecord::Schema.define(version: 2020_03_16_032003) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(version: 2020_03_13_122658) do
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "customer_id", null: false
     t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_122658) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
+    t.string "image", default: "", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_122658) do
     t.text "description", null: false
     t.string "brand"
     t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
@@ -80,7 +82,6 @@ ActiveRecord::Schema.define(version: 2020_03_13_122658) do
     t.integer "shipping_from_area_id", null: false
     t.integer "shipping_duration_id", null: false
     t.integer "condition_id", null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -128,7 +129,9 @@ ActiveRecord::Schema.define(version: 2020_03_13_122658) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "products", "users"
   add_foreign_key "transactions", "products"
   add_foreign_key "transactions", "users"
 end
