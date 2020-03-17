@@ -42,7 +42,7 @@ $(function(){
     $(".header__nav_ber__left__brand_append").append(html);
   }
   // カテゴリのリンクにマウスポインタを乗せた時の処理
-  $('#category').hover(function(){
+  $('.header__nav_ber__left__category__area').mouseover(function(){
     $.ajax({
       url: '/products/category',
       type: 'GET',
@@ -58,13 +58,13 @@ $(function(){
         pulldown_category(category);
       });
     });
-  }, 
-  // マウスポインタが外れた時に消えるための処理
-  function() {
-  $(".header__nav_ber__left__category_append").empty();
-  $(".header__nav_ber__left__category_children_append").empty();
-  $(".header__nav_ber__left__category_grandchildren_append").empty();
   });
+    // 外した時の処理
+    $('#category').mouseleave(function(){
+      $(".header__nav_ber__left__category_append").empty();
+      $(".header__nav_ber__left__category_children_append").empty();
+      $(".header__nav_ber__left__category_grandchildren_append").empty();
+    });
   // ブランドのリンクにマウスポインタを乗せた時の処理
   $('#brand').hover(function(){
     $(".header__nav_ber__left__brand_append").empty();
