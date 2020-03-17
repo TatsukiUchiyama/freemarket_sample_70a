@@ -57,13 +57,11 @@
           .item-price-box__tax-shipping-payer
             = @product.shipping_payer.cost
 
-      - sold = Transaction.find_by(product_id: params[:id])
-      - if sold == nil
+      - sold = Transaction.find_by(status: params[:id])     
+      - if sold != nil 
         .item-sold-banner
           %span.item-sold-banner__sold
             売り切れました
-      
-
       - elsif user_signed_in? && @product.user_id != current_user.id
         .item-buy-button
           = link_to new_product_transaction_path(@product.id) do
@@ -76,9 +74,9 @@
             %span.item-buy-button__buy
               購入画面に進む
 
-      - if user_signed_in? && @product.user_id == current_user.id 
+      - if sold == nil && user_signed_in? && @product.user_id == current_user.id 
         .item-edit-button
-          = link_to edit_product_path do
+          = link_to edit_product_path(@product.id) do
             %span.item-edit-button__edit 
               この商品を編集
         .choice-text
@@ -174,11 +172,21 @@
           相手のことを考え丁寧なコメントを心がけましょう。
           %br
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
+
+      - if sold == nil
         .item-detail-message__btn  
           .item-detail-message__btn__icon
             = icon('fas', 'comment', class: 'item-detail-message__btn__icon')
           .item-detail-message__btn__text
-            コメントする
+            %p
+              コメントする
+      - else 
+        .item-detail-message__sold            
+          .item-detail-message__sold__text
+            %p 
+              売り切れのためコメントできません
+
+
     .container__media
       .container__media__text
         .container__media__text__right-box

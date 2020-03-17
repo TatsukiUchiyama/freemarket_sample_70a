@@ -12,7 +12,7 @@
     margin-bottom: 2px;
     line-height: 50px; 
     ul {    
-      margin-left: 215px;
+      margin-left: 210px;
       display: flex;
       list-style: none;
       font-size: 15px;
@@ -141,14 +141,15 @@ body {
     }
     .item-sold-banner{
       &__sold{
-        height: 50px;
+        height: 60px;
         width: 620px;
         display: block;
         text-align: center;
-        line-height: 50px;
-        background-color: #d3d3d3;
+        line-height: 60px;
+        background-color: gray;
+        margin-top: 20px;
         border-radius: 10px;
-        font-size: 15px;
+        font-size: 25px;
         color: $whiteText;
       }
     }
@@ -187,7 +188,7 @@ body {
       display: block;
       text-align: center;
       line-height: 50px;
-      background-color: #d3d3d3;
+      background-color: gray;
       border-radius: 10px;
       font-size: 15px;
       color: $whiteText;  
@@ -268,11 +269,10 @@ body {
           color: #333;                
         } 
       }
-    }
-    
+    }    
   .item-detail-message {
     width: 700px;
-    padding-top: 15px;   
+    padding: 25px 0 25px;    
     background-color: #fff;
     border-width: 0;
     &__container{
@@ -290,21 +290,19 @@ body {
       }
     }
     &__content {
-      padding: 24px;
-      margin: 0;     
-      p {
+      padding: 15px 50px 25px;
+      width: 700px;    
+      p {       
         color: #333;
-        padding: 16px;     
+        padding: 10px;     
         font-size: 16px;
         background: #f8f8f8;
       }
     }
     &__btn {
-      line-height: 60px;
+      line-height: 50px;
       width: 60%;
-      margin-left: 130px;
-      margin-top: 30px;
-      font-size: 0;
+      margin-left: 130px;    
       background: $lightgreen;     
       border-radius: 30px;
       display: flex;
@@ -313,11 +311,27 @@ body {
         font-size: 20px;        
         width: 25px;
         color: $whiteText;
+        display: flex;
+        align-items: center;
       }
       &__text {
         color: $whiteText;
         font-size: 20px;
-        text-align: center;
+        display: flex;
+        align-items: center;
+      }
+    }
+    &__sold {
+      line-height: 50px;
+      width: 60%;
+      margin-left: 130px;
+      background-color: gray;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      &__text {
+        color: $whiteText;
+        font-size: 20px;
       }
     }
   }
