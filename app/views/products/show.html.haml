@@ -67,7 +67,6 @@
           = link_to new_product_transaction_path(@product.id) do
             %span.item-buy-button__buy
               購入画面に進む
-      - elsif user_signed_in? && @product.user_id == current_user.id
       - else
         .item-buy-button
           = link_to new_user_session_path do
