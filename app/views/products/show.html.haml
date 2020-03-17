@@ -57,7 +57,7 @@
           .item-price-box__tax-shipping-payer
             = @product.shipping_payer.cost
 
-      - sold = Transaction.find_by(status: params[:id])     
+      - sold = Transaction.find_by(product_id: params[:id])     
       - if sold != nil 
         .item-sold-banner
           %span.item-sold-banner__sold
