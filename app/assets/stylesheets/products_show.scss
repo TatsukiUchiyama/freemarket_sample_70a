@@ -54,7 +54,7 @@ body {
       word-wrap: break-word;
       line-height: 1.4;
     }
-    &__item-main-content {
+    &__item-main-content {     
       position: relative;
       &__sold {
         position: absolute;
@@ -87,7 +87,8 @@ body {
         }
       }
     }
-    &__item-main-content-clearfix {   
+    &__item-main-content-clearfix { 
+      position: relative;  
       &__image {
         width: 620px;
         height: 375px;        
