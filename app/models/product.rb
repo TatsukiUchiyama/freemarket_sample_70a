@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :shipping_payer
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_from_area
-  has_many   :images, dependent: :destroy
+  has_many   :images, dependent: :delete_all
 
   belongs_to :user
   belongs_to :category
