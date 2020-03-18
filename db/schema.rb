@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_095757) do
+ActiveRecord::Schema.define(version: 2020_03_18_110951) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2020_03_18_095757) do
     t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -85,11 +94,11 @@ ActiveRecord::Schema.define(version: 2020_03_18_095757) do
     t.bigint "product_id", null: false
     t.integer "status"
     t.integer "card_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "purchaser_id"
     t.index ["product_id"], name: "index_transactions_on_product_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["purchaser_id"], name: "index_transactions_on_purchaser_id"
   end
 
   create_table "twelves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,8 +129,9 @@ ActiveRecord::Schema.define(version: 2020_03_18_095757) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
   add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "transactions", "products"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions", "users", column: "purchaser_id"
 end

@@ -24,7 +24,7 @@ class TransactionsController < ApplicationController
 
   def create
     # 現在のユーザーのカード情報を取得（1ユーザーにつき、カードは1枚のみの想定）
-    transaction = Transaction.new(user_id: current_user.id,
+    transaction = Transaction.new(purchaser_id: current_user.id,
                                   card_id: @card.id,
                                   product_id: params[:product_id],
                                   status: 0)
