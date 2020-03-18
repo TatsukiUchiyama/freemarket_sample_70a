@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.includes(:images, :category, :user)
+    @products = Product.includes(:images, :category, :user).order('created_at DESC')  
     @ham = Product.where(brand: '伊藤ハム')
-
   end
 
 
@@ -31,6 +30,24 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
+    #セレクトボックスの初期値設定
+    # @category_parent_array = ["---"]
+    @category_parent_array = Category.where(ancestry: nil)
+
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    # Category.where(ancestry: nil).each do |parent|
+    #   @category_parent_array << parent.name
+    # end
+  end
+
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(id: params[:parent_id], ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find(params[:child_id]).children
   end
   
   def create
@@ -38,6 +55,11 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
+      @category_parent_array = ["---"]
+      #データベースから、親カテゴリーのみ抽出し、配列化
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+      end
       render :new
     end
   end
