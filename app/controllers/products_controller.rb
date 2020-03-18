@@ -1,12 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.includes(:images, :category, :user).order('created_at DESC')
-    @products.first(3).each do |product|
-    end
-
-
+    @products = Product.includes(:images, :category, :user).order('created_at DESC')  
     @ham = Product.where(brand: '伊藤ハム')
-
   end
 
 
