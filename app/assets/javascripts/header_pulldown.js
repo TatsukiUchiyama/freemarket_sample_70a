@@ -2,7 +2,7 @@ $(function(){
   // 親カテゴリをアペンドするメソッド
   function pulldown_category(category){
     let html = `<div class="pulldown_category" data-category-id="${category.id}">
-                  <a href = "#">
+                  <a href = "/categories/${category.id}">
                     <div class="pulldown_category__text" data-category-id="${category.id}">${category.name}</div>
                   </a>
                 </div>`;
@@ -11,7 +11,7 @@ $(function(){
   // 子カテゴリをアペンドするメソッド
   function pulldown_category_children(category){
     let html = `<div class="pulldown_category_children" data-category_children-id="${category.id}">
-                  <a href = "#">
+                  <a href = "/categories/${category.id}">
                     <div class="pulldown_category_children__text" data-category_children-id="${category.id}">${category.name}</div>
                   </a>
                 </div>`;
@@ -20,7 +20,7 @@ $(function(){
   // 孫カテゴリをアペンドするメソッド
   function pulldown_category_grandchildren(category){
     let html = `<div class="pulldown_category_grandchildren">
-                  <a href = "#">
+                  <a href = "/categories/${category.id}">
                     <div class="pulldown_category_grandchildren__text">${category.name}</div>
                   </a>
                 </div>`;
@@ -42,7 +42,7 @@ $(function(){
     $(".header__nav_ber__left__brand_append").append(html);
   }
   // カテゴリのリンクにマウスポインタを乗せた時の処理
-  $('#category').hover(function(){
+  $('.header__nav_ber__left__category__area').mouseover(function(){
     $.ajax({
       url: '/products/category',
       type: 'GET',
@@ -58,13 +58,13 @@ $(function(){
         pulldown_category(category);
       });
     });
-  }, 
-  // マウスポインタが外れた時に消えるための処理
-  function() {
-  $(".header__nav_ber__left__category_append").empty();
-  $(".header__nav_ber__left__category_children_append").empty();
-  $(".header__nav_ber__left__category_grandchildren_append").empty();
   });
+    // 外した時の処理
+    $('#category').mouseleave(function(){
+      $(".header__nav_ber__left__category_append").empty();
+      $(".header__nav_ber__left__category_children_append").empty();
+      $(".header__nav_ber__left__category_grandchildren_append").empty();
+    });
   // ブランドのリンクにマウスポインタを乗せた時の処理
   $('#brand').hover(function(){
     $(".header__nav_ber__left__brand_append").empty();

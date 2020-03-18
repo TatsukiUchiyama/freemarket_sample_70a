@@ -6,10 +6,13 @@ Rails.application.routes.draw do
       get 'category' 
       get 'category_children' 
       get 'category_grandchildren'
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     resources :transactions, only: [:new, :create, :update, :destroy]
   end
   resources :users, only: :show do
     resources :cards, only: [:new, :create]
   end
+  resources :categories, only: :show
 end

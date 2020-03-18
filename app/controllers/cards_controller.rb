@@ -10,7 +10,7 @@ class CardsController < ApplicationController
   def create
 
     # 秘密鍵の設定
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.PAYJP_PRIVATE_KEY
 
     # トークンが取得できなかった場合、登録画面へ戻る
     if params['payjp-token'].blank?

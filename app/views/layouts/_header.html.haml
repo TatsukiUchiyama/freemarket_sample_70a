@@ -12,8 +12,9 @@
     .header__nav_ber__left
       .header__nav_ber__left__category#category
         = link_to root_path do
-          .header__nav_ber__left__category--text
-            カテゴリ
+          .header__nav_ber__left__category__area
+            .header__nav_ber__left__category--text
+              カテゴリ
         .ancestry
           .header__nav_ber__left__category_append
           .header__nav_ber__left__category_children_append
@@ -22,10 +23,8 @@
         = link_to root_path do
           .header__nav_ber__left__brand--text
             ブランド
-        .ancestry
-          .header__nav_ber__left__brand_append
-          .header__nav_ber__left__brand_children_append
-          .header__nav_ber__left__brand_grandchildren_append
+        .header__nav_ber__left__brand_append
+
     .header__nav_ber__right
       - if user_signed_in?
         .header__nav_ber__right__info

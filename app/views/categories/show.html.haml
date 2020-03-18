@@ -1,0 +1,63 @@
+= render partial: "/layouts/header"
+.category_container
+  .category_container__head
+    =@category.name
+    の一覧
+  .category_container__products
+    - @category.products.each do |product|
+      = link_to product_path(product.id) do
+        .category_container__products__box
+          = image_tag product.images.first.image,class:"category_container__products__box--image"
+          .category_container__products__box__lower
+            .category_container__products__box__lower__data
+              .category_container__products__box__lower__data--name
+                = product.name
+              .category_container__products__box__lower__data--price
+                = product.price
+                円
+              .category_container__products__box__lower__data--tax
+                （税込み）
+            .category_container__products__box__lower--fav
+              ⭐️１
+
+  .category_container__products
+    - @category.children.each do |child|
+      - child.products.each do |product|
+        = link_to product_path(product.id) do
+          .category_container__products__box
+            = image_tag product.images.first.image,class:"category_container__products__box--image"
+            .category_container__products__box__lower
+              .category_container__products__box__lower__data
+                .category_container__products__box__lower__data--name
+                  = product.name
+                .category_container__products__box__lower__data--price
+                  = product.price
+                  円
+                .category_container__products__box__lower__data--tax
+                  （税込み）
+              .category_container__products__box__lower--fav
+                ⭐️１
+
+  .category_container__products
+    - @category.children.each do |child|
+      -child.children.each do |grand_child|
+        - grand_child.products.each do |product|
+          = link_to product_path(product.id) do
+            .category_container__products__box
+              = image_tag product.images.first.image,class:"category_container__products__box--image"
+              .category_container__products__box__lower
+                .category_container__products__box__lower__data
+                  .category_container__products__box__lower__data--name
+                    = product.name
+                  .category_container__products__box__lower__data--price
+                    = product.price
+                    円
+                  .category_container__products__box__lower__data--tax
+                    （税込み）
+                .category_container__products__box__lower--fav
+                  ⭐️１
+
+
+
+
+= render partial: "/layouts/footer"
