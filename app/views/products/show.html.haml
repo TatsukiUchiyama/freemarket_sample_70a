@@ -31,13 +31,21 @@
         %p 
           = @product.name
 
-
   .container__box
     .item-box-container
       %h1.item-name 
         = @product.name
-      .item-box-container__item-main-content
-        .item-box-container__item-main-content-clearfix
+      .item-box-container__item-main-content    
+        .item-box-container__item-main-content-clearfix 
+
+        - sold = Transaction.find_by(product_id: params[:id])    
+        - if sold != nil
+          .item-box-container__item-main-content__sold
+            .item-box-container__item-main-content__sold__text
+              %p 
+                SOLD
+              .item-box-container__item-main-content__sold__back
+        -if @product            
           .item-box-container__item-main-content-clearfix__image 
             = image_tag "#{@product.images.first.image}", class: :main_image, height: '375', width: '620'
 
@@ -57,21 +65,27 @@
           .item-price-box__tax-shipping-payer
             = @product.shipping_payer.cost
 
-      - if user_signed_in? && @product.user_id != current_user.id
+      - sold = Transaction.find_by(product_id: params[:id])    
+      - if sold != nil 
+        .item-sold-banner
+          %span.item-sold-banner__sold
+            売り切れました
+      - elsif user_signed_in? && @product.user_id != current_user.id
         .item-buy-button
           = link_to new_product_transaction_path(@product.id) do
             %span.item-buy-button__buy
               購入画面に進む
-      -elsif user_signed_in? && @product.user_id == current_user.id
-      -else
+      - elsif user_signed_in? && @product.user_id == current_user.id
+      - else
         .item-buy-button
           = link_to new_user_session_path do
             %span.item-buy-button__buy
               購入画面に進む
 
-      - if user_signed_in? && @product.user_id == current_user.id 
+      - sold = Transaction.find_by(product_id: params[:id]) 
+      - if sold == nil && user_signed_in? && @product.user_id == current_user.id 
         .item-edit-button
-          = link_to edit_product_path do
+          = link_to edit_product_path(@product.id) do
             %span.item-edit-button__edit 
               この商品を編集
         .choice-text
@@ -79,9 +93,10 @@
         .item-delete-button
           = link_to product_path(@product.id), method: :delete do
             %span.item-delete-button__delete 
-              この商品を削除
+              この商品を削除 
       - else
-
+             
+      -  if @product
         .item-text-box
           %span.item-text-box__content
             = simple_format @product.description
@@ -105,7 +120,6 @@
                 %br
                 = link_to "#" do
                   = @category.name 
-
             %tr
               %th ブランド 
               %td.item-box-container__item-main-content-clearfix__table__td 
@@ -130,7 +144,7 @@
               %th 発送日の目安
               %td.item-box-container__item-main-content-clearfix__table__td
                 = @product.shipping_duration.duration
-          
+        
       - if user_signed_in? && @product.user_id != current_user.id 
         .item-description
           .item-description__btn-left
@@ -167,11 +181,21 @@
           相手のことを考え丁寧なコメントを心がけましょう。
           %br
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
+
+      - if sold == nil
         .item-detail-message__btn  
           .item-detail-message__btn__icon
             = icon('fas', 'comment', class: 'item-detail-message__btn__icon')
           .item-detail-message__btn__text
-            コメントする
+            %p
+              コメントする
+      - else 
+        .item-detail-message__sold            
+          .item-detail-message__sold__text
+            %p 
+              売り切れのためコメントできません
+
+
     .container__media
       .container__media__text
         .container__media__text__right-box
