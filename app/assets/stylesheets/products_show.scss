@@ -29,11 +29,9 @@
         }
         a:hover {
           color: #3ccace;
-          transition: .2s;          
+          transition: .1s;          
         }
-      }
-     
-      
+      }      
     }
   }
   &__box {
@@ -108,7 +106,8 @@ body {
       }
       &__table {
         width: 620px;
-        height: 463px;
+        display: block;
+        height: 400px;
         &__td {
           flex-direction: column;
         }
