@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.includes(:images, :category, :user).order('created_at DESC')  
+    @products = Product.includes(:images, :category, :seller).order('created_at DESC')
     @ham = Product.where(brand: '伊藤ハム')
   end
 
@@ -51,7 +51,9 @@ class ProductsController < ApplicationController
   end
   
   def create
+    binding.pry
     @product = Product.new(product_params)
+    binding.pry
     if @product.save
       redirect_to root_path
     else
@@ -66,7 +68,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @user = @product.user
+    @user = @product.seller
     @category = @product.category
   end
 
@@ -88,7 +90,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
 end

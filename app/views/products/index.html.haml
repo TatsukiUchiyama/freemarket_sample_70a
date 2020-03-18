@@ -106,7 +106,7 @@
         - count += 1
           = link_to product_path(product.id) do
             .pic_up_container__products__box
-              = image_tag product.images.first.image,class:"pic_up_container__products__box--image"
+              = image_tag "#{product.images.first.image}",class:"pic_up_container__products__box--image"
               .pic_up_container__products__box__lower
                 .pic_up_container__products__box__lower__data
                   .pic_up_container__products__box__lower__data--name

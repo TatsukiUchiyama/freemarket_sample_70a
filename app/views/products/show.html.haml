@@ -70,20 +70,21 @@
         .item-sold-banner
           %span.item-sold-banner__sold
             売り切れました
-      - elsif user_signed_in? && @product.user_id != current_user.id
+      - elsif user_signed_in? && @product.sellerr_id != current_user.id
         .item-buy-button
           = link_to new_product_transaction_path(@product.id) do
             %span.item-buy-button__buy
               購入画面に進む
-      - elsif user_signed_in? && @product.user_id == current_user.id
-      - else
+      -elsif user_signed_in? && @product.seller_id == current_user.id
+      -else
         .item-buy-button
           = link_to new_user_session_path do
             %span.item-buy-button__buy
               購入画面に進む
 
       - sold = Transaction.find_by(product_id: params[:id]) 
-      - if sold == nil && user_signed_in? && @product.user_id == current_user.id 
+      - if sold == nil && user_signed_in? && @product.seller_id == current_user.id 
+
         .item-edit-button
           = link_to edit_product_path(@product.id) do
             %span.item-edit-button__edit 
@@ -144,8 +145,8 @@
               %th 発送日の目安
               %td.item-box-container__item-main-content-clearfix__table__td
                 = @product.shipping_duration.duration
-        
-      - if user_signed_in? && @product.user_id != current_user.id 
+
+      - if user_signed_in? && @product.seller_id != current_user.id 
         .item-description
           .item-description__btn-left
             .item-description__btn-left__star-icon
