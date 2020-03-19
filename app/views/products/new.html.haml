@@ -35,7 +35,7 @@
             商品の説明
             %span.form-require
               必須
-          = f.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength: "1000"
+          = f.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）&#13;&#10;2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。&#13;&#10;あわせやすいのでおすすめです。".html_safe, maxlength: "1000"
           .sell__main__content__form__description--error
         .sell__main__content__form
           %h3.sell__main__content__form__sub
@@ -47,7 +47,6 @@
               .sell__main__content__form__box__group
                 .sell__main__content__form__box__group__select
                   = f.collection_select :category_parent_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'sell__main__content__form__box__group__select'}
-                  %i.fas.fa-chevron-down.sell__main__content__form__box__group__select--arrow-down
             .sell__main__content__form__box__category--error
             %label
               商品の状態
