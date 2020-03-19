@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :move_to_index, only: [:edit, :update, :destroy]
+
   def index
     @products = Product.includes(:images, :category, :seller).order('created_at DESC')
     @ham = Product.where(brand: '伊藤ハム')
@@ -38,6 +40,7 @@ class ProductsController < ApplicationController
     # Category.where(ancestry: nil).each do |parent|
     #   @category_parent_array << parent.name
     # end
+    redirect_to action: :index unless user_signed_in?
   end
 
   def get_category_children
@@ -89,6 +92,11 @@ class ProductsController < ApplicationController
   private
   def product_params
     params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+  end
+
+  def move_to_index
+    @product = Product.find_by(params[:id])
+    redirect_to action: :index unless user_signed_in? && current_user.id == @product.seller_id 
   end
 
 end
