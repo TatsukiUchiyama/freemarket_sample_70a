@@ -70,7 +70,7 @@
         .item-sold-banner
           %span.item-sold-banner__sold
             売り切れました
-      - elsif user_signed_in? && @product.sellerr_id != current_user.id
+      - elsif user_signed_in? && @product.seller_id != current_user.id
         .item-buy-button
           = link_to new_product_transaction_path(@product.id) do
             %span.item-buy-button__buy
