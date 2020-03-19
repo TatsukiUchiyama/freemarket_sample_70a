@@ -1,7 +1,7 @@
 .sell
   = render partial: '/layouts/header_sub'
 
-  = form_with(model: @product, local: true) do |f|
+  = form_with(model: @product, local: true, id: "new_product_form") do |f|
     .sell__main
       .sell__main__content
         %h2.sell__main__content__head
@@ -23,17 +23,20 @@
                   //削除ボタン実装時に使用
                   -#  %br/
                   -#  %span.js-remove 削除
+            .sell__main__content__file__up__error
         .sell__main__content__form
           %label
             商品
             %span.form-require
               必須
             = f.text_field :name, class: "sell__main__content__form__input", placeholder: "商品名（必須 40文字まで)", maxlength: "40"
+          .sell__main__content__form__name--error
           %label
             商品の説明
             %span.form-require
               必須
           = f.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength: "1000"
+          .sell__main__content__form__description--error
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             商品の詳細
@@ -45,12 +48,14 @@
                 .sell__main__content__form__box__group__select
                   = f.collection_select :category_parent_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'sell__main__content__form__box__group__select'}
                   %i.fas.fa-chevron-down.sell__main__content__form__box__group__select--arrow-down
+            .sell__main__content__form__box__category--error
             %label
               商品の状態
               %span.form-require
                 必須
               .sell__main__content__form__box__group__select
                 = f.collection_select :condition_id, Condition.all, :id, :condition
+              .sell__main__content__form__box__condition--error
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             配送について
@@ -62,18 +67,21 @@
                   必須
               .sell__main__content__form__box__group__select
                 = f.collection_select :shipping_payer_id, ShippingPayer.all, :id, :cost
+              .sell__main__content__form__box__group__shipping_payer--error
               %label
                 発送元の地域
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
                 = f.collection_select :shipping_from_area_id, ShippingFromArea.all, :id, :name
+              .sell__main__content__form__box__group__shipping_from_area--error
               %label
                 発送までの日数
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
                 = f.collection_select :shipping_duration_id, ShippingDuration.all, :id, :duration
+              .sell__main__content__form__box__group__shipping_duration--error
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             販売価格(300〜9,999,999)
@@ -87,6 +95,7 @@
                 .sell__main__content__form__box__price__top__right
                   ¥
                   = f.number_field :price, class: "sell__main__content__form__box__price__top__right__input", placeholder: "例）300"
+                .sell__main__content__form__box__price__top__error
               %li.sell__main__content__form__box__price__fee
                 .sell__main__content__form__box__price__fee__left
                   販売手数料 (10%)
