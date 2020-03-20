@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   require "payjp"
-
+  before_action :move_to_sign_in
   before_action :set_card
 
   def new 
@@ -48,5 +48,9 @@ class CardsController < ApplicationController
   private
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
