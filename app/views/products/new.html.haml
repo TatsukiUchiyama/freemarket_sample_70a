@@ -17,6 +17,10 @@
           %label.label
             .sell__main__content__file__up__box
               #image-box
+                -# %input#input_file.input_file{:accept => "image/*", :multiple => "multiple", :name => "input_file", :onchange => "preview_file(this.id);", :type => "file"}/
+                -# %label{:for => "input_file"} アップロード
+                -# #preview_result ここにプレビューを表示する
+
                 = f.fields_for :images do |image|
                   .js-file_group{"data-index" => "#{image.index}"}
                     = image.file_field :image, class: "js-file" 
@@ -93,18 +97,16 @@
                     必須
                 .sell__main__content__form__box__price__top__right
                   ¥
-                  = f.number_field :price, class: "sell__main__content__form__box__price__top__right__input", placeholder: "例）300"
-                .sell__main__content__form__box__price__top__error
+                  %input#sell_price.sell__main__content__form__box__price__top__right__input{placeholder: "例）300", type: "number"}/
               %li.sell__main__content__form__box__price__fee
                 .sell__main__content__form__box__price__fee__left
                   販売手数料 (10%)
                 .sell__main__content__form__box__price__fee__right
-                  \-
               %li.sell__main__content__form__box__price__profit
                 .sell__main__content__form__box__price__profit__left
                   販売利益
+                  = f.number_field :price, style: "display: none", id: "price"
                 .sell__main__content__form__box__price__profit__right
-                  \-
         .sell__main__content__button
           %div
             %p
@@ -124,7 +126,7 @@
               = link_to "", target: "_blank" do
                 加盟店規約
               に同意したことになります。
-          = f.submit "出品する", class: "sell__main__content__button__red"
+          = f.submit "出品する", class: "sell__main__content__button__blue"
           = f.submit "もどる", class: "sell__main__content__button__gray"
 
   = render partial: '/layouts/footer_sub'
