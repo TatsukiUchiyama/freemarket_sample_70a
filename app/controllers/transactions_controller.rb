@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   require "payjp"
   before_action :move_to_sign_in
+  before_action :move_to_sold
   before_action :set_product_to_session, only: :new
   before_action :set_card, only: [:new, :create]
  
@@ -10,7 +11,7 @@ class TransactionsController < ApplicationController
 
     # 対象の商品を取得
     @product = Product.find(params[:product_id])
-    
+   
     # 現在のユーザーがカードを登録済みの場合、カードの情報（payjp）を取得する
     if @card
       # 秘密鍵を設定
@@ -69,5 +70,11 @@ class TransactionsController < ApplicationController
 
   def move_to_sign_in
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def move_to_sold
+    product = Product.find(params[:product_id])
+    sold = Transaction.find_by(product_id: product.id)  
+    redirect_to product_path(product.id) if sold != nil || product.seller_id == current_user.id   
   end
 end
