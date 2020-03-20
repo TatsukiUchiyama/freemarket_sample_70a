@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :transactions, only: [:new, :create, :update, :destroy]
   end
   resources :users, only: :show do
-    resources :cards, only: [:new, :create]
+    resources :cards, only: [:new, :create, :destroy]
     member do
       get 'card'
     end
