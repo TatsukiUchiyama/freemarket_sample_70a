@@ -1,7 +1,9 @@
 class TransactionsController < ApplicationController
   require "payjp"
+  before_action :move_to_sign_in
   before_action :set_product_to_session, only: :new
   before_action :set_card, only: [:new, :create]
+ 
 
   def new
     @transaction = Transaction.new
@@ -63,5 +65,9 @@ class TransactionsController < ApplicationController
   # 現在のユーザーのカードを取得する
   def set_card
     @card = current_user.card
+  end
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
