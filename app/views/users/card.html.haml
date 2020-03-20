@@ -12,7 +12,7 @@
             登録済みクレジットカード
             %li.card__box__lists__list
               - if @card_payjp.brand == "Visa"
-                = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: "card__box__lists__list__image"
+                = image_tag 'logo_visa.gif', alt: '画像を表示できません', class: "card__box__lists__list__image"
             %li.card__box__lists__list
               = "**** **** **** " + @card_payjp.last4
             %li.card__box__lists__list
