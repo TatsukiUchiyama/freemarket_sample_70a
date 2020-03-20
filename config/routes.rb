@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
     resources :cards, only: [:new, :create]
+    member do
+      get 'card'
+    end
   end
   resources :categories, only: :show
 end
