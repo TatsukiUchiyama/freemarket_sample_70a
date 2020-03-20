@@ -1,0 +1,32 @@
+= render partial: "/layouts/header"
+= render partial: "header"
+.show_main
+  = render partial: "side"
+  .show_main__right
+    .card
+      .card__title
+        支払い方法
+      
+      -# 登録済みの場合
+      .card__box
+        %ul.card__box__lists
+          登録済みクレジットカード
+          %li.card__box__lists__list
+            = image_tag 'cards/logo_visa.gif', alt: '画像を表示できません', class: "card__box__lists__list__image"
+          %li.card__box__lists__list
+            **** **** **** 4242
+          %li.card__box__lists__list
+            11 / 24
+        = link_to "#" do
+          .card__box__delete
+            削除する
+
+      -# 未登録の場合
+      -# .card__box--none
+      -#   クレジットカードが登録されていません
+      -#   = link_to "#" do
+      -#     .card__box--none__add
+      -#       = icon('far', 'credit-card', class: 'card__box--none__btn__icon')
+      -#       クレジットカードを登録する
+      
+= render partial: "/layouts/footer"
