@@ -17,10 +17,6 @@
           %label.label
             .sell__main__content__file__up__box
               #image-box
-                -# %input#input_file.input_file{:accept => "image/*", :multiple => "multiple", :name => "input_file", :onchange => "preview_file(this.id);", :type => "file"}/
-                -# %label{:for => "input_file"} アップロード
-                -# #preview_result ここにプレビューを表示する
-
                 = f.fields_for :images do |image|
                   .js-file_group{"data-index" => "#{image.index}"}
                     = image.file_field :image, class: "js-file" 
