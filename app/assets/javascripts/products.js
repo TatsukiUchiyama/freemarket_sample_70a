@@ -29,6 +29,7 @@ $(function(){
   });
 
 
+
   $('#new_product_form').submit(function(){
     // 出品ボタン押下時にチェック処理を実行する
 

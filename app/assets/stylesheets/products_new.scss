@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
       メイリオ, Meiryo, sans-serif;
-    background: #ea352d;
+    background: rgb(37, 190, 218);
     margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
@@ -65,18 +65,26 @@
             transition: box-shadow ease-out 0.3s,
               -webkit-box-shadow ease-out 0.3s;
             cursor: pointer;
-            &__inner {
-              padding: 5px;
-              text-align: center;
-              font-size: 14px;
-              line-height: 1.5;
-              -webkit-transform: translate(0, -50%);
-              transform: translate(0, -50%);
-              pointer-events: none;
-              white-space: pre-wrap;
-              word-wrap: break-word;
-              font-family: monospace, monospace;
-            }
+            /*-- アップロードボタン --*/
+            .input_file { display: none; }
+            .input_file + label { cursor: pointer; display: inline-block; padding: 5px 10px; font-size: 1.4rem; color: #fff; text-decoration: none; border-radius: 4px; background: #167392; }
+
+            /*-- プレビューエリア --*/
+            #preview_result { max-width: 240px; margin-top: 10px; padding: 10px; color: #bbb; text-align: center; background: #eee; }
+            #preview_result img { width: 100%; margin-bottom: 5px; vertical-align: bottom; }
+            #preview_result img:last-child { margin-bottom: 0; }
+            // &__inner {
+            //   padding: 5px;
+            //   text-align: center;
+            //   font-size: 14px;
+            //   line-height: 1.5;
+            //   -webkit-transform: translate(0, -50%);
+            //   transform: translate(0, -50%);
+            //   pointer-events: none;
+            //   white-space: pre-wrap;
+            //   word-wrap: break-word;
+            //   font-family: monospace, monospace;
+            // }
           }
 
           // 画像選択のエラーメッセージエリア
@@ -228,7 +236,7 @@
                 display: flex;
                 &__input {
                   display: inline-block;
-                  width: 80%;
+                  width: 100%;
                   margin: 0 0 0 5%;
                   height: 48px;
                   padding: 10px 16px 8px;
@@ -236,7 +244,7 @@
                   border: 1px solid #ccc;
                   background: #fff;
                   line-height: 1.5;
-                  font-size: 16px;
+                  font-size: 20px;
                   text-align: right;
                   box-sizing: border-box;
                   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
@@ -260,12 +268,12 @@
                 YuGothic, メイリオ, Meiryo, sans-serif;
               &__left {
                 text-align: left;
-                font-size: 14px;
+                font-size: 15px;
                 float: left;
               }
               &__right {
                 float: right;
-                font-size: 14px;
+                font-size: 18px;
                 text-align: right;
               }
               
@@ -275,13 +283,12 @@
               padding: 24px 0;
               border-top: 1px solid #ccc;
               &__left {
-                float: left;
                 font-size: 16px;
                 font-weight: 600;
               }
               &__right {
                 float: right;
-                font-size: 34px;
+                font-size: 28px;
               }
             }
           }
@@ -313,15 +320,15 @@
             text-decoration: underline;
           }
         }
-        &__red {
+        &__blue {
           margin: 24px auto 0;
-          background: #ea352d;
-          border: 1px solid #ea352d;
+          background: rgb(37, 190, 218);
+          border: 1px solid rgb(37, 190, 218);
           color: $whiteText;
           display: block;
           width: 60%;
           line-height: 48px;
-          font-size: 14px;
+          font-size: 20px;
           border: 1px solid transparent;
           border-radius: 5px;
           -webkit-transition: all ease-out 0.3s;
@@ -341,7 +348,7 @@
           border: 1px solid #aaa;
           display: block;
           line-height: 48px;
-          font-size: 14px;
+          font-size: 20px;
           border: 1px solid transparent;
           border-radius: 5px;
           -webkit-transition: all ease-out 0.3s;
