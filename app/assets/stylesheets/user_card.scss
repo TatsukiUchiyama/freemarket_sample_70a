@@ -1,0 +1,70 @@
+// カード情報表示エリアの定義（登録済み、未登録の場合で共用）
+@mixin card_box {
+  align-items: center;
+    width: 350px;
+    margin: 0px auto;
+    padding: 50px 0px;
+    font-weight: bold;
+}
+
+.card{
+  width: 600px;
+  background-color: white;
+  margin-right: 200px;
+
+  // タイトル部分
+  &__title{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #EEEEEE;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  // クレジットカード情報表示エリア
+  &__box{
+    display: flex;
+    justify-content: space-between;
+    @include card_box;
+
+    // クレジットカード情報
+    &__lists{
+      list-style: none;
+      &__list{
+        margin-top: 10px;
+        font-weight: normal;
+        // クレジットカード画像
+        &__image{
+          height: 40px;
+        }
+      }
+    }
+    // 削除ボタン
+    &__delete{
+      color: #EA352D;
+      border: 1px solid #EA352D;
+      border-radius: 3px;
+      padding: 3px;
+      font-size: 15px;
+    }
+  }
+
+  // カードが未登録の場合に表示
+  &__box--none{
+    @include card_box;
+
+    // 登録ボタン
+    &__add{
+      font-weight: normal;
+      width: 350px;
+      height: 50px;
+      background-color: #EA352D;
+      text-align: center;
+      line-height: 50px;
+      color: white;
+      margin-top: 30px;
+    }
+  }
+
+}
