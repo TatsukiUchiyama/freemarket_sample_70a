@@ -5,7 +5,7 @@ $(function(){
     let fee = (data - profit) 
     $('.sell__main__content__form__box__price__fee__right').html("¥ " + fee) 
 		$('.sell__main__content__form__box__price__profit__right').html("¥ " + profit)
-		$('#price').val(profit)
+		$('#price').val(data)
     if(data < 300) { 
     $('.sell__main__content__form__box__price__profit__right').html('');
     $('.sell__main__content__form__box__price__fee__right').html('');
