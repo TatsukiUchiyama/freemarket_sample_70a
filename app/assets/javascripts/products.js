@@ -191,7 +191,7 @@ $(function(){
       // 送信可否フラグを設定
       submit_flg = false;
     }
-    return submit_flg = false;
+    return submit_flg;
 
     
 })
