@@ -58,11 +58,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      @category_parent_array = ["---"]
-      #データベースから、親カテゴリーのみ抽出し、配列化
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
+      @category_parent_array =Category.where(ancestry: nil)
       render :new
     end
   end
