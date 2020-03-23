@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :update]
 
   def index
     @products = Product.includes(:images, :category, :seller).order('created_at DESC')
