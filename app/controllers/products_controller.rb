@@ -70,9 +70,22 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @category_parent_array = Category.where(ancestry: nil)
+
   end
 
   def update
+    binding.pry
+    @product = Product.find(params[:id])
+    binding.pry
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      # 更新失敗したら更新画面へ遷移
+      render :edit
+    end
+
   end
 
   def destroy
@@ -87,12 +100,12 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def move_to_index
     @product = Product.find_by(params[:id])
-    redirect_to action: :index unless user_signed_in? && current_user.id != @product.seller_id 
+    redirect_to action: :index unless user_signed_in? || current_user.id != @product.seller_id 
   end
 
 end

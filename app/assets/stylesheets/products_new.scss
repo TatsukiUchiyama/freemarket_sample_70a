@@ -85,6 +85,21 @@
             //   word-wrap: break-word;
             //   font-family: monospace, monospace;
             // }
+
+            // 【出品・更新用】画像削除ボタン
+            .js-remove{
+              width: 20px;
+              height: 20px;
+              font-size: 15px;
+            }
+
+            // 画像削除用のチェックボックス（非表示）
+            .hidden-destroy{
+              display: none;
+
+            }
+          
+
           }
 
           // 画像選択のエラーメッセージエリア
