@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :clear_session, if: proc { controller_name != "transactions" || controller_name != "cards" }
+  before_action :clear_session, if: proc { controller_name != "transactions" }
+  before_action :clear_session, if: proc { controller_name != "cards" }
 
 
   # ベーシック認証を実行（本番環境のみ）
