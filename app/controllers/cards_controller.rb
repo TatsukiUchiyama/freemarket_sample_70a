@@ -49,10 +49,13 @@ class CardsController < ApplicationController
   def destroy
     # マイページでのみ削除される
     card = Card.find(params[:id])
-    card.destroy
 
-    # マイページの支払い方法のページに遷移
-    redirect_to card_user_path(current_user.id)
+    if card.destroy
+      # マイページの支払い方法のページに遷移
+      redirect_to card_user_path(current_user.id)
+    else
+      render "/users/#{current_user.id}/card"
+    end 
   end
 
   private
