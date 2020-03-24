@@ -1,10 +1,15 @@
 $(function(){
 
+  // 画像追加ボタンの表示非表示
+  if($(".preview").length == 5){
+    $("#add_image").hide();
+  } 
+
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="js-file" type="file"name="product[images_attributes][${index}][image]" id="product_images_attributes_${index}_src">
-                    <span class="js-remove">削除</span>
+                    <span class="js-remove" data-index="${index}">削除（${index}）</span>
                   </div>`;
     return html;
   }
@@ -19,14 +24,17 @@ $(function(){
   // 削除用セレクトボックスを非表示
   $('.hidden-destroy').hide();
 
-  // プレビュー用のimgタグを生成する関数
+  // プレビュー用のimgタグとダミーの削除ボタンを生成する関数
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `<div class='preview'>
+                    <img data-index="${index}" src="${url}" width="100px" height="100px">
+                    <span class='preview__remove' data-index="${index}" >削除</span>
+                  </div>`;
     return html;
   }
 
+  // プレビュー画像を追加する処理（ファイルが選択されたら実行）
   $('#image-box').on('change', '.js-file', function(e) {
-
     // 対象の画像indexを取得
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
@@ -53,6 +61,8 @@ $(function(){
     }
   });
 
+
+  // 画像削除処理
   $('#image-box').on('click', '.js-remove', function() {
 
     // 削除対象の画像index
@@ -68,9 +78,45 @@ $(function(){
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
 
-    // プレビュー画像を削除
-    $(`img[data-index="${targetIndex}"]`).remove();
+    // プレビュー画像と削除ボタンを削除
+    $(`img[data-index="${targetIndex}"]`).parent().remove();
+
   });
+
+
+  // ダミーの画像追加ボタンで画像追加（追加処理処理）
+  $("#add_image").on("click", function(){
+
+    // ファイル選択ボタンの最後尾（＝追加用）のクリックイベント発火
+    $(".js-file:last").click();
+
+    // 5件画像が選択されている場合、追加ボタンを非表示
+    if(5 < $(".preview").length){
+      $(this).hide()
+    }
+    
+    return false;
+  });
+
+  // ダミーの削除ボタンで画像削除（追加処理）
+  $('#image-box').on('click', '.preview__remove', function() {
+
+    // 画像のindexを取得
+    const index = $(this).data('index');
+
+    // 対象の削除ボタンに対してクリックイベント発火
+    $(`.js-remove[data-index="${index}"]`).click();
+
+    // 削除ボタンが非表示の場合は際表示
+    if($("#add_image").css('display') != 'block'){
+      $("#add_image").show();
+    }
+
+    return false;
+  })
+
+  
+
 
 
 

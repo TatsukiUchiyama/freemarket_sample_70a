@@ -47,8 +47,9 @@
               font-size: 14px;
             }
           }
+          // 画像選択エリア
           &__box {
-            display: block;
+            display: flex;
             width: 720px;
             margin: 16px auto 0;
             min-height: 162px;
@@ -73,35 +74,41 @@
             #preview_result { max-width: 240px; margin-top: 10px; padding: 10px; color: #bbb; text-align: center; background: #eee; }
             #preview_result img { width: 100%; margin-bottom: 5px; vertical-align: bottom; }
             #preview_result img:last-child { margin-bottom: 0; }
-            // &__inner {
-            //   padding: 5px;
-            //   text-align: center;
-            //   font-size: 14px;
-            //   line-height: 1.5;
-            //   -webkit-transform: translate(0, -50%);
-            //   transform: translate(0, -50%);
-            //   pointer-events: none;
-            //   white-space: pre-wrap;
-            //   word-wrap: break-word;
-            //   font-family: monospace, monospace;
-            // }
 
-            // 【出品・更新用】画像削除ボタン
-            .js-remove{
-              width: 20px;
-              height: 20px;
-              font-size: 15px;
+            align-items: center;
+
+
+            // プレビュー画像横並びエリア（画像追加削除処理で使用）
+            #image-box{
+              width: 600px;
+              margin: 0 auto;
+
+              // プレビュー画像横並びエリア
+              #previews{
+                display: flex;
+                // プレビュー画像＋削除ボタン
+                .preview{
+                  margin: 0px 10px;
+                  // 削除ボタン
+                  &__remove{
+                    margin-top: 5px;
+                    display: block;
+                    font-size: 15px;
+                    text-align: center;
+                    font-weight: bold;
+                    
+                  }
+                }
+              }
+
+              // 実際にファイル管理するエリア（ファイル選択ボタンと削除ボタンのエリア）
+              .js-file_group{
+                display: none;
+              }
             }
-
-            // 画像削除用のチェックボックス（非表示）
-            .hidden-destroy{
-              display: none;
-
-            }
-          
-
           }
-
+          
+        
           // 画像選択のエラーメッセージエリア
           &__error{
             margin-top: 20px;
@@ -119,6 +126,17 @@
           line-height: 1.5;
           font-size: 16px;
           font-weight: normal;
+        }
+
+        // 画像追加ボタン
+        #add_image{
+          width: 720px;
+          font-size: 18px;
+          text-align: center;
+          margin-top: 20px;
+          &:hover {
+            cursor : pointer;
+          }
         }
         
       }

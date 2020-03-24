@@ -76,9 +76,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    binding.pry
     @product = Product.find(params[:id])
-    binding.pry
     if @product.update(product_params)
       redirect_to root_path
     else

@@ -13,7 +13,8 @@
               %span.form-require
                 必須
               %p.sell__main__content__file__up__head__text
-                最大10枚までアップロードできます
+                最大5枚までアップロードできます
+                
             .sell__main__content__file__up__box
               #image-box
                 #previews
@@ -21,33 +22,34 @@
                   - if @product.persisted?
                     -# 登録されている画像を全て表示させる
                     - @product.images.each_with_index do |image, i|
-                      -# 各画像に対してそれぞれの削除ボタンに紐づくindexを設定する
-                      = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                      .preview
+                        -# 各画像に対してそれぞれの削除ボタンに紐づくindexを設定する
+                        = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                        %span.preview__remove(data-index="#{i}")
+                          = "削除"
 
                 = f.fields_for :images do |image|
+                  -# ファイル選択ボタンと削除ボタン（非表示）
                   .js-file_group(data-index="#{image.index}")
                     = image.file_field :image, {class: 'js-file'}
-                    %span.js-remove
-                      削除
+                    %span.js-remove(data-index="#{image.index}")
+                      = "削除（#{image.index}）"
 
                   -# 編集画面の場合
                   - if @product.persisted?
-                    -# 登録されている画像ごとに削除用のチェックボックスを用意する
+                    -# 登録されている画像ごとに削除用のチェックボックスを用意する（非表示）
                     = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                 -# 編集画面の場合
                 - if @product.persisted?
-                  -# 画像新規追加用のファイル選択ボタン
+                  -# 画像新規追加用のファイル選択ボタンと削除ボタン（非表示）
                   .js-file_group(data-index="#{@product.images.count}")
                     = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-                    %span.js-remove
-                      削除
+                    %span.js-remove(data-index="#{@product.images.count}")
+                      = "削除（#{@product.images.count}）"
+          #add_image
+            = icon('fas', 'camera')
+            = "画像を追加する"
 
-
-
-                -#   = image.file_field :image, class: "js-file" 
-              -# %input{type: "file", class: "sell__main__content__file__up__box__file", style: "display: none;"}
-              -# %pre.sell__main__content__file__up__box__inner
-              -#   ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
         .sell__main__content__form
           %label
             商品
