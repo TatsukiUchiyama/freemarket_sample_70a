@@ -1,0 +1,31 @@
+= render partial: "/layouts/header"
+= render partial: "header"
+.show_main
+  = render partial: "side"
+  .show_main__right
+    .card
+      .card__title
+        支払い方法
+      - if @card_payjp
+        .card__box
+          %ul.card__box__lists
+            登録済みクレジットカード
+            %li.card__box__lists__list
+              - if @card_payjp.brand == "Visa"
+                = image_tag 'logo_visa.gif', alt: '画像を表示できません', class: "card__box__lists__list__image"
+            %li.card__box__lists__list
+              = "**** **** **** " + @card_payjp.last4
+            %li.card__box__lists__list
+              = "有効期限 #{@card_payjp.exp_month.to_s} / #{@card_payjp.exp_year.to_s.slice(2,3)}"
+          = link_to user_card_path(current_user.id, @card.id), method: :delete do
+            .card__box__delete
+              削除する
+      - else
+        .card__box--none
+          クレジットカードが登録されていません
+          = link_to new_user_card_path(current_user.id) do
+            .card__box--none__add
+              = icon('far', 'credit-card', class: 'card__box--none__btn__icon')
+              クレジットカードを登録する
+
+= render partial: "/layouts/footer"

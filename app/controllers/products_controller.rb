@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
+
 before_action :move_to_root, only: :edit
 
+before_action :move_to_index, only: [:edit, :update]
+
   def index
-    @products = Product.includes(:images, :category, :user).order('created_at DESC')
-
-
+    @products = Product.includes(:images, :category, :seller).order('created_at DESC')
     @ham = Product.where(brand: '伊藤ハム')
-
   end
 
   def category
@@ -50,20 +50,16 @@ before_action :move_to_root, only: :edit
 
   def create
     @product = Product.new(product_params)
-    binding.pry
     if @product.save
       redirect_to root_path
     else
-      @product = Product.new
-      @product.images.new
-      @category_parent_array = Category.where(ancestry: nil)
       redirect_to new_product_path
     end
   end
 
   def show
     @product = Product.find(params[:id])
-    @user = @product.user
+    @user = @product.seller
     @category = @product.category
   end
 
@@ -99,12 +95,18 @@ before_action :move_to_root, only: :edit
 
   private
   def product_params
+
     params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id,:shipping_duration_id, :price, :category_id, images_attributes:  [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def move_to_root
     product = Product.find(params[:id])
     redirect_to root_path unless current_user == product.user
+  end
+
+  def move_to_index
+    @product = Product.find_by(params[:id])
+    redirect_to action: :index unless user_signed_in? && current_user.id != @product.seller_id 
   end
 
 end

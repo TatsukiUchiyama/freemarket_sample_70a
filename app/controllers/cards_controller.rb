@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   require "payjp"
-
+  before_action :move_to_sign_in
   before_action :set_card
 
   def new 
@@ -36,7 +36,8 @@ class CardsController < ApplicationController
           # 購入確認画面へ遷移する
           redirect_to new_product_transaction_path(product_id)
         else
-          # マイページから遷移してきた場合（未実装）
+          # マイページから遷移してきた場合
+          redirect_to card_user_path(current_user.id)
         end
 
       else
@@ -45,8 +46,24 @@ class CardsController < ApplicationController
     end
   end
 
+  def destroy
+    # マイページでのみ削除される
+    card = Card.find(params[:id])
+
+    if card.destroy
+      # マイページの支払い方法のページに遷移
+      redirect_to card_user_path(current_user.id)
+    else
+      render "/users/#{current_user.id}/card"
+    end 
+  end
+
   private
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end

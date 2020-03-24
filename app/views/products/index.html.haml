@@ -1,11 +1,19 @@
 = render partial: "/layouts/header"
 
+
 .Exhibition_btn
-  =link_to new_product_path do
-    .Exhibition_btn__content
-      .Exhibition_btn__content--text
-        出品する
-      = image_tag "icon_camera.png", class:"Exhibition_btn__content--icon"
+  - if user_signed_in?
+    =link_to new_product_path do
+      .Exhibition_btn__content
+        .Exhibition_btn__content--text
+          出品する
+        = image_tag "icon_camera.png", class:"Exhibition_btn__content--icon"
+  - else  
+    =link_to new_user_session_path do
+      .Exhibition_btn__content
+        .Exhibition_btn__content--text
+          出品する
+        = image_tag "icon_camera.png", class:"Exhibition_btn__content--icon"
 
 .main_visual
   .main_visual__content
@@ -99,21 +107,29 @@
   .pic_up_container__title
     新着ソーセージ
   .pic_up_container__products
-    - @products.first(3).each do |product|
-      = link_to product_path(product.id) do
-        .pic_up_container__products__box
-          = image_tag "#{product.images.first.src}",class:"pic_up_container__products__box--image"
-          .pic_up_container__products__box__lower
-            .pic_up_container__products__box__lower__data
-              .pic_up_container__products__box__lower__data--name
-                = product.name
-              .pic_up_container__products__box__lower__data--price
-                = product.price
-                円
-              .pic_up_container__products__box__lower__data--tax
-                （税込み）
-            .pic_up_container__products__box__lower--fav
-              ⭐️１
+
+    -count = 0
+    - @products.each do |product|
+      -if count < 3
+        -if Transaction.find_by(product_id: product.id) == nil
+        - count += 1
+          = link_to product_path(product.id) do
+            .pic_up_container__products__box
+              = image_tag "#{product.images.first.image}",class:"pic_up_container__products__box--image"
+              .pic_up_container__products__box__lower
+                .pic_up_container__products__box__lower__data
+                  .pic_up_container__products__box__lower__data--name
+                    = product.name
+                  .pic_up_container__products__box__lower__data--price
+                    = product.price
+                    円
+                  .pic_up_container__products__box__lower__data--tax
+                    （税込み）
+                .pic_up_container__products__box__lower--fav
+                  ⭐️１
+      - else            
+        - break
+
 
 .pic_up_container
   .pic_up_container__head
@@ -121,7 +137,9 @@
   .pic_up_container__title
     伊藤ハム
   .pic_up_container__products
+
     - @ham.first(3).each do |product|
+
       = link_to product_path(product.id) do
         .pic_up_container__products__box
           = image_tag "#{product.images.first.src}",class:"pic_up_container__products__box--image"
