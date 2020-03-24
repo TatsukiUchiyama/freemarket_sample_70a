@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
 
-before_action :move_to_root, only: :edit
-
 before_action :move_to_index, only: [:edit, :update]
 
 before_action :set_product, only: [:show, :edit, :update, :destroy]
@@ -95,14 +93,9 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
     params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id,:shipping_duration_id, :price, :category_id, images_attributes:  [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
-  def move_to_root
-    product = Product.find(params[:id])
-    redirect_to root_path unless current_user == product.user
-  end
-
   def move_to_index
     @product = Product.find_by(params[:id])
-    redirect_to action: :index unless user_signed_in? && current_user.id != @product.seller_id 
+    redirect_to action: :index unless user_signed_in? || current_user.id != @product.seller_id 
   end
 
   def set_product
