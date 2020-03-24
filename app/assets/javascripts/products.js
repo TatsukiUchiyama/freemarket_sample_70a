@@ -9,10 +9,10 @@ $(function(){
   // 画像データをインプットするボタンと削除ボタンを追加する
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file" type="file"
+                    <input class="js-file hidden" type="file"
                     name="product[images_attributes][${num}][image]"
                     id="product_images_attributes_${num}_image"><br>
-                    <div data-index="${num}" class="js-remove">削除(${num})</div>
+                    <div data-index="${num}" class="js-remove hidden">削除(${num})</div>
                   </div>`;
     return html;
   }
@@ -124,7 +124,7 @@ $(function(){
 
 
 
-  $('#new_product_form').submit(function(){
+  $('#new_product_form, #edit_product_form').submit(function(){
     // 出品ボタン押下時にチェック処理を実行する
 
     // エラーメッセージを初期化
@@ -144,8 +144,7 @@ $(function(){
     let scroll_flg = false;
 
     // 画像の選択
-    let img_first = $("#product_images_attributes_0_image").val();
-    if(img_first == ""){
+    if( $(".image_box").length == 0 ){
 
       // エラーメッセージ設定
       $(".sell__main__content__file__up__error").text("画像を選択してください");
@@ -277,7 +276,7 @@ $(function(){
     }
 
     // 販売価格
-    let price = $("#product_price").val();
+    let price = $("#sell_price").val();
     if( price == "" || Number(price) < 300 || 9999999 < Number(price)){
 
       // エラーメッセージを設定

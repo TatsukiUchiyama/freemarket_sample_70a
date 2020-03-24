@@ -59,6 +59,10 @@
               font-size: 14px;
             }
           }
+          &__error{
+            margin-top: 20px;
+            color: red;
+          }
 
         }
         .label-content{
@@ -88,27 +92,15 @@
             padding-top: 16px;
           }
         }
-
-        // 画像追加ボタン
-        #add_image{
-          width: 720px;
-          font-size: 18px;
-          text-align: center;
-          margin-top: 20px;
-          &:hover {
-            cursor : pointer;
-          }
-        }
         
       }
       .js-file_group{
-        display: none;
+        font-size: 0;
       }
       .js_remove__btn{
         text-align: center;
         font-size: 20px;
       }
-      
       
       &__form {
         width: 800px;
