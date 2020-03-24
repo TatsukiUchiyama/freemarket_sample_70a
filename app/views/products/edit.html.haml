@@ -14,40 +14,28 @@
                 必須
               %p.sell__main__content__file__up__head__text
                 最大5枚までアップロードできます
-            .sell__main__content__file__up__box
               #image-box
                 #previews
-                  -# 編集画面の場合
-                  - if @product.persisted?
-                    -# 登録されている画像を全て表示させる
-                    - @product.images.each_with_index do |image, i|
-                      .preview
-                        -# 各画像に対してそれぞれの削除ボタンに紐づくindexを設定する
-                        = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
-                        %span.preview__remove(data-index="#{i}")
-                          = "削除"
-
+                  .preview
+                    - if @product.persisted?
+                      - @product.images.each_with_index do |image, i|
+                        .image_box
+                          = image_tag image.image.url, data: { index: i }, width: "144", height: '144'
+                          .js_remove__btn(data-index="#{i}")
+                            = "削除"
+                  .label-content
+                    %pre.label-box__text-visible.fa.fa-camera
                 = f.fields_for :images do |image|
-                  -# ファイル選択ボタンと削除ボタン（非表示）
-                  .js-file_group(data-index="#{image.index}")
-                    = image.file_field :image, {class: 'js-file'}
-                    %span.js-remove(data-index="#{image.index}")
-                      = "削除（#{image.index}）"
 
-                  -# 編集画面の場合
+                  .js-file_group(data-index = "#{image.index}")
+                    = image.file_field :image, class: 'js-file hidden'
+                    .js-remove.hidden(data-index = "#{image.index}") 削除#{image.index}
                   - if @product.persisted?
-                    -# 登録されている画像ごとに削除用のチェックボックスを用意する（非表示）
                     = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-                -# 編集画面の場合
                 - if @product.persisted?
-                  -# 画像新規追加用のファイル選択ボタンと削除ボタン（非表示）
-                  .js-file_group(data-index="#{@product.images.count}")
+                  .js-file_group(data-index = "#{@product.images.count}")
                     = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-                    %span.js-remove(data-index="#{@product.images.count}")
-                      = "削除（#{@product.images.count}）"
-          #add_image
-            = icon('fas', 'camera')
-            = "画像を追加する"
+                    .js-remove(data-index = "#{@product.images.count}") 削除
 
         .sell__main__content__form
           %label
@@ -68,8 +56,18 @@
               = f.label 'カテゴリー', class: 'listing-default__label'
               %span.form-require
                 必須
-              .sell__main__content__form__box__group__select
-                = f.collection_select :category_parent_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: 'sell__main__content__form__box__group__select'}
+                -# 親カテゴリボックス
+              .sell__main__content__form__box__group
+                .sell__main__content__form__box__group__select
+                  = f.collection_select :category_parent_id, @category_parent_array, :id, :name, {selected: @product_root_category.id}
+                  -# 子カテゴリボックス
+              #children_wrapper.listing-select-wrapper__added
+                .listing-select-wrapper__box
+                  = f.collection_select :category_id, @product_children_category, :id, :name, {prompt: ""}, {id: "existing_child_category"}
+                  -# 孫カテゴリボックス
+              #grandchildren_wrapper.listing-select-wrapper__added
+                .listing-select-wrapper__box
+                  = f.collection_select :category_id, @product_grandcildren_category, :id, :name
 
 
             %label
@@ -144,7 +142,8 @@
                 加盟店規約
               に同意したことになります。
               
-          = f.submit "変更する", class: "sell__main__content__button__blue"
-          = link_to product_path(@product.id), class: "sell__main__content__button__gray" do
+        = f.submit "変更する", class: "sell__main__content__button__blue"
+        = link_to product_path(@product.id) do
+          .sell__main__content__button__gray
             キャンセル
-   = render partial: '/layouts/footer_sub'
+  = render partial: '/layouts/footer_sub'

@@ -1,12 +1,18 @@
 $(function(){
 
+  let image_count = $('.image_box').length
+
+  if(image_count >= 5 ){
+    $('.label-content').css({'display': `none`})
+  }
+
   // 画像データをインプットするボタンと削除ボタンを追加する
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file hidden" type="file"
+                    <input class="js-file" type="file"
                     name="product[images_attributes][${num}][image]"
                     id="product_images_attributes_${num}_image"><br>
-                    <div data-index="${num}" class="js-remove hidden">削除(${num})</div>
+                    <div data-index="${num}" class="js-remove">削除(${num})</div>
                   </div>`;
     return html;
   }
@@ -112,37 +118,6 @@ $(function(){
     $(`.js-remove[data-index="${remove_index}"]`).click();
   });
 
-
-  // ダミーの画像追加ボタンで画像追加（追加処理処理）
-  $("#add_image").on("click", function(){
-
-    // ファイル選択ボタンの最後尾（＝追加用）のクリックイベント発火
-    $(".js-file:last").click();
-
-    // 5件画像が選択されている場合、追加ボタンを非表示
-    if(5 < $(".preview").length){
-      $(this).hide()
-    }
-    
-    return false;
-  });
-
-  // ダミーの削除ボタンで画像削除（追加処理）
-  $('#image-box').on('click', '.preview__remove', function() {
-
-    // 画像のindexを取得
-    const index = $(this).data('index');
-
-    // 対象の削除ボタンに対してクリックイベント発火
-    $(`.js-remove[data-index="${index}"]`).click();
-
-    // 削除ボタンが非表示の場合は際表示
-    if($("#add_image").css('display') != 'block'){
-      $("#add_image").show();
-    }
-
-    return false;
-  })
 
   
 
