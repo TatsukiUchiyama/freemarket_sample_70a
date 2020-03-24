@@ -37,7 +37,7 @@ footer,header,hgroup,menu,nav,section {
 display:block;
 }
 
-nav ul {
+ul, li {
 list-style:none;
 }
 
@@ -54,6 +54,7 @@ q:before, q:after {
 content:'';
 content:none;
 }
+
 
 a {
 margin:0;

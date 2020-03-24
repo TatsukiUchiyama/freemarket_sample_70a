@@ -1,86 +1,115 @@
 $(function(){
 
-  // 画像追加ボタンの表示非表示
-  if($(".preview").length == 5){
-    $("#add_image").hide();
-  } 
-
-  // 画像用のinputを生成する関数
-  const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"name="product[images_attributes][${index}][image]" id="product_images_attributes_${index}_src">
-                    <span class="js-remove" data-index="${index}">削除（${index}）</span>
+  // 画像データをインプットするボタンと削除ボタンを追加する
+  const buildFileField = (num)=> {
+    const html = `<div data-index="${num}" class="js-file_group">
+                    <input class="js-file hidden" type="file"
+                    name="product[images_attributes][${num}][image]"
+                    id="product_images_attributes_${num}_image"><br>
+                    <div data-index="${num}" class="js-remove hidden">削除(${num})</div>
+                  </div>`;
+    return html;
+  }
+  // プレビュー用の画像を表示する
+  const buildImg = (index, url)=> {
+    const html = `<div class="image_box">
+                    <img data-index="${index}" src="${url}" width="144px" height="144px">
+                    <div class="js_remove__btn" data-index="${index}">削除</div>
                   </div>`;
     return html;
   }
 
-  // file_fieldのnameに動的なindexをつける為の配列
+  // 画像に連番をつけるためのメソッド
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-
-  // 最後のファイル選択ボタンのindex
+  // 既に使われた番号を削除し末尾に１１以降の数字を追加
   lastIndex = $('.js-file_group:last').data('index');
-  // 最後のファイル選択ボタンのindexを除外（既に使われているindexを除外）
   fileIndex.splice(0, lastIndex);
-  // 削除用セレクトボックスを非表示
+
+  // 要素を非表示にする
   $('.hidden-destroy').hide();
 
-  // プレビュー用のimgタグとダミーの削除ボタンを生成する関数
-  const buildImg = (index, url)=> {
-    const html = `<div class='preview'>
-                    <img data-index="${index}" src="${url}" width="100px" height="100px">
-                    <span class='preview__remove' data-index="${index}" >削除</span>
-                  </div>`;
-    return html;
-  }
 
-  // プレビュー画像を追加する処理（ファイルが選択されたら実行）
-  $('#image-box').on('change', '.js-file', function(e) {
-    // 対象の画像indexを取得
+  // jsファイルの画像が変更された時にメソッドが発火する
+  $(document).on('change', '.js-file', function(e) {
+
+    // jsファイルの親要素のインデックス番号を取得
     const targetIndex = $(this).parent().data('index');
+
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-    
+
+
+    // もし押されたjsファイル要素に既に画像が入っている場合
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      // 該当indexを持つimgタグがある場合（画像を変更する場合）
 
-      // 変更後のurlを設定する
-      img.setAttribute('src', blobUrl);
+      // 画像を新しく選択したものに更新する
+      img.setAttribute('image', blobUrl);
 
-    } else {
-      // 該当indexを持つimgタグが存在しない場合（画像を新規追加する場合）
+    } else {  // 押されたjsファイル要素に画像が入っていない場合
 
-      // 対象のindexと新たな画像urlを元にimgタグを作成、append
-      $('#previews').append(buildImg(targetIndex, blobUrl));
+      // previewsに画像表示要素を追加
+      $('.preview').append(buildImg(targetIndex, blobUrl));
 
-      // fileIndexの先頭の数字を使ってinputを作る
+      // image-boxに画像データインプットボタンと削除ボタンを追加する
       $('#image-box').append(buildFileField(fileIndex[0]));
+
+      // fileindexの若番号を削除し末尾に１１以降の数字を追加する
       fileIndex.shift();
-      // 末尾の数に1足した数を追加する
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+
+      // 5個目の画像が投稿された時画像投稿ボタンを非表示にする
+      let count = $('.image_box').length
+
+      if(count >= 5 ){
+        $('.label-content').css({
+          'display': `none`
+        })
+      }
     }
   });
 
-
-  // 画像削除処理
+  // もし削除ボタンが押された場合
   $('#image-box').on('click', '.js-remove', function() {
 
-    // 削除対象の画像index
-    const targetIndex = $(this).parent().data('index')
+    // 押された削除ボタンの親要素のインデックス番号を取得
+    const targetIndex = $(this).parent().data('index');
 
-    // 削除対象となる画像用のチェックボックスを取得する
+    //↑の番号を含むインプット要素のチェックボックスを取得
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 
-
+    // 親要素もろともインプット要素と削除ボタンを取り除く
     $(this).parent().remove();
+
+    // プレビュー表示画像を削除する
+    $(`img[data-index="${targetIndex}"]`).parent().remove();
+
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
 
-    // プレビュー画像と削除ボタンを削除
-    $(`img[data-index="${targetIndex}"]`).parent().remove();
+    // 5個目の画像が削除された時画像投稿ボタンを表示する
+    let count = $('.image_box').length
 
+    if(count <= 4 ){
+      $('.label-content').css({
+        'display': `block`
+      })
+    }
+  });
+
+  // グレーのエリアがクリックされた時最後のフォームに画像を投稿する
+  $('#image-box').on('click', '.label-content', function(){
+    $('.js-file:last').click();
+    return false;
+  });
+
+  // 画像したの削除ボタンが押された時隠された削除ボタンを押す
+  $(document).on('click', '.js_remove__btn', function(){
+    let remove_index = $(this).data('index');
+    $(`.js-remove[data-index="${remove_index}"]`).click();
   });
 
 
@@ -291,3 +320,4 @@ $(function(){
 
 
 });
+
