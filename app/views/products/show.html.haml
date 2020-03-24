@@ -10,19 +10,19 @@
         %i
           = icon('fa', 'angle-right')
       %li
-        = link_to "#" do
+        = link_to category_path(@category.root) do
           = @category.root.name
       %li
         %i
           = icon('fa', 'angle-right')
       %li
-        = link_to "#" do
+        = link_to category_path(@category.parent) do
           = @category.parent.name
       %li
         %i
           = icon('fa', 'angle-right') 
       %li
-        = link_to "do" do
+        = link_to category_path(@category) do
           = @category.name
       %li
         %i
