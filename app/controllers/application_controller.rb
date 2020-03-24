@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :clear_session, if: proc { controller_name != "transactions" }
+  before_action :clear_session, if: proc { controller_name != "cards" }
+
 
   # ベーシック認証を実行（本番環境のみ）
   before_action :basic_auth, if: :production?
@@ -21,6 +24,12 @@ class ApplicationController < ActionController::Base
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
+
+  def clear_session
+    if session[:product_id]
+      session.delete(:product_id)
     end
   end
 

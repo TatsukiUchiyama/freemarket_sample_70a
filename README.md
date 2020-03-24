@@ -58,7 +58,7 @@
 |shipping_from_area|string|null: false|
 |shipping_duration|string|null: false|
 |price|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :images
@@ -69,7 +69,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |product_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|purchaser_id|integer|null: false, foreign_key: true|
 |card_id|integer|null: false, foreign_key: true|
 |status|integer|null: false|
 ### Association

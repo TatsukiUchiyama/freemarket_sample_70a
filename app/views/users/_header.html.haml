@@ -1,0 +1,16 @@
+.Exhibition_btn
+  =link_to new_product_path do
+    .Exhibition_btn__content
+      .Exhibition_btn__content--text
+        出品する
+      = image_tag "icon_camera.png", class:"Exhibition_btn__content--icon"
+.show_header
+  %ul.show_header__pagetitle
+    %li.show_header__pagetitle__li
+      = link_to root_path do
+        FURIMA
+    %li.show_header__pagetitle__li.icon
+      ＞
+    %li.show_header__pagetitle__li
+      = link_to "#" do
+        マイページ

@@ -6,7 +6,7 @@
   .form-require {
     font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
       メイリオ, Meiryo, sans-serif;
-    background: #ea352d;
+    background: rgb(37, 190, 218);
     margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
@@ -71,6 +71,12 @@
             line-height: 144px;
             font-size: 30px;
             color: rgb(160, 160, 160);
+
+          // 画像選択のエラーメッセージエリア
+          &__error{
+            margin-top: 20px;
+            color: red;
+
           }
         }
         #previews{
@@ -81,6 +87,7 @@
             padding-top: 16px;
           }
         }
+        
       }
       .js-file_group{
         font-size: 0;
@@ -109,7 +116,7 @@
         &__input {
           box-sizing: border-box;
           width: 100%;
-          margin: 8px 0 40px;
+          margin: 8px 0 20px;
           font-weight: normal;
           height: 48px;
           padding: 10px 16px 8px;
@@ -123,6 +130,11 @@
           &:nth-child(3) {
             height: 142px;
           }
+        }
+        // 商品説明のテキストエリア
+        textarea{
+          width: 100%;
+          height: 150px;
         }
         &__sub {
           color: #888;
@@ -161,7 +173,7 @@
                 font-size: 16px;
                 line-height: 1.5;
                 cursor: pointer;
-                margin: 0 0 40px;                
+                margin: 0 0 20px;                
               }
               .fas.fa-chevron-down.sell__main__content__form__box__group__select--arrow-down{
                 position: absolute;
@@ -169,7 +181,21 @@
                 top: 17px;
               }
             }
+            // 配送料負担のエラーメッセージエリア
+            &__shipping_payer--error, &__shipping_from_area--error{
+              color: red;
+              margin-bottom: 30px;
+            }
+            &__shipping_duration--error{
+              color: red;
+            }
           }
+          // カテゴリーのエラーメッセージエリア
+          &__category--error{
+            color: red;
+            margin-bottom: 30px;
+          }
+
           .listing-select-wrapper__box{
             position: relative;
             select {
@@ -189,6 +215,19 @@
               right: 15px;
               top: 17px;
             }
+
+          .listing-select-wrapper__box--select{
+            width: 400px;
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+            margin: 0 0 20px;
+
           }
           &__price {
             &__top {
@@ -213,7 +252,7 @@
                 &__input {
                   box-sizing: border-box;
                   display: inline-block;
-                  width: 80%;
+                  width: 100%;
                   margin: 0 0 0 5%;
                   height: 48px;
                   padding: 10px 16px 8px;
@@ -221,11 +260,17 @@
                   border: 1px solid #ccc;
                   background: #fff;
                   line-height: 1.5;
-                  font-size: 16px;
+                  font-size: 20px;
                   text-align: right;
                   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
                     YuGothic, メイリオ, Meiryo, sans-serif;
                 }
+              }
+              // 販売価格のエラーメッセージエリア
+              &__error{
+                clear: both;
+                line-height: 30px;
+                color: red;
               }
             }
             &__fee {
@@ -237,29 +282,44 @@
                 YuGothic, メイリオ, Meiryo, sans-serif;
               &__left {
                 text-align: left;
-                font-size: 14px;
+                font-size: 15px;
                 float: left;
               }
               &__right {
                 float: right;
-                font-size: 14px;
+                font-size: 18px;
                 text-align: right;
               }
+              
+              
             }
             &__profit {
               padding: 24px 0;
               border-top: 1px solid #ccc;
               &__left {
-                float: left;
                 font-size: 16px;
                 font-weight: 600;
               }
               &__right {
                 float: right;
-                font-size: 34px;
+                font-size: 28px;
               }
             }
           }
+          // 商品の状態のエラーメッセージエリア
+          &__condition--error{
+            color: red;
+            font-weight: normal;
+            font-size: 16px;
+          }
+        }
+        // 商品名のエラーメッセージエリア
+        &__name--error{
+          color: red;
+          margin-bottom: 50px;
+        }
+        &__description--error{
+          color: red;
         }
       }
       &__button {
@@ -273,15 +333,15 @@
             text-decoration: underline;
           }
         }
-        &__red {
+        &__blue {
           margin: 24px auto 0;
-          background: #ea352d;
-          border: 1px solid #ea352d;
+          background: rgb(37, 190, 218);
+          border: 1px solid rgb(37, 190, 218);
           color: $whiteText;
           display: block;
           width: 60%;
           line-height: 48px;
-          font-size: 14px;
+          font-size: 20px;
           border: 1px solid transparent;
           border-radius: 5px;
           -webkit-transition: all ease-out 0.3s;
@@ -300,7 +360,7 @@
           border: 1px solid #aaa;
           display: block;
           line-height: 48px;
-          font-size: 14px;
+          font-size: 20px;
           border: 1px solid transparent;
           border-radius: 5px;
           -webkit-transition: all ease-out 0.3s;
