@@ -1,6 +1,6 @@
 .sell
   = render partial: '/layouts/header_sub'
-
+  
   = form_with(model: @product, local: true) do |f|
     .sell__main
       .sell__main__content
@@ -13,16 +13,20 @@
               %span.form-require
                 必須
               %p.sell__main__content__file__up__head__text
-                最大10枚までアップロードできます
+                最大5枚までアップロードできます
               #image-box
                 #previews
                   .preview
                     - if @product.persisted?
                       - @product.images.each_with_index do |image, i|
-                        = image_tag image.image.url, data: { index: i }, width: "144", height: '144'
+                        .image_box
+                          = image_tag image.image.url, data: { index: i }, width: "144", height: '144'
+                          .js_remove__btn(data-index="#{i}")
+                            = "削除"
                   .label-content
                     %pre.label-box__text-visible.fa.fa-camera
                 = f.fields_for :images do |image|
+
                   .js-file_group(data-index = "#{image.index}")
                     = image.file_field :image, class: 'js-file hidden'
                     .js-remove.hidden(data-index = "#{image.index}") 削除#{image.index}
@@ -31,7 +35,7 @@
                 - if @product.persisted?
                   .js-file_group(data-index = "#{@product.images.count}")
                     = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-                    .js-remove 削除
+                    .js-remove(data-index = "#{@product.images.count}") 削除
 
         .sell__main__content__form
           %label
@@ -39,19 +43,20 @@
             %span.form-require
               必須
             = f.text_field :name, class: "sell__main__content__form__input", placeholder: "商品名（必須 40文字まで)", maxlength: "40"
-          %label
+          %la
             商品の説明
             %span.form-require
               必須
-          = f.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", maxlength: "1000"
+          = f.text_area :description, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）&#13;&#10;2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。&#13;&#10;あわせやすいのでおすすめです。".html_safe, maxlength: "1000"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             商品の詳細
-          .sell__main__content__form__box.listing-form-box
+          .sell__main__content__form__box
             .sell__main__content__form__box__group.listing-product-detail__category
               = f.label 'カテゴリー', class: 'listing-default__label'
-              %span.form-require 必須
-              -# 親カテゴリボックス
+              %span.form-require
+                必須
+                -# 親カテゴリボックス
               .sell__main__content__form__box__group
                 .sell__main__content__form__box__group__select
                   = f.collection_select :category_parent_id, @category_parent_array, :id, :name, {selected: @product_root_category.id}
@@ -64,21 +69,13 @@
                 .listing-select-wrapper__box
                   = f.collection_select :category_id, @product_grandcildren_category, :id, :name
 
-            .sell__main__content__form__box__group.listing-product-detail__brand
-              = f.label 'ブランド', class: 'listing-default__label'
-              %span.form-require-none 任意
-              .sell__main__content__form__box__group
-                .sell__main__content__form__box__group__select
-                  = f.text_field :brand, placeholder: "PATEK PHILIPPE、Ede & Ravenscroftなど", class: "sell__main__content__form__input"
 
             %label
               商品の状態
               %span.form-require
                 必須
-              .sell__main__content__form__box__group__select
-                = f.collection_select :condition_id, Condition.all, :id, :condition
-
-
+            .sell__main__content__form__box__group__select
+              = f.collection_select :condition_id, Condition.all, :id, :condition
 
         .sell__main__content__form
           %h3.sell__main__content__form__sub
@@ -115,17 +112,16 @@
                     必須
                 .sell__main__content__form__box__price__top__right
                   ¥
-                  = f.number_field :price, class: "sell__main__content__form__box__price__top__right__input", placeholder: "例）300"
+                  %input#sell_price.sell__main__content__form__box__price__top__right__input{value: @product.price,placeholder: "例）300", type: "number"}/
               %li.sell__main__content__form__box__price__fee
                 .sell__main__content__form__box__price__fee__left
                   販売手数料 (10%)
                 .sell__main__content__form__box__price__fee__right
-                  \-
               %li.sell__main__content__form__box__price__profit
                 .sell__main__content__form__box__price__profit__left
                   販売利益
+                  = f.number_field :price, style: "display: none", id: "price"
                 .sell__main__content__form__box__price__profit__right
-                  \-
         .sell__main__content__button
           %div
             %p
@@ -145,6 +141,9 @@
               = link_to "", target: "_blank" do
                 加盟店規約
               に同意したことになります。
-          = f.submit "変更を保存する", class: "sell__main__content__button__red"
-          = f.submit "もどる", class: "sell__main__content__button__gray"
+              
+        = f.submit "変更する", class: "sell__main__content__button__blue"
+        = link_to product_path(@product.id) do
+          .sell__main__content__button__gray
+            キャンセル
   = render partial: '/layouts/footer_sub'
