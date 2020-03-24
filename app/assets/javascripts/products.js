@@ -1,11 +1,18 @@
 $(function(){
+
+  let image_count = $('.image_box').length
+
+  if(image_count >= 5 ){
+    $('.label-content').css({'display': `none`})
+  }
+
   // 画像データをインプットするボタンと削除ボタンを追加する
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file hidden" type="file"
+                    <input class="js-file" type="file"
                     name="product[images_attributes][${num}][image]"
                     id="product_images_attributes_${num}_image"><br>
-                    <div data-index="${num}" class="js-remove hidden">削除(${num})</div>
+                    <div data-index="${num}" class="js-remove">削除(${num})</div>
                   </div>`;
     return html;
   }
@@ -57,8 +64,6 @@ $(function(){
       fileIndex.shift();
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
 
-
-
       // 5個目の画像が投稿された時画像投稿ボタンを非表示にする
       let count = $('.image_box').length
 
@@ -91,7 +96,6 @@ $(function(){
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
 
-
     // 5個目の画像が削除された時画像投稿ボタンを表示する
     let count = $('.image_box').length
 
@@ -113,6 +117,10 @@ $(function(){
     let remove_index = $(this).data('index');
     $(`.js-remove[data-index="${remove_index}"]`).click();
   });
+
+
+  
+
 
 
 
@@ -282,6 +290,8 @@ $(function(){
 
     
 })
+
+
 
 
 });

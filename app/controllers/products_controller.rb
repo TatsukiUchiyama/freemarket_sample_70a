@@ -69,6 +69,7 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
     @product_children_category = @product_root_category.children
     product_parent_category = @product.category.parent
     @product_grandcildren_category = product_parent_category.children
+
   end
 
   def update
@@ -90,7 +91,7 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id,:shipping_duration_id, :price, :category_id, images_attributes:  [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def move_to_index
