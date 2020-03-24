@@ -4,10 +4,21 @@
   background: #f5f5f5;
   color: #333;
   .form-require {
-    box-sizing: border-box;
     font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
       メイリオ, Meiryo, sans-serif;
     background: rgb(37, 190, 218);
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color:  $whiteText;
+    font-size: 12px;
+    vertical-align: top;
+    font-weight: 600;
+  }
+  .form-require-none{
+    font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
+    メイリオ, Meiryo, sans-serif;
+    background: #acacac;
     margin: 0 0 0 8px;
     padding: 2px 4px;
     border-radius: 2px;
@@ -30,10 +41,10 @@
           メイリオ, Meiryo, sans-serif;
       }
       &__file {
-        width: 700px;
-        padding: 40px;
+        width: 720px;
+        padding: 40px 0;
         border-top: 1px solid #eee;
-        box-sizing: border-box;
+        margin: 0 auto;
         font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
           メイリオ, Meiryo, sans-serif;
         &__up {
@@ -47,72 +58,49 @@
               font-size: 14px;
             }
           }
-          &__box {
-            display: block;
-            width: 720px;
-            margin: 16px auto 0;
-            min-height: 162px;
-            background: #f5f5f5;
-            border: 1px dashed #ccc;
-            font-size: 0;
-            text-align: center;
-            box-sizing: border-box;
-            font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
-              YuGothic, メイリオ, Meiryo, sans-serif;
-            -webkit-transition: -webkit-box-shadow ease-out 0.3s;
-            transition: -webkit-box-shadow ease-out 0.3s;
-            transition: box-shadow ease-out 0.3s;
-            transition: box-shadow ease-out 0.3s,
-              -webkit-box-shadow ease-out 0.3s;
-            cursor: pointer;
-            /*-- アップロードボタン --*/
-            .input_file { display: none; }
-            .input_file + label { cursor: pointer; display: inline-block; padding: 5px 10px; font-size: 1.4rem; color: #fff; text-decoration: none; border-radius: 4px; background: #167392; }
-
-            /*-- プレビューエリア --*/
-            #preview_result { max-width: 240px; margin-top: 10px; padding: 10px; color: #bbb; text-align: center; background: #eee; }
-            #preview_result img { width: 100%; margin-bottom: 5px; vertical-align: bottom; }
-            #preview_result img:last-child { margin-bottom: 0; }
-            // &__inner {
-            //   padding: 5px;
-            //   text-align: center;
-            //   font-size: 14px;
-            //   line-height: 1.5;
-            //   -webkit-transform: translate(0, -50%);
-            //   transform: translate(0, -50%);
-            //   pointer-events: none;
-            //   white-space: pre-wrap;
-            //   word-wrap: break-word;
-            //   font-family: monospace, monospace;
-            // }
+        }
+        .label-content{
+          display: block;
+          width: 720px;
+          margin: 16px auto 0;
+          height: 144px;
+          background: #f5f5f5;
+          border: 1px dashed #ccc;
+          text-align: center;
+          .fa{
+            line-height: 144px;
+            font-size: 30px;
+            color: rgb(160, 160, 160);
           }
-
           // 画像選択のエラーメッセージエリア
           &__error{
             margin-top: 20px;
             color: red;
           }
         }
-        &__input {
-          width: 100%;
-          margin: 8px 0 0;
-          height: 48px;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
-          line-height: 1.5;
-          font-size: 16px;
-          font-weight: normal;
+        #previews{
+          display: flex;
+          padding-top: 16px;
+          .preview{
+            display: flex;
+            padding-top: 16px;
+          }
         }
         
       }
+      .js-file_group{
+        font-size: 0;
+      }
+      .js_remove__btn{
+        text-align: center;
+        font-size: 20px;
+      }
+      
       &__form {
         width: 800px;
         padding: 40px;
         border-top: 1px solid #eee;
         display: block;
-        box-sizing: border-box;
         font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic,
           メイリオ, Meiryo, sans-serif;
         label {
@@ -125,6 +113,7 @@
           display: block;
         }
         &__input {
+          box-sizing: border-box;
           width: 100%;
           margin: 8px 0 20px;
           font-weight: normal;
@@ -135,7 +124,6 @@
           background: #fff;
           line-height: 1.5;
           font-size: 16px;
-          box-sizing: border-box;
           font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
             YuGothic, メイリオ, Meiryo, sans-serif;
           &:nth-child(3) {
@@ -161,7 +149,6 @@
             line-height: 14px;
             font-size: 12px;
             text-align: center;
-            text-decoration: none;
             &:hover {
               opacity: 0.7;
             }
@@ -173,6 +160,7 @@
           margin: 0;
           &__group {
             &__select {
+              position: relative;
               margin: 8px 0 0;
               select {
                 width: 400px;
@@ -185,6 +173,11 @@
                 line-height: 1.5;
                 cursor: pointer;
                 margin: 0 0 20px;                
+              }
+              .fas.fa-chevron-down.sell__main__content__form__box__group__select--arrow-down{
+                position: absolute;
+                right: 15px;
+                top: 17px;
               }
             }
             // 配送料負担のエラーメッセージエリア
@@ -201,6 +194,27 @@
             color: red;
             margin-bottom: 30px;
           }
+
+          .listing-select-wrapper__box{
+            position: relative;
+            select {
+              width: 400px;
+              height: 48px;
+              padding: 0 16px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer;
+              margin: 0 0 40px;
+            }
+            .fas.fa-chevron-down.listing-select-wrapper__box--arrow-down{
+              position: absolute;
+              right: 15px;
+              top: 17px;
+            }
+
           .listing-select-wrapper__box--select{
             width: 400px;
             height: 48px;
@@ -213,13 +227,13 @@
             cursor: pointer;
             margin: 0 0 20px;
           }
+        }
           &__price {
             &__top {
               padding: 0 0 24px;
               border: 0;
               display: block;
               height: 72px;
-              box-sizing: border-box;
               font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
                 YuGothic, メイリオ, Meiryo, sans-serif;
               &__left {
@@ -235,6 +249,7 @@
                 align-items: center;
                 display: flex;
                 &__input {
+                  box-sizing: border-box;
                   display: inline-block;
                   width: 100%;
                   margin: 0 0 0 5%;
@@ -246,7 +261,6 @@
                   line-height: 1.5;
                   font-size: 20px;
                   text-align: right;
-                  box-sizing: border-box;
                   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
                     YuGothic, メイリオ, Meiryo, sans-serif;
                 }
@@ -263,7 +277,6 @@
               padding: 24px 0;
               border-top: 1px solid #ccc;
               height: 63px;
-              box-sizing: border-box;
               font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体,
                 YuGothic, メイリオ, Meiryo, sans-serif;
               &__left {
@@ -314,7 +327,6 @@
         font-size: 14px;
         a {
           color: #0099e8;
-          text-decoration: none;
           &:hover {
             opacity: 0.7;
             text-decoration: underline;
@@ -337,11 +349,10 @@
           text-align: center;
           &:hover {
             opacity: 0.7;
-            text-decoration: none !important;
           }
         }
         &__gray {
-          color: #fff !important;
+          color: $whiteText;
           width: 60%;
           margin: 24px auto 0;
           background: #aaa;
@@ -357,10 +368,12 @@
           text-align: center;
           &:hover {
             opacity: 0.7;
-            text-decoration: none !important;
           }
         }
       }
     }
   }
 }
+
+
+
