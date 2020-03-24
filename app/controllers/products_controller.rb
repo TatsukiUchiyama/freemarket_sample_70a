@@ -95,8 +95,10 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
   end
 
   def move_to_index
-    @product = Product.find_by(params[:id])
-    redirect_to action: :index unless user_signed_in? || current_user.id != @product.seller_id 
+    @product = Product.find(params[:id])
+    if ! user_signed_in? || current_user.id != @product.seller_id 
+      redirect_to action: :index 
+    end
   end
 
   def set_product
