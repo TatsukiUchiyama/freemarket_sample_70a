@@ -1,14 +1,13 @@
 class ProductsController < ApplicationController
+before_action :move_to_root, only: :edit
+
   def index
     @products = Product.includes(:images, :category, :user).order('created_at DESC')
-    @products.first(3).each do |product|
-    end
 
 
     @ham = Product.where(brand: '伊藤ハム')
 
   end
-
 
   def category
     @categories = Category.where(ancestry: nil)
@@ -35,14 +34,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-    #セレクトボックスの初期値設定
-    # @category_parent_array = ["---"]
     @category_parent_array = Category.where(ancestry: nil)
-
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    # Category.where(ancestry: nil).each do |parent|
-    #   @category_parent_array << parent.name
-    # end
   end
 
   def get_category_children
@@ -55,17 +47,17 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   
+
   def create
     @product = Product.new(product_params)
+    binding.pry
     if @product.save
       redirect_to root_path
     else
-      @category_parent_array = ["---"]
-      #データベースから、親カテゴリーのみ抽出し、配列化
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
-      render :new
+      @product = Product.new
+      @product.images.new
+      @category_parent_array = Category.where(ancestry: nil)
+      redirect_to new_product_path
     end
   end
 
@@ -76,13 +68,27 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @product.images
+    @category_parent_array = Category.where(ancestry: nil)
+    @product_root_category = @product.category.root
+    @product_children_category = @product_root_category.children
+    product_parent_category = @product.category.parent
+    @product_grandcildren_category = product_parent_category.children
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def destroy
     product = Product.find(params[:id])
+
     if product.destroy
       redirect_to root_path
     else
@@ -93,7 +99,12 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id, :shipping_duration_id, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id,:shipping_duration_id, :price, :category_id, images_attributes:  [:src, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
+  def move_to_root
+    product = Product.find(params[:id])
+    redirect_to root_path unless current_user == product.user
   end
 
 end
