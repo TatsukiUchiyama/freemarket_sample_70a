@@ -3,8 +3,8 @@ $(function(){
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
                     <input class="js-file hidden" type="file"
-                    name="product[images_attributes][${num}][src]"
-                    id="product_images_attributes_${num}_src"><br>
+                    name="product[images_attributes][${num}][image]"
+                    id="product_images_attributes_${num}_image"><br>
                     <div data-index="${num}" class="js-remove hidden">削除(${num})</div>
                   </div>`;
     return html;
@@ -43,7 +43,7 @@ $(function(){
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
 
       // 画像を新しく選択したものに更新する
-      img.setAttribute('src', blobUrl);
+      img.setAttribute('image', blobUrl);
 
     } else {  // 押されたjsファイル要素に画像が入っていない場合
 

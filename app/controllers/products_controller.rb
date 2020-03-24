@@ -4,6 +4,8 @@ before_action :move_to_root, only: :edit
 
 before_action :move_to_index, only: [:edit, :update]
 
+before_action :set_product, only: [:show, :edit, :update, :destroy]
+
   def index
     @products = Product.includes(:images, :category, :seller).order('created_at DESC')
     @ham = Product.where(brand: '伊藤ハム')
@@ -58,13 +60,11 @@ before_action :move_to_index, only: [:edit, :update]
   end
 
   def show
-    @product = Product.find(params[:id])
     @user = @product.seller
     @category = @product.category
   end
 
   def edit
-    @product = Product.find(params[:id])
     @product.images
     @category_parent_array = Category.where(ancestry: nil)
     @product_root_category = @product.category.root
@@ -74,7 +74,6 @@ before_action :move_to_index, only: [:edit, :update]
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to root_path
     else
@@ -83,9 +82,7 @@ before_action :move_to_index, only: [:edit, :update]
   end
 
   def destroy
-    product = Product.find(params[:id])
-
-    if product.destroy
+    if @product.destroy
       redirect_to root_path
     else
       render :show
@@ -95,8 +92,7 @@ before_action :move_to_index, only: [:edit, :update]
 
   private
   def product_params
-
-    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id,:shipping_duration_id, :price, :category_id, images_attributes:  [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :condition_id, :brand, :shipping_payer_id, :shipping_from_area_id,:shipping_duration_id, :price, :category_id, images_attributes:  [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def move_to_root
@@ -107,6 +103,10 @@ before_action :move_to_index, only: [:edit, :update]
   def move_to_index
     @product = Product.find_by(params[:id])
     redirect_to action: :index unless user_signed_in? && current_user.id != @product.seller_id 
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 end

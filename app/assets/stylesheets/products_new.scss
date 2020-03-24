@@ -71,12 +71,11 @@
             line-height: 144px;
             font-size: 30px;
             color: rgb(160, 160, 160);
-
+          }
           // 画像選択のエラーメッセージエリア
           &__error{
             margin-top: 20px;
             color: red;
-
           }
         }
         #previews{
@@ -227,8 +226,8 @@
             line-height: 1.5;
             cursor: pointer;
             margin: 0 0 20px;
-
           }
+        }
           &__price {
             &__top {
               padding: 0 0 24px;
@@ -375,3 +374,6 @@
     }
   }
 }
+
+
+
