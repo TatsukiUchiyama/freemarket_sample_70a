@@ -65,7 +65,7 @@
                   -# 子カテゴリボックス
               #children_wrapper.listing-select-wrapper__added
                 .listing-select-wrapper__box
-                  = f.collection_select :category_id, @product_children_category, :id, :name, {prompt: ""}, {id: "grandchild_category"}
+                  = f.collection_select :category_id, @product_children_category, :id, :name, {prompt: ""}, {id: "existing_child_category"}
                   -# 孫カテゴリボックス
               #grandchildren_wrapper.listing-select-wrapper__added
                 .listing-select-wrapper__box
